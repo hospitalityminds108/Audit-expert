@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────────────────────────────
+   AUDITEXPERT DESIGN TOKENS
+   ─────────────────────────────────────────────── */
+:root {
+  --color-background: #0a0b0e;
+  --color-surface: #15181d;
+  --color-surface-alt: #1d2127;
+  --color-primary: #c9a54b;
+  --color-secondary: #5c8871;
+  --color-accent: #dcc37d;
+  --color-text: #f3f2ec;
+  --color-muted: #948f7c;
+  --color-line: rgba(243, 242, 236, 0.08);
+
+  --header-h: 88px;
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(60, 1, 35, 1);
+  --duration-fast: 0.35s;
+  --duration-base: 0.6s;
+  --duration-slow: 1s;
+
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+}
+
+@layer base {
+  * {
+    @apply border-ink-500/30;
+  }
+
+  html {
+    scroll-behavior: initial;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-ink-950 text-bone-100 font-body overflow-x-hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-brass-400 text-ink-950;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  /* Focus visibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brass-400 ring-offset-2 ring-offset-ink-950;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-background); }
+  ::-webkit-scrollbar-thumb {
+    background: #31373f;
+    border-radius: 999px;
+    border: 2px solid var(--color-background);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #434b55; }
+}
+
+@layer components {
+  .container-site {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 88rem;
+    padding-inline: var(--gutter);
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-brass-300;
+  }
+
+  .section-label {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.3em] text-muted;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+    text-wrap: pretty;
+  }
+
+  /* Split-text reveal targets */
+  .split-line {
+    display: block;
+    overflow: hidden;
+    padding-block: 0.08em;
+    margin-block: -0.08em;
+  }
+
+  .split-line-inner {
+    display: block;
+    will-change: transform;
+  }
+}
+
+@layer utilities {
+  .text-gradient-brass {
+    background: linear-gradient(100deg, #ead9a8 0%, #c9a54b 45%, #8c6e22 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-grid-subtle {
+    background-image:
+      linear-gradient(to right, rgba(243,242,236,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(243,242,236,0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .noise-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Lenis recommended styles */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+}
+
+/* ───────────────────────────────────────────────
+   MOTION PREFERENCES
+   ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gsap-reveal, .split-line-inner { transform: none !important; opacity: 1 !important; }
+}
+
+/* Custom cursor active state — hides native cursor on precise devices */
+body[data-cursor="custom"],
+body[data-cursor="custom"] a,
+body[data-cursor="custom"] button {
+  cursor: none;
+}

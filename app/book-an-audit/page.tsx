@@ -1,0 +1,130 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, CalendarDays, CreditCard, MapPin, ShieldCheck, Zap } from "lucide-react";
+import BookAuditForm from "@/components/forms/BookAuditForm";
+
+export const metadata: Metadata = {
+  title: "Book an Audit — AuditExpert",
+  description:
+    "Book a mystery audit or SOP audit for hotels, restaurants, hospitals, malls, cinemas and salons. Request a callback or configure and pay online instantly.",
+};
+
+const PATHS = [
+  {
+    icon: CreditCard,
+    title: "Configure & pay online",
+    body: "Pick your plan, locations, add-ons and a preferred date. Transparent GST-inclusive pricing, instant confirmation.",
+    cta: "Start secure checkout",
+    href: "/checkout",
+    primary: true,
+  },
+  {
+    icon: CalendarDays,
+    title: "Book on a callback",
+    body: "Tell us what you need and our team calls you within one working day to scope the audit and lock the schedule.",
+    cta: "Use the form below",
+    href: "#callback",
+    primary: false,
+  },
+];
+
+export default function BookAnAuditPage() {
+  return (
+    <main id="main" className="bg-ink-950">
+      {/* ── Hero ── */}
+      <div className="container-site pb-16 pt-32 md:pt-40">
+        <p className="eyebrow text-brass-400">
+          <span className="eyebrow-rule" aria-hidden="true" />
+          BOOK AN AUDIT
+        </p>
+        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] tracking-[-0.015em] text-bone-50 md:text-6xl">
+          Two ways to get on the calendar.
+        </h1>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-bone-300/70">
+          Go straight to secure checkout with full transparency — or request a
+          callback and we scope the audit together on a call. Both paths end
+          with a confirmed date, an assigned auditor and a scored report.
+        </p>
+
+        {/* ── Two paths ── */}
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          {PATHS.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.title}
+                className={`rounded-2xl border p-7 ${
+                  p.primary
+                    ? "border-brass-400/40 bg-brass-400/[0.07]"
+                    : "border-bone-50/10 bg-ink-900/40"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-bone-50/15 bg-ink-950">
+                    <Icon className="h-5 w-5 text-brass-300" aria-hidden="true" />
+                  </span>
+                  <h2 className="font-display text-xl text-bone-50">{p.title}</h2>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-bone-300/70">{p.body}</p>
+                <Link
+                  href={p.href}
+                  className={`mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                    p.primary
+                      ? "text-brass-300 hover:text-brass-200"
+                      : "text-bone-200 hover:text-bone-50"
+                  }`}
+                >
+                  {p.cta}
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 grid gap-4 rounded-2xl border border-bone-50/10 bg-ink-900/40 p-6 sm:grid-cols-3">
+          {[
+            { icon: ShieldCheck, label: "Payment verified server-side before confirmation" },
+            { icon: Zap, label: "Instant booking reference AE-YYYY-XXXXXX" },
+            { icon: MapPin, label: "Pan-India auditor network, 6 industries" },
+          ].map((f) => {
+            const Icon = f.icon;
+            return (
+              <p key={f.label} className="flex items-start gap-2.5 text-xs leading-relaxed text-bone-300/60">
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-sage-300" aria-hidden="true" />
+                {f.label}
+              </p>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── Callback form ── */}
+      <div id="callback" className="container-site scroll-mt-24 pb-24">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.7fr]">
+          <div>
+            <p className="eyebrow text-brass-400">
+              <span className="eyebrow-rule" aria-hidden="true" />
+              CALLBACK
+            </p>
+            <h2 className="mt-4 font-display text-3xl tracking-[-0.01em] text-bone-50">
+              Request a callback
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-bone-300/70">
+              Share a few details and we will call to scope your audit —
+              journey legs, locations, evidence needs, timeline and budget.
+              If you already know the plan, select it and we come prepared.
+            </p>
+            <p className="mt-6 rounded-xl border border-bone-50/10 bg-ink-900/40 p-5 font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em] text-bone-300/50">
+              3+ locations unlock 5% volume rate · 5+ unlock 10% · coupon
+              FIRSTAUDIT10 saves 10% on your first audit
+            </p>
+          </div>
+          <div className="rounded-2xl border border-bone-50/10 bg-ink-900/40 p-7">
+            <BookAuditForm />
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
