@@ -94,8 +94,8 @@ export default function Header() {
         ref={headerRef}
         className={`fixed inset-x-0 top-0 z-[80] transition-all duration-500 ease-premium ${
           scrolled
-            ? "border-b border-bone-100/8 bg-ink-950/85 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent"
+            ? "border-b border-warmgray/80 bg-white/90 backdrop-blur-xl"
+            : "border-b border-warmgray/50 bg-white/80 backdrop-blur-md"
         }`}
         onMouseLeave={() => setMenu({ open: false, which: null })}
       >
@@ -120,13 +120,13 @@ export default function Header() {
                       aria-haspopup="true"
                       onClick={() => openMega(children as "industries" | "plans")}
                       className={`group flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 ${
-                        open ? "text-brass-300" : "text-bone-200 hover:text-brass-300"
+                        open ? "text-emerald" : "text-charcoal hover:text-emerald"
                       }`}
                     >
                       {item.label}
                       <ChevronDown
                         size={14}
-                        className={`transition-transform duration-300 ${open ? "rotate-180 text-brass-300" : "group-hover:rotate-180 group-hover:text-brass-300"}`}
+                        className={`transition-transform duration-300 ${open ? "rotate-180 text-emerald" : "group-hover:rotate-180 group-hover:text-emerald"}`}
                         aria-hidden="true"
                       />
                     </button>
@@ -139,8 +139,8 @@ export default function Header() {
                   href={item.href}
                   className={`rounded-full px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 ${
                     pathname.startsWith(item.href)
-                      ? "text-brass-300"
-                      : "text-bone-200 hover:text-brass-300"
+                      ? "text-emerald"
+                      : "text-charcoal hover:text-emerald"
                   }`}
                 >
                   {item.label}
@@ -152,7 +152,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/book-an-audit"
-              className="group relative hidden items-center gap-2 overflow-hidden rounded-full bg-brass-400 px-6 py-2.5 text-[13px] font-semibold tracking-wide text-ink-950 transition-all duration-500 hover:bg-brass-300 sm:inline-flex"
+              className="group relative hidden items-center gap-2 overflow-hidden rounded-full bg-forest px-6 py-2.5 text-[13px] font-semibold tracking-wide text-white transition-all duration-500 hover:bg-emerald sm:inline-flex"
             >
               <span className="relative z-10">{navigation.cta.label}</span>
               <ArrowUpRight
@@ -165,7 +165,7 @@ export default function Header() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               aria-expanded={mobileOpen}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-bone-100/15 text-bone-100 transition-colors hover:border-brass-300/60 lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-forest/20 text-forest transition-colors hover:border-emerald lg:hidden"
             >
               <span className="flex flex-col gap-[5px]">
                 <span className="block h-px w-5 bg-current" />

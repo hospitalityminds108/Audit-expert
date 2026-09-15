@@ -6,15 +6,15 @@
    AUDITEXPERT DESIGN TOKENS
    ─────────────────────────────────────────────── */
 :root {
-  --color-background: #0a0b0e;
-  --color-surface: #15181d;
-  --color-surface-alt: #1d2127;
-  --color-primary: #c9a54b;
-  --color-secondary: #5c8871;
-  --color-accent: #dcc37d;
-  --color-text: #f3f2ec;
-  --color-muted: #948f7c;
-  --color-line: rgba(243, 242, 236, 0.08);
+  --color-background: #ffffff;
+  --color-surface: #f7f3ea;
+  --color-surface-alt: #dce7df;
+  --color-primary: #138a6a;
+  --color-secondary: #163c32;
+  --color-accent: #d5a84b;
+  --color-text: #27312d;
+  --color-muted: #6f7c73;
+  --color-line: rgba(39, 49, 45, 0.14);
 
   --header-h: 88px;
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
@@ -28,7 +28,7 @@
 
 @layer base {
   * {
-    @apply border-ink-500/30;
+    @apply border-warmgray/70;
   }
 
   html {
@@ -37,12 +37,12 @@
   }
 
   body {
-    @apply bg-ink-950 text-bone-100 font-body overflow-x-hidden;
+    @apply bg-white text-charcoal font-body overflow-x-hidden;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    @apply bg-brass-400 text-ink-950;
+    @apply bg-champagne text-forest;
   }
 
   h1, h2, h3, h4 {
@@ -51,18 +51,18 @@
 
   /* Focus visibility */
   :focus-visible {
-    @apply outline-none ring-2 ring-brass-400 ring-offset-2 ring-offset-ink-950;
+    @apply outline-none ring-2 ring-emerald ring-offset-2 ring-offset-white;
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: var(--color-background); }
   ::-webkit-scrollbar-thumb {
-    background: #31373f;
+    background: #527565;
     border-radius: 999px;
     border: 2px solid var(--color-background);
   }
-  ::-webkit-scrollbar-thumb:hover { background: #434b55; }
+  ::-webkit-scrollbar-thumb:hover { background: #138a6a; }
 }
 
 @layer components {
@@ -102,7 +102,7 @@
 
 @layer utilities {
   .text-gradient-brass {
-    background: linear-gradient(100deg, #ead9a8 0%, #c9a54b 45%, #8c6e22 100%);
+    background: linear-gradient(100deg, #f1d99d 0%, #d5a84b 45%, #8a6720 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -110,8 +110,8 @@
 
   .bg-grid-subtle {
     background-image:
-      linear-gradient(to right, rgba(243,242,236,0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(243,242,236,0.035) 1px, transparent 1px);
+      linear-gradient(to right, rgba(22,60,50,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(22,60,50,0.06) 1px, transparent 1px);
     background-size: 72px 72px;
   }
 

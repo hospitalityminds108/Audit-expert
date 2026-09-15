@@ -156,7 +156,7 @@ export default function MobileMenu({ open, onClose }: Props) {
           <div data-mobile-item className="mt-auto pb-10 pt-10">
             <Link
               href="/book-an-audit"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-brass-400 py-4 text-sm font-semibold tracking-wide text-ink-950 transition-colors hover:bg-brass-300"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-emerald py-4 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-sage-600"
             >
               {navigation.cta.label} <ArrowUpRight size={16} />
             </Link>

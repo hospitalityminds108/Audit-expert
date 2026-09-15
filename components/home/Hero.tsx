@@ -94,6 +94,10 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover"
         />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(213,168,75,0.2),transparent_40%)]"
+          aria-hidden="true"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/45 to-ink-950" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 via-transparent to-ink-950/30" aria-hidden="true" />
       </div>
@@ -138,7 +142,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-4" data-hero-fade>
               <Link
                 href="/industries"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-brass-400 px-8 py-4 text-sm font-semibold tracking-wide text-ink-950 transition-all duration-500 hover:bg-brass-300"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-emerald px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all duration-500 hover:bg-sage-600"
               >
                 {heroConfig.ctaPrimary.label}
                 <ArrowUpRight
