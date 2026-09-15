@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-4" data-reveal>
             <Link
               href="/book-an-audit"
-              className="group inline-flex items-center gap-2 rounded-full bg-emerald px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all duration-500 hover:bg-sage-600"
+              className="group inline-flex items-center gap-2 rounded-full bg-brass-400 px-8 py-4 text-sm font-semibold tracking-wide text-forest transition-all duration-500 hover:bg-brass-300"
             >
               Book an Audit
               <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -120,13 +120,13 @@ export default function Header() {
                       aria-haspopup="true"
                       onClick={() => openMega(children as "industries" | "plans")}
                       className={`group flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 ${
-                        open ? "text-emerald" : "text-charcoal hover:text-emerald"
+                        open ? "text-brass-400" : "text-charcoal hover:text-brass-400"
                       }`}
                     >
                       {item.label}
                       <ChevronDown
                         size={14}
-                        className={`transition-transform duration-300 ${open ? "rotate-180 text-emerald" : "group-hover:rotate-180 group-hover:text-emerald"}`}
+                        className={`transition-transform duration-300 ${open ? "rotate-180 text-brass-400" : "group-hover:rotate-180 group-hover:text-brass-400"}`}
                         aria-hidden="true"
                       />
                     </button>
@@ -139,8 +139,8 @@ export default function Header() {
                   href={item.href}
                   className={`rounded-full px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 ${
                     pathname.startsWith(item.href)
-                      ? "text-emerald"
-                      : "text-charcoal hover:text-emerald"
+                      ? "text-brass-400"
+                      : "text-charcoal hover:text-brass-400"
                   }`}
                 >
                   {item.label}
@@ -152,7 +152,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/book-an-audit"
-              className="group relative hidden items-center gap-2 overflow-hidden rounded-full bg-forest px-6 py-2.5 text-[13px] font-semibold tracking-wide text-white transition-all duration-500 hover:bg-emerald sm:inline-flex"
+              className="group relative hidden items-center gap-2 overflow-hidden rounded-full bg-brass-400 px-6 py-2.5 text-[13px] font-semibold tracking-wide text-forest transition-all duration-500 hover:bg-brass-300 sm:inline-flex"
             >
               <span className="relative z-10">{navigation.cta.label}</span>
               <ArrowUpRight
@@ -165,7 +165,7 @@ export default function Header() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               aria-expanded={mobileOpen}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-forest/20 text-forest transition-colors hover:border-emerald lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-forest/20 text-forest transition-colors hover:border-brass-400 lg:hidden"
             >
               <span className="flex flex-col gap-[5px]">
                 <span className="block h-px w-5 bg-current" />

@@ -142,7 +142,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-4" data-hero-fade>
               <Link
                 href="/industries"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-emerald px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all duration-500 hover:bg-sage-600"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-brass-400 px-8 py-4 text-sm font-semibold tracking-wide text-forest transition-all duration-500 hover:bg-brass-300"
               >
                 {heroConfig.ctaPrimary.label}
                 <ArrowUpRight

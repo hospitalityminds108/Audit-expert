@@ -118,7 +118,7 @@ export default function BookAuditForm() {
         </p>
         <Link
           href={form.planSlug ? `/checkout?plan=${form.planSlug}` : "/checkout"}
-          className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald bg-emerald px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-white transition-colors hover:bg-sage-600"
+          className="mt-4 inline-flex items-center gap-2 rounded-full border border-brass-400 bg-brass-400 px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-forest transition-colors hover:bg-brass-300"
         >
           Configure &amp; pay online
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -272,7 +272,7 @@ export default function BookAuditForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center gap-3 rounded-full border border-emerald bg-emerald px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-white transition-colors hover:bg-sage-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-3 rounded-full border border-brass-400 bg-brass-400 px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-forest transition-colors hover:bg-brass-300 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? (
             <>

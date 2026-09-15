@@ -313,7 +313,7 @@ export default function IndustryPage({ params }: PageProps) {
                               ? "bg-sage-400"
                               : row.score >= 70
                               ? "bg-brass-400"
-                              : "bg-red-400/80"
+                              : "bg-critical/80"
                           }`}
                           style={{ width: `${row.score}%` }}
                         />

@@ -31,7 +31,7 @@ interface Props {
 
 const styles = {
   primary:
-    "bg-emerald text-white hover:bg-sage-600 border border-emerald",
+    "bg-brass-400 text-forest hover:bg-brass-300 border border-brass-400",
   outline:
     "border border-bone-100/25 text-bone-100 hover:border-brass-300/70 hover:text-brass-200",
   ghost: "text-bone-200 hover:text-brass-300"

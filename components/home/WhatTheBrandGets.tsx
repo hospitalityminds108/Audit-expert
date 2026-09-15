@@ -196,7 +196,7 @@ function ReportMockup() {
                 <span
                   className={`rounded px-1.5 py-0.5 font-mono text-[9px] font-medium uppercase tracking-[0.12em] ${
                     a.level === "CRITICAL"
-                      ? "bg-red-500/15 text-red-300"
+                      ? "bg-critical/15 text-critical"
                       : a.level === "HIGH"
                       ? "bg-brass-500/15 text-brass-300"
                       : "bg-sage-500/15 text-sage-300"

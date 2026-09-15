@@ -188,7 +188,7 @@ function DashboardMockup({
                     ? "bg-sage-400"
                     : row.status === "watch"
                     ? "bg-brass-400"
-                    : "bg-red-400/80"
+                    : "bg-critical/80"
                 }`}
                 aria-hidden="true"
               />
@@ -202,7 +202,7 @@ function DashboardMockup({
                       ? "bg-sage-400"
                       : row.status === "watch"
                       ? "bg-brass-400"
-                      : "bg-red-400/80"
+                      : "bg-critical/80"
                   }`}
                   style={{
                     width: prefersReducedMotion ? `${row.score}%` : undefined,
@@ -218,7 +218,7 @@ function DashboardMockup({
                 className={`w-10 text-right font-mono text-[11px] tabular-nums ${
                   row.delta.startsWith("+")
                     ? "text-sage-400"
-                    : "text-red-400/80"
+                      : "text-critical/80"
                 }`}
               >
                 {row.delta}
