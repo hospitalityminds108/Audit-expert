@@ -7,6 +7,7 @@ import { gsap } from "@/lib/animations/gsap";
 import { navigation } from "@/data/navigation";
 import { getIndustriesNav } from "@/data/industries";
 import { planCategoryTabs } from "@/data/audit-plans";
+import { getAuditTypesNav } from "@/data/audit-types";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const industriesNav = getIndustriesNav();
+const auditTypes = getAuditTypesNav();
 
 export default function MobileMenu({ open, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -116,6 +118,26 @@ export default function MobileMenu({ open, onClose }: Props) {
                   <span>
                     <span className="mr-3 font-mono text-xs text-accent">{ind.number}</span>
                     {ind.title}
+                  </span>
+                  <ArrowUpRight size={18} className="text-fg-400" aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="mt-8">
+            <li data-mobile-item>
+              <p className="eyebrow mb-2">Audit Type</p>
+            </li>
+            {auditTypes.map((type) => (
+              <li key={type.format} data-mobile-item>
+                <Link
+                  href={`/audit-plans?format=${type.format}`}
+                  className="flex items-center justify-between border-b border-fg-50/10 py-3.5 font-display text-xl font-medium text-fg-100"
+                >
+                  <span>
+                    {type.label}
+                    <span className="ml-3 font-mono text-xs text-fg-400">{type.count} plans</span>
                   </span>
                   <ArrowUpRight size={18} className="text-fg-400" aria-hidden="true" />
                 </Link>

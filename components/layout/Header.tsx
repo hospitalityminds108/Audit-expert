@@ -8,11 +8,13 @@ import { gsap } from "@/lib/animations/gsap";
 import { navigation } from "@/data/navigation";
 import { getIndustriesNav } from "@/data/industries";
 import { auditPlans, planCategoryTabs } from "@/data/audit-plans";
+import { getAuditTypesNav } from "@/data/audit-types";
 import { useAuth } from "@/components/auth/AuthProvider";
 import MobileMenu from "./MobileMenu";
 import Logo from "@/components/ui/Logo";
 
 const industriesNav = getIndustriesNav();
+const AUDIT_TYPES = getAuditTypesNav();
 
 type MegaKey = "industries" | "plans";
 
@@ -257,8 +259,43 @@ export default function Header() {
             ) : menu.which === "plans" ? (
               <>
                 <div>
-                  <div className="mb-6 flex items-center justify-between gap-4">
-                    <p className="eyebrow">Plans &amp; pricing by industry</p>
+                  {/* By audit type */}
+                  <p className="eyebrow mb-4">By audit type</p>
+                  <ul className="mb-8 grid gap-3 sm:grid-cols-2">
+                    {AUDIT_TYPES.map((type) => {
+                      const Icon = type.icon;
+                      return (
+                        <li key={type.format} data-mega-item>
+                          <Link
+                            href={`/audit-plans?format=${type.format}`}
+                            onClick={() => setMenu(CLOSED)}
+                            className="glass group flex h-full items-start gap-4 rounded-2xl border border-fg-50/10 p-4 transition-colors duration-300 hover:border-brand-500/50"
+                          >
+                            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-100 text-accent">
+                              <Icon size={18} aria-hidden="true" />
+                            </span>
+                            <span className="min-w-0">
+                              <span className="flex items-center justify-between gap-3">
+                                <span className="font-display text-lg font-medium text-fg-50 transition-colors group-hover:text-accent">
+                                  {type.label}
+                                </span>
+                                <span className="shrink-0 font-mono text-[11px] text-fg-400">
+                                  {type.count} plans
+                                </span>
+                              </span>
+                              <span className="mt-1 block text-[13px] leading-relaxed text-fg-400">
+                                {type.description}
+                              </span>
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+
+                  {/* By industry */}
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <p className="eyebrow">By industry</p>
                     <Link
                       href="/audit-plans"
                       onClick={() => setMenu(CLOSED)}
