@@ -34,7 +34,7 @@ export const heroConfig = {
   headline: ["SEE WHAT YOUR", "CUSTOMERS EXPERIENCE.", "KNOW WHAT YOUR TEAMS", "ACTUALLY DELIVER."],
   supporting:
     "Mystery audits and revealed SOP audits for hotels, restaurants, hospitals, malls, cinemas, salons and service brands — with structured scorecards, evidence and actionable recommendations.",
-  ctaPrimary: { label: "Find My Industry Audit", href: "/#industries" },
+  ctaPrimary: { label: "Find My Industry Audit", href: "/industries" },
   ctaSecondary: { label: "Join the Auditor Network", href: "/join-as-auditor" },
   stats: [
     { value: 6, suffix: "", label: "Industries audited" },

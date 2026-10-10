@@ -39,7 +39,7 @@ export default function AnimatedText({
             {line.split(" ").map((word, j) => {
               const isHi = highlights.includes(word.replace(/[.,:!?—–]/g, "").toLowerCase());
               return (
-                <span key={j} className={`split-word ${isHi ? "text-brass-300" : ""}`}>
+                <span key={j} className={`split-word ${isHi ? "text-accent" : ""}`}>
                   {word}
                   {"\u00A0"}
                 </span>

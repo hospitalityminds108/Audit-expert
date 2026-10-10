@@ -10,25 +10,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          950: "#151917",
-          900: "#1B211E",
-          800: "#252C28",
-          700: "#343D38",
-          600: "#46514B",
-          500: "#5F6B65",
-          400: "#7D8781",
-          300: "#A0A8A3"
+        // Canvas / surface scale — base-950 is the page canvas
+        base: {
+          950: "#FBF8F1",
+          900: "#F5F0E4",
+          800: "#ECE5D4",
+          700: "#DFD6C1",
+          600: "#CFC4AB",
+          500: "#B9AD92",
+          400: "#A39780",
+          300: "#8E836E"
         },
-        bone: {
-          50: "#FFFFFF",
-          100: "#F8F7F2",
-          200: "#E5E3DA",
-          300: "#D8D8D0",
-          400: "#9A9F9B",
-          500: "#5F6662"
+        // Foreground scale — fg-50 is the strongest (headings); never pure black
+        fg: {
+          50: "#2B2620",
+          100: "#342E27",
+          200: "#3F382F",
+          300: "#4A4338",
+          400: "#6B6459",
+          500: "#7A7266"
         },
+        // Gold used for text and icons on the light canvas
+        accent: "#8A6800",
+        // Text placed on gold or other filled chips
+        "on-gold": "#2A2205",
         brass: {
+          100: "#FFF8DC",
           200: "#FFF3BE",
           300: "#F6E7A6",
           400: "#EFBF04",
@@ -37,18 +44,14 @@ const config: Config = {
           700: "#725A00"
         },
         sage: {
+          100: "#E6F4EE",
           300: "#CDE8DC",
           400: "#7FBE9F",
           500: "#16845F",
-          600: "#0F684B"
+          600: "#0F684B",
+          700: "#0B4F39"
         },
-        forest: "#151917",
-        emerald: "#16845F",
-        champagne: "#EFBF04",
-        ivory: "#F8F7F2",
-        charcoal: "#202522",
-        warmgray: "#E5E3DA",
-        critical: "#D64545"
+        critical: "#C73B3B"
       },
       fontFamily: {
         display: ["var(--font-display)", "serif"],
@@ -65,7 +68,14 @@ const config: Config = {
         "lead-lg": ["clamp(1.05rem, 1.35vw, 1.25rem)", { lineHeight: "1.65" }],
         "lead": ["clamp(1rem, 1.15vw, 1.125rem)", { lineHeight: "1.7" }]
       },
+      opacity: {
+        "6": "0.06",
+        "8": "0.08",
+        "12": "0.12",
+        "72": "0.72"
+      },
       spacing: {
+        "4.5": "1.125rem",
         "18": "4.5rem",
         "22": "5.5rem",
         "30": "7.5rem",

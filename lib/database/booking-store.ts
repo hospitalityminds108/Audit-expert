@@ -87,6 +87,8 @@ export interface BookingStore {
   update(id: string, patch: Partial<Booking>): Promise<Booking | null>;
   /** Find a booking by payment order id (for webhook idempotency) */
   getByPaymentOrderId(orderId: string): Promise<Booking | null>;
+  /** Bookings made with a given customer email, newest first */
+  listByEmail(email: string): Promise<Booking[]>;
 }
 
 /**
@@ -141,6 +143,13 @@ class MemoryBookingStore implements BookingStore {
     return null;
   }
 
+  async listByEmail(email: string): Promise<Booking[]> {
+    const needle = email.trim().toLowerCase();
+    return [...this.bookings.values()]
+      .filter((b) => b.customer.email.trim().toLowerCase() === needle)
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  }
+
   async update(id: string, patch: Partial<Booking>): Promise<Booking | null> {
     const booking = this.bookings.get(id);
     if (!booking) return null;
@@ -150,12 +159,14 @@ class MemoryBookingStore implements BookingStore {
   }
 }
 
-/** Process-wide singleton (survives HMR via globalThis) */
+/**
+ * Process-wide singleton. Kept on globalThis in every environment: route
+ * handlers are bundled separately, so a module-level instance would give
+ * create-order and verify different stores and lose the booking between them.
+ */
 const globalForStore = globalThis as unknown as { __bookingStore?: BookingStore };
 
 export const bookingStore: BookingStore =
   globalForStore.__bookingStore ?? new MemoryBookingStore();
 
-if (process.env.NODE_ENV !== "production") {
-  globalForStore.__bookingStore = bookingStore;
-}
+globalForStore.__bookingStore = bookingStore;

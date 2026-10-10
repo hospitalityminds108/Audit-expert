@@ -21,7 +21,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: `How It Works — ${siteConfig.name}`,
+  title: "How It Works",
   description:
     "The AuditExpert methodology: define, design, assign, audit, verify, improve. How a service audit runs from scoping to scored, evidence-backed report and corrective actions.",
   openGraph: {
@@ -102,31 +102,31 @@ export default function HowItWorksPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <main id="main" className="bg-bone-50">
+      <div className="">
         {/* ── Hero ─────────────────────────────────────────────── */}
-        <header className="relative overflow-hidden bg-ink-950 pb-16 pt-40 md:pb-24 md:pt-52">
+        <header className="relative overflow-hidden pb-16 pt-40 md:pb-24 md:pt-52">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-40 -top-40 h-[480px] w-[480px] rounded-full bg-brass-500/10 blur-3xl"
           />
           <div className="container-site relative">
             <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-bone-300/40">
+              <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-brass-300">Home</Link>
+                  <Link href="/" className="transition-colors hover:text-accent">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
-                <li aria-current="page" className="text-brass-400">How It Works</li>
+                <li aria-current="page" className="text-accent">How It Works</li>
               </ol>
             </nav>
-            <p className="eyebrow text-brass-400">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               THE METHODOLOGY
             </p>
-            <h1 className="mt-6 max-w-4xl font-display text-display-xl leading-[1.02] tracking-[-0.02em] text-bone-50 md:text-display-2xl">
+            <h1 className="mt-6 max-w-4xl font-display text-display-xl leading-[1.02] tracking-[-0.02em] text-fg-50 md:text-display-lg">
               Six steps from first briefing to a brand that measurably improves.
             </h1>
-            <p className="mt-6 max-w-2xl text-lead text-bone-300/80">
+            <p className="mt-6 max-w-2xl text-lead text-fg-300/80">
               An AuditExpert audit is not a visit with an opinion. It is a
               designed, documented, scored process — the same discipline every
               time, adapted to your industry and your standards.
@@ -139,7 +139,6 @@ export default function HowItWorksPage() {
                 href="/audit-plans"
                 variant="outline"
                 size="lg"
-                className="!border-bone-50/25 !text-bone-100 hover:!bg-bone-50/10"
               >
                 Browse Plans
               </MagneticButton>
@@ -150,32 +149,32 @@ export default function HowItWorksPage() {
         {/* ── Six-step methodology ─────────────────────────────── */}
         <section aria-labelledby="methodology" className="py-16 md:py-24">
           <div className="container-site">
-            <p className="eyebrow text-brass-600">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               DEFINE → IMPROVE
             </p>
             <h2
               id="methodology"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               The methodology behind every audit
             </h2>
 
-            <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-ink-950/10 bg-ink-950/10 md:grid-cols-2 lg:grid-cols-3">
+            <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-fg-50/10 bg-fg-50/10 md:grid-cols-2 lg:grid-cols-3">
               {methodologySteps.map((step) => (
-                <li key={step.number} className="bg-bone-50 p-8 transition-colors hover:bg-bone-100/70">
+                <li key={step.number} className="bg-white/70 p-8 transition-colors hover:bg-white">
                   <div className="flex items-baseline justify-between">
-                    <span className="font-mono text-4xl font-medium text-brass-500/60">
+                    <span className="font-mono text-4xl font-medium text-accent/80">
                       {step.number}
                     </span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-700/40">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-300/60">
                       Step
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-xl tracking-[0.02em] text-ink-950">
+                  <h3 className="mt-6 font-display text-xl tracking-[0.02em] text-fg-50">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-700/80">{step.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-300/80">{step.description}</p>
                 </li>
               ))}
             </ol>
@@ -183,7 +182,7 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── Two formats reminder ─────────────────────────────── */}
-        <section aria-labelledby="formats" className="border-t border-ink-950/8 bg-bone-100 py-16 md:py-24">
+        <section aria-labelledby="formats" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
             <div className="grid gap-10 lg:grid-cols-2">
               {[
@@ -192,25 +191,25 @@ export default function HowItWorksPage() {
               ].map(({ way, tone }) => (
                 <div
                   key={way.label}
-                  className={`flex flex-col rounded-2xl border bg-bone-50 p-8 md:p-10 ${
-                    tone === "brass" ? "border-brass-600/25" : "border-sage-600/25"
+                  className={`flex flex-col rounded-2xl border glass p-8 md:p-10 ${
+                    tone === "brass" ? "border-brass-400/25" : "border-sage-600/25"
                   }`}
                 >
                   <p
                     className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
-                      tone === "brass" ? "text-brass-700" : "text-sage-700"
+                      tone === "brass" ? "text-accent" : "text-sage-600"
                     }`}
                   >
                     {way.label}
                   </p>
-                  <h3 className="mt-4 font-display text-2xl leading-tight text-ink-950">{way.sub}</h3>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-700/85">{way.description}</p>
+                  <h3 className="mt-4 font-display text-2xl leading-tight text-fg-50">{way.sub}</h3>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-fg-300/85">{way.description}</p>
                   <ul className="mt-6 space-y-2.5">
                     {way.points.slice(0, 4).map((pt) => (
-                      <li key={pt.title} className="flex items-start gap-3 text-sm text-ink-800">
+                      <li key={pt.title} className="flex items-start gap-3 text-sm text-fg-50">
                         <Radar
                           className={`mt-0.5 h-4 w-4 shrink-0 ${
-                            tone === "brass" ? "text-brass-600" : "text-sage-600"
+                            tone === "brass" ? "text-accent" : "text-sage-600"
                           }`}
                           aria-hidden="true"
                         />
@@ -220,7 +219,7 @@ export default function HowItWorksPage() {
                   </ul>
                   <Link
                     href={way.cta.href}
-                    className="mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-950 transition-colors hover:text-brass-700"
+                    className="mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50 transition-colors hover:text-accent"
                   >
                     {way.cta.label}
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -232,15 +231,15 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── What every audit includes ────────────────────────── */}
-        <section aria-labelledby="invariants" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="invariants" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
-            <p className="eyebrow text-brass-600">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               NON-NEGOTIABLES
             </p>
             <h2
               id="invariants"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               Whatever the plan, every audit includes
             </h2>
@@ -248,13 +247,13 @@ export default function HowItWorksPage() {
               {auditInvariants.map((inv) => (
                 <div
                   key={inv.title}
-                  className="rounded-2xl border border-ink-950/10 bg-bone-50 p-7 transition-colors hover:border-brass-500/40"
+                  className="rounded-2xl border border-fg-50/10 glass p-7 transition-colors hover:border-brass-400/40"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brass-500/10 text-brass-600">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brass-500/10 text-accent">
                     <inv.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-5 font-display text-lg text-ink-950">{inv.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-700/80">{inv.detail}</p>
+                  <h3 className="mt-5 font-display text-lg text-fg-50">{inv.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-300/80">{inv.detail}</p>
                 </div>
               ))}
             </div>
@@ -262,45 +261,45 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── Run timeline ─────────────────────────────────────── */}
-        <section aria-labelledby="timeline" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="timeline" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-[1fr_1.4fr]">
             <div>
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 THE RUN
               </p>
               <h2
                 id="timeline"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 What happens, in order
               </h2>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-700/80">
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg-300/80">
                 A single audit typically runs one to three weeks from briefing
                 to report, depending on plan and scheduling. Multi-location
                 programs run on your calendar — monthly, quarterly or annually.
               </p>
-              <div className="mt-8 flex items-center gap-3 rounded-xl border border-ink-950/10 bg-bone-50 p-5">
-                <CalendarCheck className="h-5 w-5 shrink-0 text-brass-600" aria-hidden="true" />
-                <p className="text-sm text-ink-700/85">
+              <div className="mt-8 flex items-center gap-3 rounded-xl border border-fg-50/10 glass p-5">
+                <CalendarCheck className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                <p className="text-sm text-fg-300/85">
                   Preferred dates and constraints are captured in the booking flow.
                 </p>
               </div>
             </div>
-            <ol className="relative border-l border-ink-950/15">
+            <ol className="relative border-l border-fg-50/15">
               {runTimeline.map((t, i) => (
                 <li key={t.phase} className="relative pb-10 pl-10 last:pb-0">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border border-brass-600/50 bg-bone-50"
+                    className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border-brass-400/50 btn-gold"
                   >
                     <span className="h-[6px] w-[6px] rounded-full bg-brass-600" />
                   </span>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-brass-600">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-2 font-display text-xl text-ink-950">{t.phase}</h3>
-                  <p className="mt-1.5 max-w-lg text-sm leading-relaxed text-ink-700/80">{t.detail}</p>
+                  <h3 className="mt-2 font-display text-xl text-fg-50">{t.phase}</h3>
+                  <p className="mt-1.5 max-w-lg text-sm leading-relaxed text-fg-300/80">{t.detail}</p>
                 </li>
               ))}
             </ol>
@@ -308,37 +307,37 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── Report anatomy ───────────────────────────────────── */}
-        <section aria-labelledby="report" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="report" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
             <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
               <div>
-                <p className="eyebrow text-brass-600">
+                <p className="eyebrow text-accent">
                   <span className="eyebrow-rule" aria-hidden="true" />
                   THE DELIVERABLE
                 </p>
                 <h2
                   id="report"
-                  className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+                  className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                 >
                   Anatomy of the report
                 </h2>
               </div>
-              <p className="max-w-sm text-sm leading-relaxed text-ink-700/80">
+              <p className="max-w-sm text-sm leading-relaxed text-fg-300/80">
                 One executive score. Section scores behind it. Evidence behind
                 every section score. Actions behind every finding.
               </p>
             </div>
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-ink-950/10 bg-ink-950/10 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-px overflow-hidden rounded-2xl border border-fg-50/10 bg-fg-50/10 sm:grid-cols-2 lg:grid-cols-4">
               {reportDeliverables.map((d, i) => (
-                <div key={d.title} className="bg-bone-50 p-7">
+                <div key={d.title} className="bg-white/70 p-7">
                   <div className="flex items-center justify-between">
-                    <FileBarChart className="h-5 w-5 text-brass-600" aria-hidden="true" />
-                    <span className="font-mono text-[10px] text-ink-700/35">
+                    <FileBarChart className="h-5 w-5 text-accent" aria-hidden="true" />
+                    <span className="font-mono text-[10px] text-fg-300/60">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-sm font-semibold text-ink-950">{d.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-700/75">{d.detail}</p>
+                  <h3 className="mt-5 text-sm font-semibold text-fg-50">{d.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-fg-300/75">{d.detail}</p>
                 </div>
               ))}
             </div>
@@ -346,21 +345,21 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── From audit to program ────────────────────────────── */}
-        <section aria-labelledby="program" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="program" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
-            <div className="rounded-3xl bg-ink-950 px-8 py-14 md:px-16 md:py-20">
+            <div className="rounded-3xl px-8 py-14 md:px-16 md:py-20">
               <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brass-400">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
                     SCALE
                   </p>
                   <h2
                     id="program"
-                    className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-bone-50 md:text-4xl"
+                    className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                   >
                     From one audit to a brand-wide program
                   </h2>
-                  <p className="mt-5 max-w-md text-lead text-bone-300/80">
+                  <p className="mt-5 max-w-md text-lead text-fg-300/80">
                     Single audits find the gaps. Programs close them — and keep
                     them closed. Location scores, brand score, repeat gaps and
                     action tracking, on one framework.
@@ -380,13 +379,13 @@ export default function HowItWorksPage() {
                   {brandProgramFeatures.map((f) => (
                     <li
                       key={f.title}
-                      className="rounded-xl border border-bone-50/12 bg-ink-900/60 p-5"
+                      className="rounded-xl border border-fg-50/12 glass p-5"
                     >
                       <div className="flex items-center gap-2.5">
-                        <MapPin className="h-4 w-4 text-brass-400" aria-hidden="true" />
-                        <h3 className="text-sm font-semibold text-bone-50">{f.title}</h3>
+                        <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
+                        <h3 className="text-sm font-semibold text-fg-50">{f.title}</h3>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-bone-300/75">{f.description}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-fg-300/75">{f.description}</p>
                     </li>
                   ))}
                 </ul>
@@ -396,30 +395,30 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── Integrity ────────────────────────────────────────── */}
-        <section aria-labelledby="integrity" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="integrity" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site grid gap-10 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 INTEGRITY
               </p>
               <h2
                 id="integrity"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 Why you can act on the findings
               </h2>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-700/80">
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-fg-300/80">
                 An audit is only worth what its integrity is worth. Reports
                 distinguish observed fact from professional judgement, and pass
                 internal quality review before release.
               </p>
             </div>
-            <div className="flex items-start gap-5 rounded-2xl border border-brass-600/25 bg-brass-500/[0.06] p-8">
-              <ShieldCheck className="h-8 w-8 shrink-0 text-brass-600" aria-hidden="true" />
+            <div className="flex items-start gap-5 rounded-2xl border border-brass-400/25 bg-brass-500/[0.06] p-8">
+              <ShieldCheck className="h-8 w-8 shrink-0 text-accent" aria-hidden="true" />
               <div>
-                <h3 className="font-display text-xl text-ink-950">Fair reporting, always</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-700/85">
+                <h3 className="font-display text-xl text-fg-50">Fair reporting, always</h3>
+                <p className="mt-3 text-sm leading-relaxed text-fg-300/85">
                   Strengths are reported alongside failures. Evidence is linked
                   to every finding. Conflicts of interest are disclosed. Your
                   information stays confidential. This is what makes an
@@ -428,7 +427,7 @@ export default function HowItWorksPage() {
                 </p>
                 <Link
                   href="/about"
-                  className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-950 transition-colors hover:text-brass-700"
+                  className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50 transition-colors hover:text-accent"
                 >
                   About AuditExpert
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -439,17 +438,17 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ── FAQ ──────────────────────────────────────────────── */}
-        <section aria-labelledby="faq" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="faq" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-[1fr_1.4fr]">
             <div>
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 QUESTIONS
               </p>
-              <h2 id="faq" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl">
+              <h2 id="faq" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                 Booking questions
               </h2>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-700/80">
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg-300/80">
                 The practical details of scheduling, expenses and deliverables.
                 Anything else — ask directly.
               </p>
@@ -457,32 +456,32 @@ export default function HowItWorksPage() {
                 href="/contact"
                 variant="outline"
                 size="md"
-                className="mt-8 !border-ink-950/25 !text-ink-950 hover:!bg-ink-950/5"
+                className="mt-8"
               >
                 Ask a question
               </MagneticButton>
             </div>
             <div>
-              <FAQAccordion items={bookingFaqs} className="border-ink-950/10 !divide-ink-950/8" />
+              <FAQAccordion items={bookingFaqs} tone="light" />
             </div>
           </div>
         </section>
 
         {/* ── CTA ──────────────────────────────────────────────── */}
-        <section aria-labelledby="cta" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="cta" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
-            <div className="relative overflow-hidden rounded-3xl bg-ink-950 px-8 py-14 md:px-16 md:py-20">
+            <div className="relative overflow-hidden rounded-3xl px-8 py-14 md:px-16 md:py-20">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brass-500/15 blur-3xl"
               />
               <div className="relative max-w-2xl">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brass-400">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
                   SEE → MEASURE → UNDERSTAND → IMPROVE
                 </p>
                 <h2
                   id="cta"
-                  className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-bone-50 md:text-4xl"
+                  className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                 >
                   Now you know how it works. See how your brand actually runs.
                 </h2>
@@ -494,7 +493,6 @@ export default function HowItWorksPage() {
                     href="/industries"
                     variant="ghost"
                     size="lg"
-                    className="!text-bone-300 hover:!text-bone-50"
                   >
                     Find my industry
                   </MagneticButton>
@@ -503,7 +501,7 @@ export default function HowItWorksPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

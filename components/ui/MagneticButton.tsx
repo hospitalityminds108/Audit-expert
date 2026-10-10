@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, type ReactNode, type MouseEvent, type Ref } from "react";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useMagnetic } from "@/lib/animations/gsap";
 
@@ -27,14 +28,13 @@ interface Props {
   type?: "button" | "submit";
   disabled?: boolean;
   ariaLabel?: string;
+  "data-cursor-label"?: string;
 }
 
 const styles = {
-  primary:
-    "bg-brass-400 text-forest hover:bg-brass-300 border border-brass-400",
-  outline:
-    "border border-bone-100/25 text-bone-100 hover:border-brass-300/70 hover:text-brass-200",
-  ghost: "text-bone-200 hover:text-brass-300"
+  primary: "btn-gold",
+  outline: "btn-ghost",
+  ghost: "text-fg-200 hover:text-accent underline-offset-4 hover:underline"
 } as const;
 
 const sizes = {
@@ -57,7 +57,8 @@ const MagneticButton = forwardRef<HTMLDivElement, Props>(function MagneticButton
     onClick,
     type = "button",
     disabled,
-    ariaLabel
+    ariaLabel,
+    "data-cursor-label": cursorLabel
   },
   ref
 ) {
@@ -83,9 +84,16 @@ const MagneticButton = forwardRef<HTMLDivElement, Props>(function MagneticButton
       className="inline-block"
     >
       {href ? (
-        <a href={href} onClick={onClick} className={cls} data-interactive aria-label={ariaLabel}>
+        <Link
+          href={href}
+          onClick={onClick}
+          className={cls}
+          data-interactive
+          data-cursor-label={cursorLabel}
+          aria-label={ariaLabel}
+        >
           {content}
-        </a>
+        </Link>
       ) : (
         <button
           type={type}
@@ -94,6 +102,7 @@ const MagneticButton = forwardRef<HTMLDivElement, Props>(function MagneticButton
           disabled={disabled}
           aria-label={ariaLabel}
           data-interactive
+          data-cursor-label={cursorLabel}
         >
           {content}
         </button>

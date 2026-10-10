@@ -11,32 +11,32 @@ export default function Footer() {
   const revealRef = useScrollReveal<HTMLElement>();
 
   return (
-    <footer ref={revealRef} className="relative border-t border-bone-100/8 bg-ink-900">
+    <footer ref={revealRef} className="relative border-t border-fg-50/10">
       {/* Final CTA */}
       <div className="container-site relative overflow-hidden py-24 md:py-32">
         <div className="pointer-events-none absolute inset-0 bg-grid-subtle opacity-60" aria-hidden="true" />
         <div className="relative flex flex-col items-start gap-8 md:items-center md:text-center">
           <p className="eyebrow" data-reveal>Ready when you are</p>
           <h2
-            className="max-w-4xl text-balance text-display-md font-semibold text-bone-100 md:text-display-lg"
+            className="max-w-4xl text-balance text-display-md font-semibold text-fg-100 md:text-display-lg"
             data-reveal
           >
             SEE THE EXPERIENCE. <span className="text-gradient-brass">IMPROVE THE STANDARD.</span>
           </h2>
-          <p className="max-w-xl text-lead text-bone-400" data-reveal>
+          <p className="max-w-xl text-lead text-fg-400" data-reveal>
             One location or 1,000 — start by telling us what you want to measure.
           </p>
           <div className="flex flex-wrap gap-4" data-reveal>
             <Link
               href="/book-an-audit"
-              className="group inline-flex items-center gap-2 rounded-full bg-brass-400 px-8 py-4 text-sm font-semibold tracking-wide text-forest transition-all duration-500 hover:bg-brass-300"
+              className="group inline-flex items-center gap-2 rounded-full btn-gold px-8 py-4 text-sm font-semibold tracking-wide text-on-gold transition-all duration-500"
             >
               Book an Audit
               <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link
               href="/join-as-auditor"
-              className="inline-flex items-center gap-2 rounded-full border border-bone-100/20 px-8 py-4 text-sm font-semibold tracking-wide text-bone-100 transition-all duration-500 hover:border-brass-300/60 hover:text-brass-200"
+              className="inline-flex items-center gap-2 rounded-full border border-fg-100/20 px-8 py-4 text-sm font-semibold tracking-wide text-fg-100 transition-all duration-500 hover:border-brass-300/60 hover:text-accent"
             >
               Join the Auditor Network
               <ArrowUpRight size={16} />
@@ -46,11 +46,11 @@ export default function Footer() {
       </div>
 
       {/* Footer body */}
-      <div className="border-t border-bone-100/8">
+      <div className="border-t border-fg-100/8">
         <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Logo />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-bone-400">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg-400">
               Mystery audits, SOP audits and multi-location programs — an independent service
               intelligence platform by {siteConfig.company}.
             </p>
@@ -67,7 +67,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-bone-100/15 text-bone-400 transition-all duration-300 hover:border-brass-300/60 hover:text-brass-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-fg-100/15 text-fg-400 transition-all duration-300 hover:border-brass-300/60 hover:text-accent"
                 >
                   <Icon size={16} />
                 </a>
@@ -82,7 +82,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-bone-400 transition-colors hover:text-brass-300"
+                    className="text-sm text-fg-400 transition-colors hover:text-accent"
                   >
                     {item.label}
                   </Link>
@@ -98,7 +98,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-bone-400 transition-colors hover:text-brass-300"
+                    className="text-sm text-fg-400 transition-colors hover:text-accent"
                   >
                     {item.label}
                   </Link>
@@ -109,19 +109,19 @@ export default function Footer() {
 
           <div>
             <p className="eyebrow mb-5">Contact</p>
-            <ul className="space-y-4 text-sm text-bone-400">
+            <ul className="space-y-4 text-sm text-fg-400">
               <li className="flex items-start gap-3">
-                <Mail size={15} className="mt-0.5 shrink-0 text-brass-400" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.email}`} className="transition-colors hover:text-brass-300">
+                <Mail size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                <a href={`mailto:${siteConfig.email}`} className="transition-colors hover:text-accent">
                   {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-brass-400" aria-hidden="true" />
+                <MapPin size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                 {siteConfig.baseCity}
               </li>
             </ul>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-bone-500">
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-500">
               Hotels • Restaurants • Hospitals
               <br />
               Malls • Cinemas • Salons
@@ -129,8 +129,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-bone-100/8">
-          <div className="container-site flex flex-col items-start justify-between gap-3 py-6 text-xs text-bone-500 sm:flex-row sm:items-center">
+        <div className="border-t border-fg-100/8">
+          <div className="container-site flex flex-col items-start justify-between gap-3 py-6 text-xs text-fg-500 sm:flex-row sm:items-center">
             <p>
               © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
             </p>

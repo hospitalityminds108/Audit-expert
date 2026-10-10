@@ -3,15 +3,15 @@ import CheckoutClient from "@/components/checkout/CheckoutClient";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: `Checkout — ${siteConfig.name}`,
+  title: "Checkout",
   description: "Configure and pay for your audit booking.",
   robots: { index: false, follow: false },
 };
 
 export default function CheckoutPage() {
   return (
-    <main id="main" className="bg-ink-950">
+    <div className="">
       <CheckoutClient />
-    </main>
+    </div>
   );
 }

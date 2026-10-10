@@ -1,7 +1,7 @@
 export const navigation = {
   primary: [
     { label: "Industries", href: "/industries", children: "industries" },
-    { label: "Audit Plans", href: "/audit-plans", children: "plans" },
+    { label: "Plans & Pricing", href: "/audit-plans", children: "plans" },
     { label: "How It Works", href: "/how-it-works" },
     { label: "Join as Auditor", href: "/join-as-auditor" }
   ],
@@ -9,7 +9,7 @@ export const navigation = {
   footer: {
     nav: [
       { label: "Industries", href: "/industries" },
-      { label: "Audit Plans", href: "/audit-plans" },
+      { label: "Plans & Pricing", href: "/audit-plans" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "About", href: "/about" },
       { label: "Join as Auditor", href: "/join-as-auditor" },

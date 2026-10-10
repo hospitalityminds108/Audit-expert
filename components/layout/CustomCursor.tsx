@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useIsDesktop, usePrefersReducedMotion } from "@/lib/animations/gsap";
 
+const INTERACTIVE =
+  "a, button, [data-cursor-label], input, select, textarea, label, summary, [role='button'], [role='tab'], [data-interactive]";
+const TEXT_FIELD = "input, select, textarea";
+
 /**
  * Premium custom cursor — desktop, fine-pointer only.
  * Expands on interactive elements; shows labels on media.
@@ -21,40 +25,39 @@ export default function CustomCursor() {
       document.body.removeAttribute("data-cursor");
       return;
     }
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+
     document.body.setAttribute("data-cursor", "custom");
 
-    const dot = dotRef.current!;
-    const ring = ringRef.current!;
-
     let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
-    let raf: number;
+    let started = false;
+    let raf = 0;
 
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      setHidden(false);
-      dot.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
-
-      const target = (e.target as HTMLElement).closest<HTMLElement>(
-        "a, button, [data-cursor-label], input, select, textarea, [role='button'], [data-interactive]"
-      );
-      if (target) {
-        setActive(true);
-        const text = target.getAttribute("data-cursor-label");
-        setLabel(text || null);
-      } else {
-        setActive(false);
-        setLabel(null);
+      if (!started) {
+        // First sighting — snap the ring to the pointer instead of flying in from 0,0
+        started = true;
+        ringX = mouseX;
+        ringY = mouseY;
       }
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+
+      const el = e.target instanceof Element ? e.target : null;
+      const target = el?.closest<HTMLElement>(INTERACTIVE) ?? null;
+      // Text fields keep the native caret, so step out of the way
+      setHidden(Boolean(el?.closest(TEXT_FIELD)));
+      setActive(Boolean(target));
+      setLabel(el?.closest<HTMLElement>("[data-cursor-label]")?.getAttribute("data-cursor-label") || null);
     };
 
     const loop = () => {
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
-      const size = label ? 76 : active ? 52 : 32;
-      ring.style.transform = `translate3d(${ringX - size / 2}px, ${ringY - size / 2}px, 0)`;
-      ring.style.width = `${size}px`;
-      ring.style.height = `${size}px`;
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
@@ -70,30 +73,33 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.body.removeAttribute("data-cursor");
     };
-  }, [isDesktop, reduced, active, label]);
+  }, [isDesktop, reduced]);
 
   if (!isDesktop || reduced) return null;
+
+  const size = label ? 76 : active ? 52 : 32;
 
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[200]">
       <div
         ref={dotRef}
-        className={`fixed left-0 top-0 h-1.5 w-1.5 rounded-full bg-brass-300 transition-opacity duration-300 ${
-          hidden ? "opacity-0" : "opacity-100"
+        className={`fixed left-0 top-0 h-1.5 w-1.5 rounded-full bg-brass-400 shadow-[0_0_0_1px_rgba(21,25,23,0.55)] transition-opacity duration-300 ${
+          hidden || label ? "opacity-0" : "opacity-100"
         }`}
       />
       <div
         ref={ringRef}
-        className={`fixed left-0 top-0 flex items-center justify-center rounded-full border transition-all duration-300 ease-premium ${
+        style={{ width: size, height: size }}
+        className={`fixed left-0 top-0 flex items-center justify-center rounded-full border transition-[width,height,background-color,border-color,opacity] duration-300 ease-premium ${
           label
-            ? "border-brass-300 bg-ink-950/85 backdrop-blur-sm"
+            ? "border-brass-400 bg-base-950/90"
             : active
-              ? "border-brass-300/70 bg-brass-300/10"
-              : "border-bone-100/40"
+              ? "border-brass-400 bg-brass-400/15 shadow-[0_0_0_1px_rgba(21,25,23,0.35)]"
+              : "border-brass-500 shadow-[0_0_0_1px_rgba(21,25,23,0.35)]"
         } ${hidden ? "opacity-0" : "opacity-100"}`}
       >
         {label && (
-          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-brass-200">
+          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-accent">
             {label}
           </span>
         )}

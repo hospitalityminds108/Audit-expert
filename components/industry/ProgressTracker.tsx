@@ -61,8 +61,8 @@ export default function ProgressTracker({
   return (
     <div ref={wrapperRef} className="sticky top-24 z-40 hidden md:block">
       <div className="container-site">
-        <div className="flex items-center gap-6 border-b border-ink-800/60 pb-3">
-          <div className="h-px flex-1 overflow-hidden bg-ink-800">
+        <div className="flex items-center gap-6 border-b border-fg-50/10 pb-3">
+          <div className="h-px flex-1 overflow-hidden bg-base-800">
             <div ref={barRef} className="h-px w-full origin-left bg-brass-400" />
           </div>
           <nav aria-label="Page sections" className="flex items-center gap-5">
@@ -73,8 +73,8 @@ export default function ProgressTracker({
                 data-cursor-label="JUMP"
                 className={`font-mono text-[10px] uppercase tracking-[0.18em] transition-colors duration-300 ${
                   activeId === s.id
-                    ? "text-brass-300"
-                    : "text-bone-300/40 hover:text-bone-300/80"
+                    ? "text-accent"
+                    : "text-fg-300/60 hover:text-fg-300/80"
                 }`}
                 aria-current={activeId === s.id ? "location" : undefined}
               >

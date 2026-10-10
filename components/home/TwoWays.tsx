@@ -26,24 +26,24 @@ export default function TwoWays() {
       ref={sectionRef}
       id="two-ways"
       data-section="two-ways"
-      className="relative bg-ink-950 py-24 md:py-32 lg:py-40"
+      className="relative py-24 md:py-32 lg:py-40"
     >
       <div className="container-site">
         {/* Header */}
         <div className="mb-14 md:mb-20 lg:mb-24 max-w-4xl">
-          <p className="eyebrow text-brass-400" data-reveal>
+          <p className="eyebrow text-accent" data-reveal>
             <span className="eyebrow-rule" aria-hidden="true" />
             {twoWays.eyebrow}
           </p>
           <h2
-            className="mt-6 font-display text-display-xl md:text-display-2xl text-bone-50 leading-[1.02] tracking-[-0.02em]"
+            className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02] tracking-[-0.02em]"
             data-reveal
             data-reveal-delay="0.08"
           >
             {twoWays.headline}
           </h2>
           <p
-            className="mt-6 max-w-2xl text-lead text-bone-300/80"
+            className="mt-6 max-w-2xl text-lead text-fg-300/80"
             data-reveal
             data-reveal-delay="0.16"
           >
@@ -103,7 +103,7 @@ function Panel({
       data-reveal-delay={String(index * 0.12)}
       data-active="false"
       data-cursor-label="OPEN"
-      className={`group relative overflow-hidden rounded-2xl border border-ink-800 bg-ink-900 ${
+      className={`group relative overflow-hidden rounded-2xl border border-fg-50/10 glass ${
         isMobile ? "min-h-[560px]" : "lg:flex lg:min-h-[620px]"
       } transition-[flex-grow] duration-[900ms] ease-premium`}
       style={{ flexGrow: 1, flexBasis: 0 }}
@@ -121,8 +121,7 @@ function Panel({
           priority={false}
         />
         {/* Gradient scrims */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/72 to-ink-950/35" />
-        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_20%_10%,transparent_0%,rgba(6,8,10,0.6)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-base-950 via-base-950/80 to-base-950/30" />
       </div>
 
       {/* Content */}
@@ -130,19 +129,19 @@ function Panel({
         {/* Top row */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-bone-50/20 bg-ink-950/50 text-brass-300 backdrop-blur-sm">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-fg-50/20 bg-base-950/50 text-accent backdrop-blur-sm">
               {icon}
             </span>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-brass-400">
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
                 {way.label}
               </p>
-              <p className="mt-0.5 text-sm text-bone-300/70 italic font-display">
+              <p className="mt-0.5 text-sm text-fg-300/80 italic font-display">
                 {way.sub}
               </p>
             </div>
           </div>
-          <span className="font-mono text-[11px] text-bone-300/40">
+          <span className="font-mono text-[11px] text-fg-300/60">
             {index === 0 ? "01 / 02" : "02 / 02"}
           </span>
         </div>
@@ -151,14 +150,14 @@ function Panel({
         <ul className="mt-10 space-y-4 lg:space-y-[1.1rem] lg:max-w-[88%]">
           {way.points.map((point, i) => (
             <li key={point.title} className="flex items-start gap-4">
-              <span className="mt-[3px] font-mono text-[11px] text-brass-400/80 tabular-nums">
+              <span className="mt-[3px] font-mono text-[11px] text-accent/80 tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <p className="text-[15px] font-medium leading-snug text-bone-50">
+                <p className="text-[15px] font-medium leading-snug text-fg-50">
                   {point.title}
                 </p>
-                <p className="mt-1 text-[13px] leading-relaxed text-bone-300/60">
+                <p className="mt-1 text-[13px] leading-relaxed text-fg-300/70">
                   {point.detail}
                 </p>
               </div>
@@ -168,13 +167,13 @@ function Panel({
 
         {/* Bottom row */}
         <div className="mt-10">
-          <p className="mb-6 max-w-md text-sm leading-relaxed text-bone-300/70">
+          <p className="mb-6 max-w-md text-sm leading-relaxed text-fg-300/80">
             {way.description}
           </p>
           <a
             href={way.cta.href}
             data-cursor-label="VIEW"
-            className="group/cta inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-bone-50 transition-colors duration-300 hover:border-brass-300 hover:text-brass-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
+            className="group/cta inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-300 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2 focus-visible:ring-offset-base-950"
           >
             {way.cta.label}
             <ArrowUpRight

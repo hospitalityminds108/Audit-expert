@@ -4,7 +4,7 @@ import { ArrowRight, CalendarDays, CreditCard, MapPin, ShieldCheck, Zap } from "
 import BookAuditForm from "@/components/forms/BookAuditForm";
 
 export const metadata: Metadata = {
-  title: "Book an Audit — AuditExpert",
+  title: "Book an Audit",
   description:
     "Book a mystery audit or SOP audit for hotels, restaurants, hospitals, malls, cinemas and salons. Request a callback or configure and pay online instantly.",
 };
@@ -30,17 +30,17 @@ const PATHS = [
 
 export default function BookAnAuditPage() {
   return (
-    <main id="main" className="bg-ink-950">
+    <div className="">
       {/* ── Hero ── */}
       <div className="container-site pb-16 pt-32 md:pt-40">
-        <p className="eyebrow text-brass-400">
+        <p className="eyebrow text-accent">
           <span className="eyebrow-rule" aria-hidden="true" />
           BOOK AN AUDIT
         </p>
-        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] tracking-[-0.015em] text-bone-50 md:text-6xl">
+        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] tracking-[-0.015em] text-fg-50 md:text-6xl">
           Two ways to get on the calendar.
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-bone-300/70">
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-fg-300/80">
           Go straight to secure checkout with full transparency — or request a
           callback and we scope the audit together on a call. Both paths end
           with a confirmed date, an assigned auditor and a scored report.
@@ -56,22 +56,22 @@ export default function BookAnAuditPage() {
                 className={`rounded-2xl border p-7 ${
                   p.primary
                     ? "border-brass-400/40 bg-brass-400/[0.07]"
-                    : "border-bone-50/10 bg-ink-900/40"
+                    : "border-fg-50/10 bg-white/60"
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-bone-50/15 bg-ink-950">
-                    <Icon className="h-5 w-5 text-brass-300" aria-hidden="true" />
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-fg-50/15 bg-base-950">
+                    <Icon className="h-5 w-5 text-accent" aria-hidden="true" />
                   </span>
-                  <h2 className="font-display text-xl text-bone-50">{p.title}</h2>
+                  <h2 className="font-display text-xl text-fg-50">{p.title}</h2>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-bone-300/70">{p.body}</p>
+                <p className="mt-4 text-sm leading-relaxed text-fg-300/80">{p.body}</p>
                 <Link
                   href={p.href}
                   className={`mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] transition-colors ${
                     p.primary
-                      ? "text-brass-300 hover:text-brass-200"
-                      : "text-bone-200 hover:text-bone-50"
+                      ? "text-accent hover:text-accent"
+                      : "text-fg-200 hover:text-fg-50"
                   }`}
                 >
                   {p.cta}
@@ -82,7 +82,7 @@ export default function BookAnAuditPage() {
           })}
         </div>
 
-        <div className="mt-6 grid gap-4 rounded-2xl border border-bone-50/10 bg-ink-900/40 p-6 sm:grid-cols-3">
+        <div className="mt-6 grid gap-4 rounded-2xl border border-fg-50/10 glass p-6 sm:grid-cols-3">
           {[
             { icon: ShieldCheck, label: "Payment verified server-side before confirmation" },
             { icon: Zap, label: "Instant booking reference AE-YYYY-XXXXXX" },
@@ -90,8 +90,8 @@ export default function BookAnAuditPage() {
           ].map((f) => {
             const Icon = f.icon;
             return (
-              <p key={f.label} className="flex items-start gap-2.5 text-xs leading-relaxed text-bone-300/60">
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-sage-300" aria-hidden="true" />
+              <p key={f.label} className="flex items-start gap-2.5 text-xs leading-relaxed text-fg-300/70">
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-sage-600" aria-hidden="true" />
                 {f.label}
               </p>
             );
@@ -103,28 +103,28 @@ export default function BookAnAuditPage() {
       <div id="callback" className="container-site scroll-mt-24 pb-24">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.7fr]">
           <div>
-            <p className="eyebrow text-brass-400">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               CALLBACK
             </p>
-            <h2 className="mt-4 font-display text-3xl tracking-[-0.01em] text-bone-50">
+            <h2 className="mt-4 font-display text-3xl tracking-[-0.01em] text-fg-50">
               Request a callback
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-bone-300/70">
+            <p className="mt-4 text-sm leading-relaxed text-fg-300/80">
               Share a few details and we will call to scope your audit —
               journey legs, locations, evidence needs, timeline and budget.
               If you already know the plan, select it and we come prepared.
             </p>
-            <p className="mt-6 rounded-xl border border-bone-50/10 bg-ink-900/40 p-5 font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em] text-bone-300/50">
+            <p className="mt-6 rounded-xl border border-fg-50/10 glass p-5 font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em] text-fg-300/60">
               3+ locations unlock 5% volume rate · 5+ unlock 10% · coupon
               FIRSTAUDIT10 saves 10% on your first audit
             </p>
           </div>
-          <div className="rounded-2xl border border-bone-50/10 bg-ink-900/40 p-7">
+          <div className="rounded-2xl border border-fg-50/10 glass p-7">
             <BookAuditForm />
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

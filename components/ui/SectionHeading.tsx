@@ -31,16 +31,16 @@ export default function SectionHeading({
         <AnimatedText
           text={title}
           as="h2"
-          className="text-balance text-display-md font-semibold text-bone-100 md:text-display-lg"
+          className="text-balance text-display-md font-semibold text-fg-100 md:text-display-lg"
         />
       ) : null}
       {!(animated && typeof title === "string") && (
-        <h2 className="text-balance text-display-md font-semibold text-bone-100 md:text-display-lg">
+        <h2 className="text-balance text-display-md font-semibold text-fg-100 md:text-display-lg">
           {title}
         </h2>
       )}
       {lead && (
-        <p className={`max-w-2xl text-lead text-bone-400 ${align === "center" ? "mx-auto" : ""}`}>
+        <p className={`max-w-2xl text-lead text-fg-400 ${align === "center" ? "mx-auto" : ""}`}>
           {lead}
         </p>
       )}

@@ -15,7 +15,7 @@ import AuditorApplicationForm from "@/components/forms/AuditorApplicationForm";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: `Join as Auditor — ${siteConfig.name}`,
+  title: "Join as Auditor",
   description:
     "Join the AuditExpert auditor network. Hospitality, retail, healthcare and quality professionals — matched assignments, certified training, per-assignment compensation.",
   openGraph: {
@@ -73,31 +73,31 @@ export default function JoinAsAuditorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <main id="main" className="bg-bone-50">
+      <div className="">
         {/* ── Hero ─────────────────────────────────────────────── */}
-        <header className="relative overflow-hidden bg-ink-950 pb-16 pt-40 md:pb-24 md:pt-52">
+        <header className="relative overflow-hidden pb-16 pt-40 md:pb-24 md:pt-52">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brass-500/10 blur-3xl"
           />
           <div className="container-site relative">
             <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-bone-300/40">
+              <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-brass-300">Home</Link>
+                  <Link href="/" className="transition-colors hover:text-accent">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
-                <li aria-current="page" className="text-brass-400">Join as Auditor</li>
+                <li aria-current="page" className="text-accent">Join as Auditor</li>
               </ol>
             </nav>
-            <p className="eyebrow text-brass-400">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               THE AUDITOR NETWORK
             </p>
-            <h1 className="mt-6 max-w-4xl font-display text-display-xl leading-[1.02] tracking-[-0.02em] text-bone-50 md:text-display-2xl">
+            <h1 className="mt-6 max-w-4xl font-display text-display-xl leading-[1.02] tracking-[-0.02em] text-fg-50 md:text-display-lg">
               Have a trained eye? Put it to work.
             </h1>
-            <p className="mt-6 max-w-2xl text-lead text-bone-300/80">
+            <p className="mt-6 max-w-2xl text-lead text-fg-300/80">
               AuditExpert runs on a network of hospitality, retail, healthcare
               and quality professionals who know what great service looks like
               — and can prove it with evidence. Apply to join.
@@ -106,12 +106,12 @@ export default function JoinAsAuditorPage() {
               {auditorTypes.slice(0, 4).map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-bone-50/15 bg-ink-900/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-300/80"
+                  className="rounded-full border border-fg-50/15 bg-white/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-300/80"
                 >
                   {t}
                 </span>
               ))}
-              <span className="rounded-full border border-brass-400/30 bg-brass-400/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-brass-300">
+              <span className="rounded-full border border-brass-400/30 bg-brass-400/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
                 +{auditorTypes.length - 4} more
               </span>
             </div>
@@ -121,13 +121,13 @@ export default function JoinAsAuditorPage() {
         {/* ── Perks ────────────────────────────────────────────── */}
         <section aria-labelledby="perks" className="py-16 md:py-24">
           <div className="container-site">
-            <p className="eyebrow text-brass-600">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               WHY JOIN
             </p>
             <h2
               id="perks"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               Four reasons auditors stay in the network
             </h2>
@@ -135,13 +135,13 @@ export default function JoinAsAuditorPage() {
               {perks.map((p) => (
                 <div
                   key={p.title}
-                  className="rounded-2xl border border-ink-950/10 bg-bone-50 p-7 transition-colors hover:border-brass-500/40"
+                  className="rounded-2xl border border-fg-50/10 glass p-7 transition-colors hover:border-brass-400/40"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brass-500/10 text-brass-600">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brass-500/10 text-accent">
                     <p.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-5 font-display text-lg text-ink-950">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-700/80">{p.detail}</p>
+                  <h3 className="mt-5 font-display text-lg text-fg-50">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-300/80">{p.detail}</p>
                 </div>
               ))}
             </div>
@@ -149,20 +149,20 @@ export default function JoinAsAuditorPage() {
         </section>
 
         {/* ── How selection works ──────────────────────────────── */}
-        <section aria-labelledby="selection" className="border-t border-ink-950/8 bg-bone-100 py-16 md:py-24">
+        <section aria-labelledby="selection" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-[1fr_1.3fr]">
             <div>
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 SELECTION
               </p>
               <h2
                 id="selection"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 How selection works
               </h2>
-              <ol className="mt-8 space-y-0 border-l border-ink-950/15">
+              <ol className="mt-8 space-y-0 border-l border-fg-50/15">
                 {[
                   {
                     title: "Apply",
@@ -188,44 +188,44 @@ export default function JoinAsAuditorPage() {
                   <li key={s.title} className="relative pb-8 pl-10 last:pb-0">
                     <span
                       aria-hidden="true"
-                      className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border border-brass-600/50 bg-bone-100"
+                      className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border border-brass-400/50 bg-fg-50/5"
                     >
                       <span className="h-[6px] w-[6px] rounded-full bg-brass-600" />
                     </span>
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-brass-600">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="mt-1.5 font-display text-lg text-ink-950">{s.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-700/80">{s.detail}</p>
+                    <h3 className="mt-1.5 font-display text-lg text-fg-50">{s.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-fg-300/80">{s.detail}</p>
                   </li>
                 ))}
               </ol>
             </div>
 
-            <div className="space-y-6 self-start rounded-2xl border border-ink-950/10 bg-bone-50 p-8">
+            <div className="space-y-6 self-start rounded-2xl border border-fg-50/10 glass p-8">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brass-500/10 text-brass-600">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brass-500/10 text-accent">
                   <Users2 className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <h3 className="font-display text-xl text-ink-950">Who we look for</h3>
+                <h3 className="font-display text-xl text-fg-50">Who we look for</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {auditorTypes.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-ink-950/12 bg-bone-100 px-3 py-1.5 text-xs text-ink-800"
+                    className="rounded-full border border-fg-50/12 bg-fg-50/5 px-3 py-1.5 text-xs text-fg-50"
                   >
                     {t}
                   </span>
                 ))}
               </div>
-              <p className="text-sm leading-relaxed text-ink-700/80">
+              <p className="text-sm leading-relaxed text-fg-300/80">
                 You don&rsquo;t need audit experience to apply — but you do
                 need the eye. We train for method; you bring the standards.
               </p>
-              <div className="flex items-center gap-3 rounded-xl bg-ink-950 p-5 text-bone-50">
-                <Award className="h-5 w-5 shrink-0 text-brass-400" aria-hidden="true" />
-                <p className="text-sm text-bone-300/90">
+              <div className="flex items-center gap-3 rounded-xl bg-base-950 p-5 text-fg-50">
+                <Award className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                <p className="text-sm text-fg-300/90">
                   Compensation is per completed, quality-verified assignment.
                   Terms shared during onboarding.
                 </p>
@@ -235,15 +235,15 @@ export default function JoinAsAuditorPage() {
         </section>
 
         {/* ── Testimonials ─────────────────────────────────────── */}
-        <section aria-labelledby="auditor-voices" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section aria-labelledby="auditor-voices" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
-            <p className="eyebrow text-brass-600">
+            <p className="eyebrow text-accent">
               <span className="eyebrow-rule" aria-hidden="true" />
               FROM THE FIELD
             </p>
             <h2
               id="auditor-voices"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               What brands say about our reports
             </h2>
@@ -251,19 +251,19 @@ export default function JoinAsAuditorPage() {
               {testimonials.map((t) => (
                 <figure
                   key={t.author + t.context}
-                  className="flex flex-col rounded-2xl border border-ink-950/10 bg-bone-50 p-7"
+                  className="flex flex-col rounded-2xl border border-fg-50/10 glass p-7"
                 >
-                  <blockquote className="flex-1 text-sm leading-relaxed text-ink-800">
+                  <blockquote className="flex-1 text-sm leading-relaxed text-fg-50">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
-                  <figcaption className="mt-6 flex items-end justify-between border-t border-ink-950/10 pt-5">
+                  <figcaption className="mt-6 flex items-end justify-between border-t border-fg-50/10 pt-5">
                     <div>
-                      <p className="text-sm font-semibold text-ink-950">{t.author}</p>
-                      <p className="mt-0.5 text-xs text-ink-700/60">{t.context}</p>
+                      <p className="text-sm font-semibold text-fg-50">{t.author}</p>
+                      <p className="mt-0.5 text-xs text-fg-300/70">{t.context}</p>
                     </div>
                     <p className="text-right">
-                      <span className="font-display text-xl text-brass-700">{t.metric}</span>
-                      <span className="block text-[10px] uppercase tracking-[0.12em] text-ink-700/50">
+                      <span className="font-display text-xl text-accent">{t.metric}</span>
+                      <span className="block text-[10px] uppercase tracking-[0.12em] text-fg-300/60">
                         {t.metricLabel}
                       </span>
                     </p>
@@ -275,20 +275,20 @@ export default function JoinAsAuditorPage() {
         </section>
 
         {/* ── Integrity standards ──────────────────────────────── */}
-        <section aria-labelledby="integrity" className="border-t border-ink-950/8 bg-bone-100 py-16 md:py-24">
+        <section aria-labelledby="integrity" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site grid gap-10 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 THE FRAMEWORK
               </p>
               <h2
                 id="integrity"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 The integrity framework you operate under
               </h2>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-700/80">
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-fg-300/80">
                 These standards protect clients and auditors alike. They are
                 the difference between a report that can be acted on and an
                 opinion that can&rsquo;t.
@@ -296,14 +296,14 @@ export default function JoinAsAuditorPage() {
             </div>
             <ul className="grid gap-4 sm:grid-cols-2">
               {integrityStandards.map((s) => (
-                <li key={s.principle} className="rounded-xl border border-ink-950/10 bg-bone-50 p-6">
+                <li key={s.principle} className="rounded-xl border border-fg-50/10 glass p-6">
                   <div className="flex items-center gap-2.5">
-                    <ShieldCheck className="h-4 w-4 text-brass-600" aria-hidden="true" />
-                    <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-950">
+                    <ShieldCheck className="h-4 w-4 text-accent" aria-hidden="true" />
+                    <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50">
                       {s.principle}
                     </h3>
                   </div>
-                  <p className="mt-2.5 text-sm leading-relaxed text-ink-700/80">{s.standard}</p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-fg-300/80">{s.standard}</p>
                 </li>
               ))}
             </ul>
@@ -311,20 +311,20 @@ export default function JoinAsAuditorPage() {
         </section>
 
         {/* ── Application ──────────────────────────────────────── */}
-        <section id="apply" aria-labelledby="apply-heading" className="border-t border-ink-950/8 py-16 md:py-24">
+        <section id="apply" aria-labelledby="apply-heading" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site">
             <div className="mx-auto max-w-3xl">
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 APPLY
               </p>
               <h2
                 id="apply-heading"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl"
+                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 Apply to the network
               </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink-700/80">
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-fg-300/80">
                 Fields marked * are required. Reviews typically take five to
                 seven working days.
               </p>
@@ -332,9 +332,9 @@ export default function JoinAsAuditorPage() {
                 <AuditorApplicationForm />
               </div>
             </div>
-            <div className="mt-6 mx-auto max-w-3xl text-sm leading-relaxed text-ink-700/70">
+            <div className="mt-6 mx-auto max-w-3xl text-sm leading-relaxed text-fg-300/80">
               Questions first?{" "}
-              <Link href="/contact" className="text-brass-700 underline decoration-brass-600/40 underline-offset-4 transition-colors hover:text-brass-600">
+              <Link href="/contact" className="text-accent underline decoration-brass-600/40 underline-offset-4 transition-colors hover:text-accent">
                 Talk to the network team
               </Link>
               .
@@ -343,26 +343,26 @@ export default function JoinAsAuditorPage() {
         </section>
 
         {/* ── FAQ ──────────────────────────────────────────────── */}
-        <section aria-labelledby="faq" className="border-t border-ink-950/8 bg-bone-100 py-16 md:py-24">
+        <section aria-labelledby="faq" className="border-t border-fg-50/10 py-16 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-[1fr_1.4fr]">
             <div>
-              <p className="eyebrow text-brass-600">
+              <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 QUESTIONS
               </p>
-              <h2 id="faq" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-ink-950 md:text-4xl">
+              <h2 id="faq" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                 Auditor questions
               </h2>
             </div>
             <div>
-              <FAQAccordion items={auditorFaqs} className="border-ink-950/10 !divide-ink-950/8" />
+              <FAQAccordion items={auditorFaqs} tone="light" />
             </div>
           </div>
         </section>
 
         {/* Spacer for fixed header + footer CTA */}
         <div className="h-10" aria-hidden="true" />
-      </main>
+      </div>
     </>
   );
 }

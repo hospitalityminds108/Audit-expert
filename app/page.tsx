@@ -39,7 +39,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: siteConfig.name,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/images/hero.jpg`,
+  logo: `${siteConfig.url}/icon.svg`,
   description: siteConfig.description,
   email: siteConfig.email,
   parentOrganization: {

@@ -19,7 +19,7 @@ export default function HomeCTA() {
       ref={sectionRef}
       id="book"
       data-section="book"
-      className="relative overflow-hidden bg-ink-950 py-28 md:py-36 lg:py-44"
+      className="relative overflow-hidden py-28 md:py-36 lg:py-44"
     >
       {/* Radial glow */}
       <div
@@ -29,7 +29,7 @@ export default function HomeCTA() {
 
       {/* Giant watermark */}
       <p
-        className="pointer-events-none absolute inset-x-0 bottom-6 select-none text-center font-display text-[18vw] leading-none tracking-tight text-bone-50/[0.025]"
+        className="pointer-events-none absolute inset-x-0 bottom-6 select-none text-center font-display text-[18vw] leading-none tracking-tight text-fg-50/[0.025]"
         aria-hidden="true"
       >
         SEE
@@ -37,19 +37,19 @@ export default function HomeCTA() {
 
       <div className="container-site relative">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow justify-center text-brass-400" data-reveal>
+          <p className="eyebrow justify-center text-accent" data-reveal>
             <span className="eyebrow-rule" aria-hidden="true" />
             THE NEXT STEP
           </p>
           <h2
-            className="mt-8 font-display text-display-2xl md:text-[clamp(2.8rem,7vw,5.5rem)] text-bone-50 leading-[1.0] tracking-[-0.02em]"
+            className="mt-8 font-display text-display-lg text-fg-50 leading-[1.0] tracking-[-0.02em]"
             data-reveal
             data-reveal-delay="0.1"
           >
             See what your customers experience.
-            <span className="block text-brass-300">Know what your teams deliver.</span>
+            <span className="block text-accent">Know what your teams deliver.</span>
           </h2>
-          <p className="mx-auto mt-8 max-w-xl text-lead text-bone-300/75" data-reveal data-reveal-delay="0.2">
+          <p className="mx-auto mt-8 max-w-xl text-lead text-fg-300/75" data-reveal data-reveal-delay="0.2">
             Book an audit in minutes. Choose your industry, pick a plan, tell
             us where and when — we handle the rest, and the report tells you
             the truth.
@@ -60,7 +60,6 @@ export default function HomeCTA() {
               href="/book-an-audit"
               variant="primary"
               showArrow
-              className="!bg-bone-50 !text-ink-950"
               data-cursor-label="BOOK"
             >
               Book an Audit
@@ -68,14 +67,13 @@ export default function HomeCTA() {
             <MagneticButton
               href="/industries"
               variant="outline"
-              className="!border-bone-50/25 !text-bone-50"
               data-cursor-label="VIEW"
             >
               Find My Industry
             </MagneticButton>
           </div>
 
-          <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-bone-300/40" data-reveal data-reveal-delay="0.4">
+          <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60" data-reveal data-reveal-delay="0.4">
             SEE → MEASURE → UNDERSTAND → IMPROVE
           </p>
         </div>

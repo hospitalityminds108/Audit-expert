@@ -6,6 +6,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/layout/CustomCursor";
 import PageTransition from "@/components/layout/PageTransition";
+import Atmosphere from "@/components/layout/Atmosphere";
+import PointerGlow from "@/components/layout/PointerGlow";
+import ScrollProgress from "@/components/layout/ScrollProgress";
 import { siteConfig } from "@/data/site";
 
 const inter = Inter({
@@ -46,12 +49,14 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: siteConfig.name,
-    description: siteConfig.description
+    description: siteConfig.description,
+    images: [{ url: "/images/hero.jpg", width: 1536, height: 1024, alt: siteConfig.name }]
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
-    description: siteConfig.description
+    description: siteConfig.description,
+    images: ["/images/hero.jpg"]
   },
   robots: {
     index: true,
@@ -61,7 +66,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#151917",
+  themeColor: "#0B0F0D",
   width: "device-width",
   initialScale: 1
 };
@@ -73,15 +78,19 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} antialiased`}
+        suppressHydrationWarning
       >
+        <Atmosphere />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brass-400 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-ink-950"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brass-400 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-on-gold"
         >
           Skip to content
         </a>
         <Providers>
           <CustomCursor />
+          <PointerGlow />
+          <ScrollProgress />
           <Header />
           <PageTransition>
             <main id="main">{children}</main>

@@ -46,8 +46,14 @@ export default function BookAuditForm() {
       setForm((f) => ({ ...f, planSlug: plan, industry: getPlanBySlug(plan)!.category }));
     }
     const ind = params.get("industry");
-    if (ind && !presetPlan) {
+    if (ind && industries.some((i) => i.slug === ind)) {
       setForm((f) => (f.industry ? f : { ...f, industry: ind }));
+    }
+    // Arriving from a multi-location program CTA
+    if (params.get("program") === "brand-standards") {
+      setForm((f) =>
+        f.message ? f : { ...f, message: "Interested in the multi-location Brand Standards Program." }
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -106,19 +112,19 @@ export default function BookAuditForm() {
     return (
       <div className="rounded-2xl border border-sage-400/30 bg-sage-400/5 p-8 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-400/15">
-          <Check className="h-7 w-7 text-sage-300" aria-hidden="true" />
+          <Check className="h-7 w-7 text-sage-600" aria-hidden="true" />
         </div>
-        <h3 className="mt-5 font-display text-2xl text-bone-50">Callback requested</h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-bone-300/70">
+        <h3 className="mt-5 font-display text-2xl text-fg-50">Callback requested</h3>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-fg-300/80">
           Thank you, {form.name.split(" ")[0]}. Our team will call {form.phone} within
           one working day to scope your audit, answer questions and lock the schedule.
         </p>
-        <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/40">
+        <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/60">
           Prefer to configure and pay online right now?
         </p>
         <Link
           href={form.planSlug ? `/checkout?plan=${form.planSlug}` : "/checkout"}
-          className="mt-4 inline-flex items-center gap-2 rounded-full border border-brass-400 bg-brass-400 px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-forest transition-colors hover:bg-brass-300"
+          className="mt-4 inline-flex items-center gap-2 rounded-full btn-gold px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-gold transition-colors"
         >
           Configure &amp; pay online
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -134,10 +140,10 @@ export default function BookAuditForm() {
       {/* Preselected plan context */}
       {presetPlan && plan && (
         <div className="rounded-xl border border-brass-400/30 bg-brass-400/10 p-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-brass-300/80">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent/80">
             Selected plan
           </p>
-          <p className="mt-1 text-sm font-medium text-bone-50">
+          <p className="mt-1 text-sm font-medium text-fg-50">
             {plan.name} · {formatPrice(plan.priceMin, plan.priceMax)}
           </p>
         </div>
@@ -145,7 +151,7 @@ export default function BookAuditForm() {
 
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="ba-name" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ba-name" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Full name *
           </label>
           <input
@@ -156,14 +162,14 @@ export default function BookAuditForm() {
             onChange={set("name")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "ba-name-err" : undefined}
-            className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-              errors.name ? "border-red-500/70" : "border-bone-50/15"
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+              errors.name ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
-          {errors.name && <p id="ba-name-err" className="mt-1.5 text-xs text-red-400">{errors.name}</p>}
+          {errors.name && <p id="ba-name-err" className="mt-1.5 text-xs text-red-700">{errors.name}</p>}
         </div>
         <div>
-          <label htmlFor="ba-email" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ba-email" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Email *
           </label>
           <input
@@ -174,14 +180,14 @@ export default function BookAuditForm() {
             onChange={set("email")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "ba-email-err" : undefined}
-            className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-              errors.email ? "border-red-500/70" : "border-bone-50/15"
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+              errors.email ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
-          {errors.email && <p id="ba-email-err" className="mt-1.5 text-xs text-red-400">{errors.email}</p>}
+          {errors.email && <p id="ba-email-err" className="mt-1.5 text-xs text-red-700">{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="ba-phone" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ba-phone" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Phone / WhatsApp *
           </label>
           <input
@@ -192,14 +198,14 @@ export default function BookAuditForm() {
             onChange={set("phone")}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? "ba-phone-err" : undefined}
-            className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-              errors.phone ? "border-red-500/70" : "border-bone-50/15"
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+              errors.phone ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
-          {errors.phone && <p id="ba-phone-err" className="mt-1.5 text-xs text-red-400">{errors.phone}</p>}
+          {errors.phone && <p id="ba-phone-err" className="mt-1.5 text-xs text-red-700">{errors.phone}</p>}
         </div>
         <div>
-          <label htmlFor="ba-company" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ba-company" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Company / brand
           </label>
           <input
@@ -208,18 +214,18 @@ export default function BookAuditForm() {
             autoComplete="organization"
             value={form.company}
             onChange={set("company")}
-            className="w-full rounded-xl border border-bone-50/15 bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400"
+            className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400"
           />
         </div>
         <div>
-          <label htmlFor="ba-industry" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ba-industry" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Industry
           </label>
           <select
             id="ba-industry"
             value={form.industry}
             onChange={set("industry")}
-            className="w-full appearance-none rounded-xl border border-bone-50/15 bg-ink-900/60 px-4 py-3 text-sm text-bone-50 outline-none transition-colors focus:border-brass-400"
+            className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400"
           >
             <option value="">Select industry…</option>
             {industries.map((ind) => (
@@ -228,14 +234,14 @@ export default function BookAuditForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="ba-plan" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ba-plan" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Audit plan
           </label>
           <select
             id="ba-plan"
             value={form.planSlug}
             onChange={set("planSlug")}
-            className="w-full appearance-none rounded-xl border border-bone-50/15 bg-ink-900/60 px-4 py-3 text-sm text-bone-50 outline-none transition-colors focus:border-brass-400"
+            className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400"
           >
             <option value="">Not sure yet — advise me</option>
             {auditPlans.map((p) => (
@@ -246,7 +252,7 @@ export default function BookAuditForm() {
       </div>
 
       <div>
-        <label htmlFor="ba-message" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+        <label htmlFor="ba-message" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
           Anything we should know
         </label>
         <textarea
@@ -255,24 +261,24 @@ export default function BookAuditForm() {
           value={form.message}
           onChange={set("message")}
           placeholder="Locations, cities, timelines, specific concerns…"
-          className="w-full rounded-xl border border-bone-50/15 bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400"
+          className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400"
         />
       </div>
 
       {serverError && (
-        <p role="alert" className="rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-3 text-sm text-red-300">
+        <p role="alert" className="rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-3 text-sm text-red-700">
           {serverError}
         </p>
       )}
 
-      <div className="flex flex-col items-start justify-between gap-5 border-t border-bone-50/10 pt-6 sm:flex-row sm:items-center">
-        <p className="text-xs text-bone-300/50">
+      <div className="flex flex-col items-start justify-between gap-5 border-t border-fg-50/10 pt-6 sm:flex-row sm:items-center">
+        <p className="text-xs text-fg-300/60">
           We reply within one working day. No spam, ever.
         </p>
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center gap-3 rounded-full border border-brass-400 bg-brass-400 px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-forest transition-colors hover:bg-brass-300 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? (
             <>

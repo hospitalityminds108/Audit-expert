@@ -3,7 +3,7 @@ import LegalShell from "@/components/legal/LegalShell";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — AuditExpert",
+  title: "Privacy Policy",
   description:
     "How AuditExpert, a HospitalityMinds company, collects, uses and protects personal information across audits, bookings and this website.",
 };

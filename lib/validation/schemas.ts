@@ -72,6 +72,30 @@ export const auditorApplicationSchema = z.object({
 
 export type AuditorApplicationInput = z.infer<typeof auditorApplicationSchema>;
 
+/* ── Accounts ────────────────────────────────────────────── */
+
+export const signupSchema = z.object({
+  name: nameSchema,
+  email: emailSchema,
+  company: z.string().trim().max(120).optional().or(z.literal("")),
+  password: z
+    .string()
+    .min(8, "Use at least 8 characters")
+    .max(128, "Password is too long")
+    .regex(/[A-Za-z]/, "Include at least one letter")
+    .regex(/[0-9]/, "Include at least one number"),
+  agree: z.literal(true, { errorMap: () => ({ message: "Please accept the terms to continue" }) }),
+});
+
+export type SignupInput = z.infer<typeof signupSchema>;
+
+export const loginSchema = z.object({
+  email: emailSchema,
+  password: z.string().min(1, "Enter your password").max(128),
+});
+
+export type LoginInput = z.infer<typeof loginSchema>;
+
 /* ── Booking → checkout ──────────────────────────────────── */
 
 export const bookingDetailsSchema = z.object({

@@ -74,19 +74,19 @@ export default function MethodologyTimeline() {
       ref={sectionRef}
       id="methodology"
       data-section="methodology"
-      className="relative bg-bone-100 py-24 md:py-32 lg:py-40"
+      className="relative py-24 md:py-32 lg:py-40"
     >
       <div className="container-site">
         {/* Header */}
         <div className="mb-16 md:mb-24 max-w-4xl">
-          <p className="eyebrow text-brass-500" data-reveal>
+          <p className="eyebrow text-accent" data-reveal>
             <span className="eyebrow-rule" aria-hidden="true" />
             SECTION 05 — METHODOLOGY
           </p>
-          <h2 className="mt-6 font-display text-display-xl md:text-display-2xl text-ink-950 leading-[1.02] tracking-[-0.02em]" data-reveal data-reveal-delay="0.08">
+          <h2 className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02] tracking-[-0.02em]" data-reveal data-reveal-delay="0.08">
             Define. Design. Assign. Audit. Verify. Improve.
           </h2>
-          <p className="mt-6 max-w-2xl text-lead text-ink-700/80" data-reveal data-reveal-delay="0.16">
+          <p className="mt-6 max-w-2xl text-lead text-fg-300/80" data-reveal data-reveal-delay="0.16">
             Six steps. One standard of evidence. A process built so findings are
             never opinions — they are verified observations with owners and
             deadlines.
@@ -97,7 +97,7 @@ export default function MethodologyTimeline() {
         <div className="relative">
           {/* Track + progress line */}
           <div
-            className="absolute left-[19px] top-2 bottom-2 w-px bg-ink-950/10 md:left-1/2 md:-translate-x-1/2"
+            className="absolute left-[19px] top-2 bottom-2 w-px bg-fg-50/10 md:left-1/2 md:-translate-x-1/2"
             aria-hidden="true"
           >
             <div
@@ -116,7 +116,7 @@ export default function MethodologyTimeline() {
               >
                 {/* Dot on the line */}
                 <span
-                  className="absolute left-[19px] top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-bone-100 bg-ink-950 md:left-1/2 md:top-12"
+                  className="absolute left-[19px] top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-fg-100 bg-base-950 md:left-1/2 md:top-12"
                   aria-hidden="true"
                 />
                 <div
@@ -131,14 +131,14 @@ export default function MethodologyTimeline() {
                       i % 2 === 0 ? "md:flex-row-reverse" : ""
                     }`}
                   >
-                    <span className="font-mono text-sm font-medium text-brass-600 tabular-nums">
+                    <span className="font-mono text-sm font-medium text-accent tabular-nums">
                       {step.number}
                     </span>
-                    <h3 className="font-display text-3xl md:text-4xl tracking-[-0.01em] text-ink-950">
+                    <h3 className="font-display text-3xl md:text-4xl tracking-[-0.01em] text-fg-50">
                       {step.title}
                     </h3>
                   </div>
-                  <p className="mt-3 max-w-md text-[15px] leading-relaxed text-ink-700/80 md:ml-auto">
+                  <p className="mt-3 max-w-md text-[15px] leading-relaxed text-fg-300/80 md:ml-auto">
                     {step.description}
                   </p>
                 </div>
@@ -152,7 +152,7 @@ export default function MethodologyTimeline() {
           <Link
             href="/how-it-works"
             data-cursor-label="OPEN"
-            className="group inline-flex items-center gap-3 border-b border-brass-600/40 pb-1 text-sm font-medium text-ink-950 transition-colors duration-300 hover:border-brass-500 hover:text-brass-600"
+            className="group inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-400 hover:text-accent"
           >
             Read the full methodology
             <ArrowUpRight

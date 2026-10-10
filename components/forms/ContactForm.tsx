@@ -112,10 +112,10 @@ export default function ContactForm() {
     return (
       <div className="rounded-2xl border border-sage-400/30 bg-sage-400/5 p-8 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-400/15">
-          <Check className="h-7 w-7 text-sage-300" aria-hidden="true" />
+          <Check className="h-7 w-7 text-sage-600" aria-hidden="true" />
         </div>
-        <h3 className="mt-5 font-display text-2xl text-bone-50">Message received</h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-bone-300/70">
+        <h3 className="mt-5 font-display text-2xl text-fg-50">Message received</h3>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-fg-300/80">
           Thank you, {form.name.split(" ")[0]}. We reply to every inquiry within
           one working day — usually much faster. A copy of your message is on
           its way to {form.email}.
@@ -128,7 +128,7 @@ export default function ContactForm() {
     <form onSubmit={submit} noValidate className="space-y-5">
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="ct-name" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ct-name" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Full name *
           </label>
           <input
@@ -139,14 +139,14 @@ export default function ContactForm() {
             onChange={set("name")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "ct-name-err" : undefined}
-            className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-              errors.name ? "border-red-500/70" : "border-bone-50/15"
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+              errors.name ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
-          {errors.name && <p id="ct-name-err" className="mt-1.5 text-xs text-red-400">{errors.name}</p>}
+          {errors.name && <p id="ct-name-err" className="mt-1.5 text-xs text-red-700">{errors.name}</p>}
         </div>
         <div>
-          <label htmlFor="ct-email" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ct-email" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Email *
           </label>
           <input
@@ -157,14 +157,14 @@ export default function ContactForm() {
             onChange={set("email")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "ct-email-err" : undefined}
-            className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-              errors.email ? "border-red-500/70" : "border-bone-50/15"
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+              errors.email ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
-          {errors.email && <p id="ct-email-err" className="mt-1.5 text-xs text-red-400">{errors.email}</p>}
+          {errors.email && <p id="ct-email-err" className="mt-1.5 text-xs text-red-700">{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="ct-phone" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ct-phone" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Phone / WhatsApp
           </label>
           <input
@@ -175,14 +175,14 @@ export default function ContactForm() {
             onChange={set("phone")}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? "ct-phone-err" : undefined}
-            className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-              errors.phone ? "border-red-500/70" : "border-bone-50/15"
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+              errors.phone ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
-          {errors.phone && <p id="ct-phone-err" className="mt-1.5 text-xs text-red-400">{errors.phone}</p>}
+          {errors.phone && <p id="ct-phone-err" className="mt-1.5 text-xs text-red-700">{errors.phone}</p>}
         </div>
         <div>
-          <label htmlFor="ct-company" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+          <label htmlFor="ct-company" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
             Company / brand
           </label>
           <input
@@ -191,20 +191,20 @@ export default function ContactForm() {
             autoComplete="organization"
             value={form.company}
             onChange={set("company")}
-            className="w-full rounded-xl border border-bone-50/15 bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400"
+            className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="ct-subject" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+        <label htmlFor="ct-subject" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
           What is this about *
         </label>
         <select
           id="ct-subject"
           value={form.subject}
           onChange={set("subject")}
-          className="w-full appearance-none rounded-xl border border-bone-50/15 bg-ink-900/60 px-4 py-3 text-sm text-bone-50 outline-none transition-colors focus:border-brass-400"
+          className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400"
         >
           {SUBJECTS.map((s) => (
             <option key={s.value} value={s.value}>{s.label}</option>
@@ -213,7 +213,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="ct-message" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-bone-300/70">
+        <label htmlFor="ct-message" className="mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80">
           Message *
         </label>
         <textarea
@@ -224,15 +224,15 @@ export default function ContactForm() {
           placeholder="Your property type, cities, what you want to find out…"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "ct-message-err" : undefined}
-          className={`w-full rounded-xl border bg-ink-900/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-300/30 outline-none transition-colors focus:border-brass-400 ${
-            errors.message ? "border-red-500/70" : "border-bone-50/15"
+          className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            errors.message ? "border-red-500/70" : "border-fg-50/15"
           }`}
         />
-        {errors.message && <p id="ct-message-err" className="mt-1.5 text-xs text-red-400">{errors.message}</p>}
+        {errors.message && <p id="ct-message-err" className="mt-1.5 text-xs text-red-700">{errors.message}</p>}
       </div>
 
       <div>
-        <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-bone-300/70">
+        <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-fg-300/80">
           <input
             type="checkbox"
             checked={form.consent}
@@ -243,27 +243,27 @@ export default function ContactForm() {
           />
           <span>
             I agree to be contacted about my inquiry and accept the{" "}
-            <a href="/privacy" className="text-brass-300 underline underline-offset-2 hover:text-brass-200">
+            <a href="/privacy" className="text-accent underline underline-offset-2 hover:text-accent">
               privacy policy
             </a>
             . My details are never sold or shared.
           </span>
         </label>
-        {errors.consent && <p id="ct-consent-err" className="mt-1.5 text-xs text-red-400">{errors.consent}</p>}
+        {errors.consent && <p id="ct-consent-err" className="mt-1.5 text-xs text-red-700">{errors.consent}</p>}
       </div>
 
       {serverError && (
-        <p role="alert" className="rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-3 text-sm text-red-300">
+        <p role="alert" className="rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-3 text-sm text-red-700">
           {serverError}
         </p>
       )}
 
-      <div className="flex flex-col items-start justify-between gap-5 border-t border-bone-50/10 pt-6 sm:flex-row sm:items-center">
-        <p className="text-xs text-bone-300/50">We reply within one working day.</p>
+      <div className="flex flex-col items-start justify-between gap-5 border-t border-fg-50/10 pt-6 sm:flex-row sm:items-center">
+        <p className="text-xs text-fg-300/60">We reply within one working day.</p>
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center gap-3 rounded-full border border-brass-400 bg-brass-400 px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-forest transition-colors hover:bg-brass-300 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? (
             <>

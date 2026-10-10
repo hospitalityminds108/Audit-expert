@@ -3,7 +3,7 @@ import LegalShell from "@/components/legal/LegalShell";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — AuditExpert",
+  title: "Terms of Service",
   description:
     "Terms governing audit engagements, bookings, payments and use of the AuditExpert website.",
 };

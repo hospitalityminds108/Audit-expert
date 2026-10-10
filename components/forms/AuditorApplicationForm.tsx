@@ -110,16 +110,16 @@ export default function AuditorApplicationForm() {
   if (status === "success") {
     return (
       <div className="rounded-2xl border border-sage-600/30 bg-sage-500/[0.08] p-10 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-600/15 text-sage-700">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-600/15 text-sage-600">
           <Check className="h-7 w-7" aria-hidden="true" />
         </span>
-        <h3 className="mt-6 font-display text-2xl text-ink-950">Application received</h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-700/80">
+        <h3 className="mt-6 font-display text-2xl text-fg-50">Application received</h3>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-fg-300/80">
           Thank you, {form.fullName.split(" ")[0]}. Your application has entered
           review. If your profile matches active programs, the network team will
           reach out about orientation and a sample assessment.
         </p>
-        <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-700/50">
+        <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/60">
           Reference: AE-AUD-{new Date().getFullYear()}-{String(form.email.length * 137).padStart(6, "0").slice(0, 6)}
         </p>
       </div>
@@ -127,11 +127,11 @@ export default function AuditorApplicationForm() {
   }
 
   const inputCls = (k: string) =>
-    `w-full rounded-xl border bg-bone-50 px-4 py-3 text-sm text-ink-950 placeholder:text-ink-700/40 outline-none transition-colors focus:border-brass-600 focus:ring-2 focus:ring-brass-600/15 ${
-      errors[k] ? "border-red-500/70" : "border-ink-950/15"
+    `w-full rounded-xl border bg-white/70 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 focus:ring-2 focus:ring-brass-600/15 ${
+      errors[k] ? "border-red-500/70" : "border-fg-50/15"
     }`;
 
-  const labelCls = "mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-ink-700/70";
+  const labelCls = "mb-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/80";
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-6" aria-label="Auditor application">
@@ -286,8 +286,8 @@ export default function AuditorApplicationForm() {
               key={opt.value}
               className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition-colors ${
                 form.availability === opt.value
-                  ? "border-brass-600 bg-brass-500/10 text-ink-950"
-                  : "border-ink-950/15 bg-bone-50 text-ink-700 hover:border-ink-950/30"
+                  ? "border-brass-400 bg-brass-500/10 text-fg-50"
+                  : "border-fg-50/15 bg-white/70 text-fg-300 hover:border-fg-50/30"
               }`}
             >
               <input
@@ -323,7 +323,7 @@ export default function AuditorApplicationForm() {
       </div>
 
       <div>
-        <label htmlFor="agree" className="flex cursor-pointer items-start gap-3 text-sm text-ink-800">
+        <label htmlFor="agree" className="flex cursor-pointer items-start gap-3 text-sm text-fg-50">
           <input
             id="agree"
             type="checkbox"
@@ -344,7 +344,7 @@ export default function AuditorApplicationForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-brass-400 bg-brass-400 px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-brass-300 disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
+        className="group inline-flex w-full items-center justify-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
       >
         {status === "submitting" ? (
           <>
@@ -362,7 +362,7 @@ export default function AuditorApplicationForm() {
         )}
       </button>
 
-      <p className="text-xs leading-relaxed text-ink-700/60">
+      <p className="text-xs leading-relaxed text-fg-300/70">
         Applications are reviewed against active programs, geography and sector
         needs. Joining the network does not guarantee a minimum number of
         assignments.

@@ -18,24 +18,24 @@ export default function HomeFAQ() {
       ref={sectionRef}
       id="faq"
       data-section="faq"
-      className="relative bg-bone-50 py-24 md:py-32 lg:py-40"
+      className="relative py-24 md:py-32 lg:py-40"
     >
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           {/* Left */}
           <div>
-            <p className="eyebrow text-brass-500" data-reveal>
+            <p className="eyebrow text-accent" data-reveal>
               <span className="eyebrow-rule" aria-hidden="true" />
               QUESTIONS
             </p>
             <h2
-              className="mt-6 font-display text-display-xl md:text-display-2xl text-ink-950 leading-[1.02] tracking-[-0.02em]"
+              className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02] tracking-[-0.02em]"
               data-reveal
               data-reveal-delay="0.08"
             >
               Clear answers, before you ask.
             </h2>
-            <p className="mt-6 max-w-md text-lead text-ink-700/80" data-reveal data-reveal-delay="0.16">
+            <p className="mt-6 max-w-md text-lead text-fg-300/80" data-reveal data-reveal-delay="0.16">
               The questions every operations leader asks before their first
               audit — answered plainly.
             </p>
@@ -43,7 +43,7 @@ export default function HomeFAQ() {
               <Link
                 href="/contact"
                 data-cursor-label="ASK"
-                className="group inline-flex items-center gap-3 border-b border-brass-600/40 pb-1 text-sm font-medium text-ink-950 transition-colors duration-300 hover:border-brass-500 hover:text-brass-600"
+                className="group inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-400 hover:text-accent"
               >
                 Ask us something else
                 <ArrowUpRight
@@ -56,7 +56,7 @@ export default function HomeFAQ() {
 
           {/* Right: accordion */}
           <div data-reveal data-reveal-delay="0.15">
-            <FAQAccordion items={generalFaqs} defaultOpen={0} />
+            <FAQAccordion items={generalFaqs} defaultOpen={0} tone="light" />
           </div>
         </div>
       </div>

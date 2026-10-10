@@ -55,35 +55,76 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(options?: {
 }) {
   const ref = useRef<T>(null);
   const reduced = usePrefersReducedMotion();
+  const selector = options?.selector ?? "[data-reveal]";
+  const y = options?.y ?? 28;
+  const stagger = options?.stagger ?? 0.08;
 
   useGSAP(
     () => {
       if (!ref.current) return;
+      const targets = gsap.utils.toArray<HTMLElement>(selector, ref.current);
+      if (!targets.length) return;
       if (reduced) {
-        gsap.set(ref.current.querySelectorAll("[data-reveal]"), { opacity: 1, y: 0 });
+        gsap.set(targets, { opacity: 1, y: 0 });
         return;
       }
-      const targets = options?.selector
-        ? ref.current.querySelectorAll(options.selector)
-        : ref.current.querySelectorAll("[data-reveal]");
-      if (!targets.length) return;
-      gsap.fromTo(
-        targets,
-        { y: options?.y ?? 28, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: options?.stagger ?? 0.08,
-          scrollTrigger: { trigger: ref.current, start: options?.start ?? "top 78%", once: true }
+      gsap.set(targets, { opacity: 0, y });
+      // Each element reveals as it enters the viewport; elements entering
+      // together are sequenced by data-reveal-delay, else by stagger.
+      ScrollTrigger.batch(targets, {
+        start: "top 92%",
+        once: true,
+        onEnter: (batch) => {
+          batch.forEach((el, i) => {
+            const own = parseFloat((el as HTMLElement).dataset.revealDelay ?? "");
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: "power3.out",
+              delay: Number.isFinite(own) ? own : i * stagger,
+              overwrite: true,
+              // hand transform back to CSS so hover lifts keep working
+              clearProps: "transform"
+            });
+          });
         }
-      );
+      });
     },
-    { scope: ref, dependencies: [reduced, options?.selector] }
+    { scope: ref, dependencies: [reduced, selector, y, stagger] }
   );
 
   return ref;
+}
+
+/* ─────────────────────────────────────────────
+   In-view flag (fires once)
+   ───────────────────────────────────────────── */
+export function useInView<T extends HTMLElement = HTMLElement>(threshold = 0.3) {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || inView) return;
+    if (!("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { threshold }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [inView, threshold]);
+
+  return { ref, inView };
 }
 
 /* ─────────────────────────────────────────────
@@ -118,22 +159,26 @@ export function useCounter(
   const [value, setValue] = useState(0);
   const obj = useRef({ v: 0 });
   const reduced = usePrefersReducedMotion();
+  const start = opts?.start ?? true;
+  const duration = opts?.duration ?? 1.6;
+  const factor = Math.pow(10, opts?.decimals ?? 0);
 
   useEffect(() => {
+    if (!start) return;
     if (reduced) {
       setValue(target);
       return;
     }
     const tween = gsap.to(obj.current, {
       v: target,
-      duration: opts?.duration ?? 1.6,
+      duration,
       ease: "power2.out",
-      onUpdate: () => setValue(obj.current.v)
+      onUpdate: () => setValue(Math.round(obj.current.v * factor) / factor)
     });
     return () => {
       tween.kill();
     };
-  }, [target, reduced, opts?.duration]);
+  }, [target, reduced, start, duration, factor]);
 
   return value;
 }
@@ -227,10 +272,7 @@ export function useSplitReveal<T extends HTMLElement = HTMLElement>(opts?: {
 /* ─────────────────────────────────────────────
    Horizontal scroll section (GSAP-pinned)
    ───────────────────────────────────────────── */
-export function useHorizontalScroll<T extends HTMLElement = HTMLElement>(opts?: {
-  endPadding?: number;
-  selector?: string;
-}) {
+export function useHorizontalScroll<T extends HTMLElement = HTMLElement>() {
   const containerRef = useRef<T>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
@@ -238,18 +280,20 @@ export function useHorizontalScroll<T extends HTMLElement = HTMLElement>(opts?: 
 
   useGSAP(
     () => {
-      const container = containerRef.current;
       const track = trackRef.current;
-      if (!container || !track || reduced || isMobile) return;
+      const viewport = track?.parentElement;
+      if (!track || !viewport || reduced || isMobile) return;
 
-      const getDistance = () => track.scrollWidth - container.clientWidth;
+      const getDistance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
 
-      const tween = gsap.to(track, {
+      // Pin only the card strip (not the section header) and hold it centred in
+      // the viewport, so the cards are fully visible on short laptop screens too.
+      gsap.to(track, {
         x: () => -getDistance(),
         ease: "none",
         scrollTrigger: {
-          trigger: container,
-          start: "top top",
+          trigger: viewport,
+          start: () => `top ${Math.max(88, Math.round((window.innerHeight - viewport.offsetHeight) / 2))}px`,
           end: () => `+=${getDistance()}`,
           pin: true,
           scrub: 1,
@@ -257,11 +301,6 @@ export function useHorizontalScroll<T extends HTMLElement = HTMLElement>(opts?: 
           anticipatePin: 1
         }
       });
-
-      return () => {
-        tween.scrollTrigger?.kill();
-        tween.kill();
-      };
     },
     { scope: containerRef, dependencies: [reduced, isMobile] }
   );

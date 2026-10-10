@@ -3,7 +3,7 @@ import LegalShell from "@/components/legal/LegalShell";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — AuditExpert",
+  title: "Cookie Policy",
   description:
     "What cookies the AuditExpert website uses, why, and how to control them.",
 };

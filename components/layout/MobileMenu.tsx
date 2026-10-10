@@ -7,6 +7,7 @@ import { gsap } from "@/lib/animations/gsap";
 import { navigation } from "@/data/navigation";
 import { getIndustriesNav } from "@/data/industries";
 import { planCategoryTabs } from "@/data/audit-plans";
+import { useAuth } from "@/components/auth/AuthProvider";
 
 interface Props {
   open: boolean;
@@ -18,6 +19,7 @@ const industriesNav = getIndustriesNav();
 export default function MobileMenu({ open, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const scrimRef = useRef<HTMLDivElement>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -70,10 +72,15 @@ export default function MobileMenu({ open, onClose }: Props) {
   }, [open, onClose]);
 
   return (
-    <div className="fixed inset-0 z-[95] lg:hidden" aria-hidden={!open}>
+    <div
+      className="pointer-events-none fixed inset-0 z-[95] lg:hidden"
+      aria-hidden={!open}
+      // closed menu: keep its links out of the tab order
+      {...(open ? {} : ({ inert: "" } as object))}
+    >
       <div
         ref={scrimRef}
-        className="absolute inset-0 bg-ink-950/70 opacity-0 backdrop-blur-sm"
+        className="absolute inset-0 bg-base-800/70 opacity-0 backdrop-blur-sm"
         style={{ pointerEvents: "none" }}
         onClick={onClose}
       />
@@ -82,18 +89,19 @@ export default function MobileMenu({ open, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
-        className="absolute inset-y-0 right-0 flex w-full max-w-md translate-x-full flex-col overflow-y-auto border-l border-bone-100/8 bg-ink-900"
+        data-lenis-prevent
+        className="glass-strong absolute inset-y-0 right-0 flex w-full max-w-md translate-x-full flex-col overflow-y-auto border-l border-fg-50/10"
         style={{ pointerEvents: "none" }}
       >
-        <div className="flex items-center justify-between border-b border-bone-100/8 px-7 py-5">
-          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-brass-300">Menu</span>
+        <div className="flex items-center justify-between border-b border-fg-50/10 px-7 py-5">
+          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">Menu</span>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-bone-100/15 text-bone-100 transition-colors hover:border-brass-300/60"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-fg-50/15 bg-white/70 text-fg-100 transition-colors hover:border-brass-500/60"
           >
-            <X size={20} />
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
 
@@ -106,13 +114,13 @@ export default function MobileMenu({ open, onClose }: Props) {
               <li key={ind.slug} data-mobile-item>
                 <Link
                   href={`/industries/${ind.slug}`}
-                  className="flex items-center justify-between border-b border-bone-100/6 py-3.5 font-display text-xl font-medium text-bone-100"
+                  className="flex items-center justify-between border-b border-fg-50/10 py-3.5 font-display text-xl font-medium text-fg-100"
                 >
                   <span>
-                    <span className="mr-3 font-mono text-xs text-brass-400">{ind.number}</span>
+                    <span className="mr-3 font-mono text-xs text-accent">{ind.number}</span>
                     {ind.title}
                   </span>
-                  <ArrowUpRight size={18} className="text-bone-500" />
+                  <ArrowUpRight size={18} className="text-fg-400" aria-hidden="true" />
                 </Link>
               </li>
             ))}
@@ -120,16 +128,16 @@ export default function MobileMenu({ open, onClose }: Props) {
 
           <ul className="mt-8">
             <li data-mobile-item>
-              <p className="eyebrow mb-2">Audit Plans</p>
+              <p className="eyebrow mb-2">Plans &amp; Pricing</p>
             </li>
             {planCategoryTabs.map((cat) => (
               <li key={cat.id} data-mobile-item>
                 <Link
                   href={`/audit-plans?category=${cat.id}`}
-                  className="flex items-center justify-between border-b border-bone-100/6 py-3.5 font-display text-xl font-medium text-bone-100"
+                  className="flex items-center justify-between border-b border-fg-50/10 py-3.5 font-display text-xl font-medium text-fg-100"
                 >
                   {cat.label}
-                  <ArrowUpRight size={18} className="text-bone-500" />
+                  <ArrowUpRight size={18} className="text-fg-400" aria-hidden="true" />
                 </Link>
               </li>
             ))}
@@ -145,7 +153,7 @@ export default function MobileMenu({ open, onClose }: Props) {
               <li key={item.href} data-mobile-item>
                 <Link
                   href={item.href}
-                  className="block border-b border-bone-100/6 py-3.5 font-display text-xl font-medium text-bone-100"
+                  className="block border-b border-fg-50/10 py-3.5 font-display text-xl font-medium text-fg-100"
                 >
                   {item.label}
                 </Link>
@@ -153,13 +161,36 @@ export default function MobileMenu({ open, onClose }: Props) {
             ))}
           </ul>
 
-          <div data-mobile-item className="mt-auto pb-10 pt-10">
+          <div data-mobile-item className="mt-auto space-y-3 pb-10 pt-10">
             <Link
               href="/book-an-audit"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-brass-400 py-4 text-sm font-semibold tracking-wide text-forest transition-colors hover:bg-brass-300"
+              className="btn-gold flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold tracking-wide"
             >
-              {navigation.cta.label} <ArrowUpRight size={16} />
+              {navigation.cta.label} <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
+            {user ? (
+              <Link
+                href="/account"
+                className="btn-ghost flex w-full items-center justify-center rounded-full py-4 text-sm font-semibold tracking-wide"
+              >
+                My account
+              </Link>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  href="/login"
+                  className="btn-ghost flex items-center justify-center rounded-full py-3.5 text-sm font-semibold tracking-wide"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/signup"
+                  className="btn-ghost flex items-center justify-center rounded-full py-3.5 text-sm font-semibold tracking-wide"
+                >
+                  Create account
+                </Link>
+              </div>
+            )}
           </div>
         </nav>
       </div>
