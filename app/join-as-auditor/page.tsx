@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageBanner from "@/components/ui/PageBanner";
 import {
   Award,
   ClipboardCheck,
@@ -78,7 +79,7 @@ export default function JoinAsAuditorPage() {
         <header className="relative overflow-hidden pb-16 pt-40 md:pb-24 md:pt-52">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brass-500/10 blur-3xl"
+            className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand-500/10 blur-3xl"
           />
           <div className="container-site relative">
             <nav aria-label="Breadcrumb" className="mb-8">
@@ -111,7 +112,7 @@ export default function JoinAsAuditorPage() {
                   {t}
                 </span>
               ))}
-              <span className="rounded-full border border-brass-400/30 bg-brass-400/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+              <span className="rounded-full border border-brand-400/30 bg-brand-400/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
                 +{auditorTypes.length - 4} more
               </span>
             </div>
@@ -119,6 +120,10 @@ export default function JoinAsAuditorPage() {
         </header>
 
         {/* ── Perks ────────────────────────────────────────────── */}
+        <div className="container-site">
+          <PageBanner images={[{ src: "/images/sections/mystery.jpg", alt: "A mystery auditor arriving as a guest", caption: "Mystery audit" }, { src: "/images/industries/restaurants-cafes.jpg", alt: "Restaurant service in progress", caption: "Restaurants & cafés" }, { src: "/images/industries/malls-retail.jpg", alt: "Shopping mall atrium", caption: "Malls & retail" }]} />
+        </div>
+
         <section aria-labelledby="perks" className="py-16 md:py-24">
           <div className="container-site">
             <p className="eyebrow text-accent">
@@ -135,9 +140,9 @@ export default function JoinAsAuditorPage() {
               {perks.map((p) => (
                 <div
                   key={p.title}
-                  className="rounded-2xl border border-fg-50/10 glass p-7 transition-colors hover:border-brass-400/40"
+                  className="rounded-2xl border border-fg-50/10 glass p-7 transition-colors hover:border-brand-400/40"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brass-500/10 text-accent">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500/10 text-accent">
                     <p.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <h3 className="mt-5 font-display text-lg text-fg-50">{p.title}</h3>
@@ -188,9 +193,9 @@ export default function JoinAsAuditorPage() {
                   <li key={s.title} className="relative pb-8 pl-10 last:pb-0">
                     <span
                       aria-hidden="true"
-                      className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border border-brass-400/50 bg-fg-50/5"
+                      className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border border-brand-400/50 bg-fg-50/5"
                     >
-                      <span className="h-[6px] w-[6px] rounded-full bg-brass-600" />
+                      <span className="h-[6px] w-[6px] rounded-full bg-brand-600" />
                     </span>
                     <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                       {String(i + 1).padStart(2, "0")}
@@ -204,7 +209,7 @@ export default function JoinAsAuditorPage() {
 
             <div className="space-y-6 self-start rounded-2xl border border-fg-50/10 glass p-8">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brass-500/10 text-accent">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-500/10 text-accent">
                   <Users2 className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="font-display text-xl text-fg-50">Who we look for</h3>
@@ -334,7 +339,7 @@ export default function JoinAsAuditorPage() {
             </div>
             <div className="mt-6 mx-auto max-w-3xl text-sm leading-relaxed text-fg-300/80">
               Questions first?{" "}
-              <Link href="/contact" className="text-accent underline decoration-brass-600/40 underline-offset-4 transition-colors hover:text-accent">
+              <Link href="/contact" className="text-accent underline decoration-brand-600/40 underline-offset-4 transition-colors hover:text-accent">
                 Talk to the network team
               </Link>
               .

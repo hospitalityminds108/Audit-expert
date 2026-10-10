@@ -24,7 +24,7 @@ export default function WhatTheBrandGets() {
     >
       {/* Ambient */}
       <div
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[420px] w-[720px] rounded-full bg-brass-500/[0.06] blur-[130px]"
+        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[420px] w-[720px] rounded-full bg-brand-500/[0.06] blur-[130px]"
         aria-hidden="true"
       />
 
@@ -80,8 +80,7 @@ export default function WhatTheBrandGets() {
             <div className="mt-10" data-reveal data-reveal-delay="0.5">
               <Link
                 href="/book-an-audit"
-                data-cursor-label="BOOK"
-                className="group inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-300 hover:text-accent"
+                className="group inline-flex items-center gap-3 border-b border-brand-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-300 hover:text-accent"
               >
                 Get a sample report structure
                 <ArrowUpRight
@@ -101,11 +100,11 @@ export default function WhatTheBrandGets() {
 
 function ReportMockup() {
   return (
-    <div className="relative rounded-2xl border border-fg-50/10 glass p-6 md:p-8 shadow-[0_40px_80px_-40px_rgba(84,66,20,0.28)]">
+    <div className="relative rounded-2xl border border-fg-50/10 glass p-6 md:p-8 shadow-[0_40px_80px_-40px_rgba(16,64,44,0.28)]">
       {/* Report header */}
       <div className="flex items-center justify-between border-b border-fg-50/10 pb-5">
         <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-brass-400/30 bg-brass-500/10 text-accent">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-brand-400/30 bg-brand-500/10 text-accent">
             <FileText className="h-4 w-4" strokeWidth={1.5} />
           </span>
           <div>
@@ -132,7 +131,7 @@ function ReportMockup() {
             <p className="font-display text-5xl leading-none text-fg-50">
               87<span className="text-2xl text-fg-300/60">%</span>
             </p>
-            <p className="mb-1 inline-flex items-center gap-1 font-mono text-[11px] text-sage-600">
+            <p className="mb-1 inline-flex items-center gap-1 font-mono text-[11px] text-aqua-600">
               <Check className="h-3 w-3" strokeWidth={2.5} />
               +6 vs last cycle
             </p>
@@ -143,7 +142,7 @@ function ReportMockup() {
             <div
               key={i}
               className={`w-2 rounded-t-sm ${
-                i === 5 ? "bg-brass-400" : "bg-base-700"
+                i === 5 ? "bg-brand-600" : "bg-base-700"
               }`}
               style={{ height: `${h}%` }}
             />
@@ -163,7 +162,7 @@ function ReportMockup() {
             <p className="w-32 text-[13px] text-fg-300/85">{row.section}</p>
             <div className="h-1 flex-1 overflow-hidden rounded-full bg-base-800">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-brass-600 to-brass-300"
+                className="h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-300"
                 style={{ width: `${row.score}%` }}
               />
             </div>
@@ -198,8 +197,8 @@ function ReportMockup() {
                     a.level === "CRITICAL"
                       ? "bg-critical/15 text-critical"
                       : a.level === "HIGH"
-                      ? "bg-brass-500/15 text-accent"
-                      : "bg-sage-500/15 text-sage-600"
+                      ? "bg-amber-500/15 text-amber-700"
+                      : "bg-aqua-500/15 text-aqua-600"
                   }`}
                 >
                   {a.level}

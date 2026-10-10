@@ -110,9 +110,9 @@ export default function BookAuditForm() {
 
   if (success) {
     return (
-      <div className="rounded-2xl border border-sage-400/30 bg-sage-400/5 p-8 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-400/15">
-          <Check className="h-7 w-7 text-sage-600" aria-hidden="true" />
+      <div className="rounded-2xl border border-aqua-400/30 bg-aqua-400/5 p-8 text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-aqua-400/15">
+          <Check className="h-7 w-7 text-aqua-600" aria-hidden="true" />
         </div>
         <h3 className="mt-5 font-display text-2xl text-fg-50">Callback requested</h3>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-fg-300/80">
@@ -124,7 +124,7 @@ export default function BookAuditForm() {
         </p>
         <Link
           href={form.planSlug ? `/checkout?plan=${form.planSlug}` : "/checkout"}
-          className="mt-4 inline-flex items-center gap-2 rounded-full btn-gold px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-gold transition-colors"
+          className="mt-4 inline-flex items-center gap-2 rounded-full btn-primary px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-brand transition-colors"
         >
           Configure &amp; pay online
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -139,7 +139,7 @@ export default function BookAuditForm() {
     <form onSubmit={submit} noValidate className="space-y-5">
       {/* Preselected plan context */}
       {presetPlan && plan && (
-        <div className="rounded-xl border border-brass-400/30 bg-brass-400/10 p-4">
+        <div className="rounded-xl border border-brand-400/30 bg-brand-400/10 p-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent/80">
             Selected plan
           </p>
@@ -162,7 +162,7 @@ export default function BookAuditForm() {
             onChange={set("name")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "ba-name-err" : undefined}
-            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
               errors.name ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
@@ -180,7 +180,7 @@ export default function BookAuditForm() {
             onChange={set("email")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "ba-email-err" : undefined}
-            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
               errors.email ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
@@ -198,7 +198,7 @@ export default function BookAuditForm() {
             onChange={set("phone")}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? "ba-phone-err" : undefined}
-            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
               errors.phone ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
@@ -214,7 +214,7 @@ export default function BookAuditForm() {
             autoComplete="organization"
             value={form.company}
             onChange={set("company")}
-            className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400"
+            className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400"
           />
         </div>
         <div>
@@ -225,7 +225,7 @@ export default function BookAuditForm() {
             id="ba-industry"
             value={form.industry}
             onChange={set("industry")}
-            className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400"
+            className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brand-400"
           >
             <option value="">Select industry…</option>
             {industries.map((ind) => (
@@ -241,7 +241,7 @@ export default function BookAuditForm() {
             id="ba-plan"
             value={form.planSlug}
             onChange={set("planSlug")}
-            className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400"
+            className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brand-400"
           >
             <option value="">Not sure yet — advise me</option>
             {auditPlans.map((p) => (
@@ -261,7 +261,7 @@ export default function BookAuditForm() {
           value={form.message}
           onChange={set("message")}
           placeholder="Locations, cities, timelines, specific concerns…"
-          className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400"
+          className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400"
         />
       </div>
 
@@ -278,7 +278,7 @@ export default function BookAuditForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-3 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? (
             <>

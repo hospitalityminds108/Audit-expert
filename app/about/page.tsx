@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageBanner from "@/components/ui/PageBanner";
 import { ArrowRight, Compass, Eye, LineChart, Scale, ShieldCheck, TrendingUp } from "lucide-react";
 import { integrityStandards, siteConfig } from "@/data/site";
 
@@ -49,6 +50,8 @@ export default function AboutPage() {
           built by people who have run hotels, restaurants and service floors,
           for brands that want the truth about what their customers experience.
         </p>
+
+        <PageBanner priority className="mt-12" images={[{ src: "/images/sections/city.jpg", alt: "City skyline at dusk", caption: "Mumbai, India" }]} />
 
         {/* ── Facts strip ── */}
         <dl className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -108,7 +111,7 @@ export default function AboutPage() {
                     </span>
                     <div>
                       <p className="flex items-center gap-2 text-sm font-medium text-fg-50">
-                        <Icon className="h-4 w-4 text-sage-600" aria-hidden="true" />
+                        <Icon className="h-4 w-4 text-aqua-600" aria-hidden="true" />
                         {b.word}
                       </p>
                       <p className="mt-1 text-xs leading-relaxed text-fg-300/70">
@@ -136,7 +139,7 @@ export default function AboutPage() {
           {integrityStandards.map((s) => (
             <div key={s.principle} className="rounded-2xl border border-fg-50/10 glass p-6">
               <p className="flex items-center gap-2.5 text-sm font-medium text-fg-50">
-                <ShieldCheck className="h-4 w-4 text-sage-600" aria-hidden="true" />
+                <ShieldCheck className="h-4 w-4 text-aqua-600" aria-hidden="true" />
                 {s.principle}
               </p>
               <p className="mt-3 text-xs leading-relaxed text-fg-300/70">{s.standard}</p>
@@ -147,7 +150,7 @@ export default function AboutPage() {
 
       {/* ── CTA ── */}
       <div className="container-site pb-24">
-        <div className="rounded-3xl border border-brass-400/30 bg-brass-400/[0.06] p-10 text-center md:p-14">
+        <div className="rounded-3xl border border-brand-400/30 bg-brand-400/[0.06] p-10 text-center md:p-14">
           <h2 className="mx-auto max-w-2xl font-display text-3xl tracking-[-0.01em] text-fg-50 md:text-4xl">
             See your brand the way your guest does.
           </h2>
@@ -158,7 +161,7 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/book-an-audit"
-              className="inline-flex items-center justify-center gap-2 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors"
             >
               Book an audit
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

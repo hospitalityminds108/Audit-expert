@@ -49,7 +49,7 @@ export default function AuthShell({
             alt="City skyline at dusk"
             fill
             sizes="(min-width: 1024px) 40vw, 0px"
-            className="object-cover opacity-50 sepia-[.35]"
+            className="object-cover opacity-55"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-base-950 via-base-950/75 to-base-950/20"
@@ -58,12 +58,12 @@ export default function AuthShell({
           <div className="absolute inset-x-0 bottom-0 p-9">
             <p className="font-display text-3xl leading-[1.15] text-fg-50">
               See what your customers experience.
-              <span className="block text-gradient-brass">Know what your teams deliver.</span>
+              <span className="block text-gradient-brand">Know what your teams deliver.</span>
             </p>
             <ul className="mt-7 space-y-3.5">
               {POINTS.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-start gap-3 text-sm leading-relaxed text-fg-200">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brass-500/40 bg-white/70 text-accent">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand-500/40 bg-white/70 text-accent">
                     <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                   {text}

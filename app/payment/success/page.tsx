@@ -12,10 +12,10 @@ export default function PaymentSuccessPage() {
   return (
     <div className="">
       <div className="container-site flex min-h-[70vh] flex-col items-center justify-center py-32 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-sage-400/40 bg-sage-400/10">
-          <CheckCircle2 className="h-8 w-8 text-sage-600" aria-hidden="true" />
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-aqua-400/40 bg-aqua-400/10">
+          <CheckCircle2 className="h-8 w-8 text-aqua-600" aria-hidden="true" />
         </div>
-        <p className="eyebrow mt-8 text-sage-600">
+        <p className="eyebrow mt-8 text-aqua-600">
           <span className="eyebrow-rule" aria-hidden="true" />
           PAYMENT VERIFIED
         </p>
@@ -31,7 +31,7 @@ export default function PaymentSuccessPage() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors"
           >
             Back to home
           </Link>

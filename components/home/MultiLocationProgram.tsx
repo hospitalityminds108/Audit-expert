@@ -27,11 +27,11 @@ export default function MultiLocationProgram() {
     >
       {/* Ambient glow */}
       <div
-        className="pointer-events-none absolute -right-40 top-0 h-[560px] w-[560px] rounded-full bg-brass-500/[0.07] blur-[120px]"
+        className="pointer-events-none absolute -right-40 top-0 h-[560px] w-[560px] rounded-full bg-brand-500/[0.07] blur-[120px]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -left-40 bottom-0 h-[480px] w-[480px] rounded-full bg-sage-500/[0.05] blur-[120px]"
+        className="pointer-events-none absolute -left-40 bottom-0 h-[480px] w-[480px] rounded-full bg-aqua-500/[0.05] blur-[120px]"
         aria-hidden="true"
       />
 
@@ -66,7 +66,7 @@ export default function MultiLocationProgram() {
                   data-reveal
                   data-reveal-delay={String(0.2 + i * 0.05)}
                 >
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full btn-gold" aria-hidden="true" />
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full btn-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-medium text-fg-50">{feature.title}</p>
                     <p className="mt-0.5 text-[13px] leading-relaxed text-fg-300/70">
@@ -80,8 +80,7 @@ export default function MultiLocationProgram() {
             <div className="mt-10" data-reveal data-reveal-delay="0.4">
               <a
                 href="/how-it-works"
-                data-cursor-label="OPEN"
-                className="group inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-300 hover:text-accent"
+                className="group inline-flex items-center gap-3 border-b border-brand-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-300 hover:text-accent"
               >
                 See how the program runs
                 <ArrowUpRight
@@ -129,7 +128,7 @@ function DashboardMockup({
   ];
 
   return (
-    <div className="relative rounded-2xl border border-fg-50/10 glass p-6 shadow-[0_40px_80px_-40px_rgba(84,66,20,0.28)] backdrop-blur">
+    <div className="relative rounded-2xl border border-fg-50/10 glass p-6 shadow-[0_40px_80px_-40px_rgba(16,64,44,0.28)] backdrop-blur">
       {/* Window chrome */}
       <div className="flex items-center justify-between border-b border-fg-50/10 pb-4">
         <div className="flex items-center gap-2.5">
@@ -140,10 +139,10 @@ function DashboardMockup({
             Brand Program — Q3
           </p>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-sage-500/30 bg-sage-500/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-sage-600">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-aqua-500/30 bg-aqua-500/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-aqua-600">
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage-400 opacity-60" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-sage-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aqua-400 opacity-60" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-aqua-400" />
           </span>
           Live
         </span>
@@ -186,9 +185,9 @@ function DashboardMockup({
               <span
                 className={`h-1.5 w-1.5 rounded-full ${
                   row.status === "on-standard"
-                    ? "bg-sage-400"
+                    ? "bg-brand-500"
                     : row.status === "watch"
-                    ? "bg-brass-400"
+                    ? "bg-amber-500"
                     : "bg-critical/80"
                 }`}
                 aria-hidden="true"
@@ -200,9 +199,9 @@ function DashboardMockup({
                 <div
                   className={`h-full rounded-full transition-[width] duration-[1400ms] ease-premium ${
                     row.status === "on-standard"
-                      ? "bg-sage-400"
+                      ? "bg-brand-500"
                       : row.status === "watch"
-                      ? "bg-brass-400"
+                      ? "bg-amber-500"
                       : "bg-critical/80"
                   }`}
                   style={{ width: inView ? `${row.score}%` : "0%" }}
@@ -214,7 +213,7 @@ function DashboardMockup({
               <p
                 className={`w-10 text-right font-mono text-[11px] tabular-nums ${
                   row.delta.startsWith("+")
-                    ? "text-sage-600"
+                    ? "text-aqua-600"
                       : "text-critical/80"
                 }`}
               >

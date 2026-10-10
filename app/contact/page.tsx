@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageBanner from "@/components/ui/PageBanner";
 import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/forms/ContactForm";
 import { siteConfig } from "@/data/site";
@@ -28,12 +29,14 @@ export default function ContactPage() {
           working day.
         </p>
 
+        <PageBanner priority className="mt-12" images={[{ src: "/images/industries/hospitals-clinics.jpg", alt: "Hospital reception desk", caption: "Hospitals & clinics" }, { src: "/images/sections/city.jpg", alt: "City skyline at dusk", caption: "Mumbai, India" }]} />
+
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           {/* ── Contact channels ── */}
           <div className="space-y-4">
             <a
               href={`mailto:${siteConfig.email}`}
-              className="group flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5 transition-colors hover:border-brass-400/40"
+              className="group flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5 transition-colors hover:border-brand-400/40"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-fg-50/15 bg-base-950">
                 <Mail className="h-4 w-4 text-accent" aria-hidden="true" />
@@ -48,7 +51,7 @@ export default function ContactPage() {
             </a>
             <a
               href="tel:+919820000000"
-              className="group flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5 transition-colors hover:border-brass-400/40"
+              className="group flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5 transition-colors hover:border-brand-400/40"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-fg-50/15 bg-base-950">
                 <Phone className="h-4 w-4 text-accent" aria-hidden="true" />
@@ -83,7 +86,7 @@ export default function ContactPage() {
                 <span className="mt-0.5 block text-sm text-fg-50">Within 1 working day</span>
               </span>
             </div>
-            <div className="rounded-2xl border border-brass-400/30 bg-brass-400/[0.07] p-5">
+            <div className="rounded-2xl border border-brand-400/30 bg-brand-400/[0.07] p-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent/80">
                 Prefer instant booking?
               </p>

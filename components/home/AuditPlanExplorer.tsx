@@ -91,9 +91,9 @@ export default function AuditPlanExplorer() {
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
                 onKeyDown={onTabKeyDown}
-                className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-500 focus-visible:ring-offset-2 focus-visible:ring-offset-base-950 ${
+                className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-base-950 ${
                   isActive
-                    ? "btn-gold text-on-gold"
+                    ? "btn-primary text-on-brand"
                     : "border border-fg-50/15 text-fg-300 hover:border-fg-50/40 hover:text-fg-50"
                 }`}
               >
@@ -165,20 +165,20 @@ function PlanCard({
       data-plan-card
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="group relative flex flex-col rounded-2xl border border-fg-50/10 glass p-7 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-fg-50/25 hover:shadow-[0_24px_60px_-24px_rgba(84,66,20,0.25)]"
+      className="group relative flex flex-col rounded-2xl border border-fg-50/10 glass p-7 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-fg-50/25 hover:shadow-[0_24px_60px_-24px_rgba(16,64,44,0.25)]"
     >
       {/* Format badge */}
       <div className="flex items-start justify-between gap-3">
         <span
           className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
             plan.format === "mystery"
-              ? "bg-brass-400/10 text-accent"
-              : "bg-sage-500/15 text-sage-600"
+              ? "bg-brand-400/10 text-accent"
+              : "bg-aqua-500/15 text-aqua-600"
           }`}
         >
           <span
             className={`h-1.5 w-1.5 rounded-full ${
-              plan.format === "mystery" ? "bg-brass-500" : "bg-sage-500"
+              plan.format === "mystery" ? "bg-brand-600" : "bg-aqua-500"
             }`}
             aria-hidden="true"
           />
@@ -209,7 +209,7 @@ function PlanCard({
       <ul className="mt-5 space-y-2.5 border-t border-fg-50/10 pt-5">
         {plan.scope.slice(0, 4).map((item) => (
           <li key={item} className="flex items-start gap-2.5 text-[13px] text-fg-300/85">
-            <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-sage-600" strokeWidth={2} />
+            <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-aqua-600" strokeWidth={2} />
             {item}
           </li>
         ))}

@@ -21,7 +21,7 @@ export default function Footer() {
             className="max-w-4xl text-balance text-display-md font-semibold text-fg-100 md:text-display-lg"
             data-reveal
           >
-            SEE THE EXPERIENCE. <span className="text-gradient-brass">IMPROVE THE STANDARD.</span>
+            SEE THE EXPERIENCE. <span className="text-gradient-brand">IMPROVE THE STANDARD.</span>
           </h2>
           <p className="max-w-xl text-lead text-fg-400" data-reveal>
             One location or 1,000 — start by telling us what you want to measure.
@@ -29,14 +29,14 @@ export default function Footer() {
           <div className="flex flex-wrap gap-4" data-reveal>
             <Link
               href="/book-an-audit"
-              className="group inline-flex items-center gap-2 rounded-full btn-gold px-8 py-4 text-sm font-semibold tracking-wide text-on-gold transition-all duration-500"
+              className="group inline-flex items-center gap-2 rounded-full btn-primary px-8 py-4 text-sm font-semibold tracking-wide text-on-brand transition-all duration-500"
             >
               Book an Audit
               <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link
               href="/join-as-auditor"
-              className="inline-flex items-center gap-2 rounded-full border border-fg-100/20 px-8 py-4 text-sm font-semibold tracking-wide text-fg-100 transition-all duration-500 hover:border-brass-300/60 hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-fg-100/20 px-8 py-4 text-sm font-semibold tracking-wide text-fg-100 transition-all duration-500 hover:border-brand-300/60 hover:text-accent"
             >
               Join the Auditor Network
               <ArrowUpRight size={16} />
@@ -67,7 +67,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-fg-100/15 text-fg-400 transition-all duration-300 hover:border-brass-300/60 hover:text-accent"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-fg-100/15 text-fg-400 transition-all duration-300 hover:border-brand-300/60 hover:text-accent"
                 >
                   <Icon size={16} />
                 </a>

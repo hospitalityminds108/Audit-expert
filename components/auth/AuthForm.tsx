@@ -167,7 +167,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
                 <li
                   key={rule.label}
                   className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors duration-300 ${
-                    ok ? "border-sage-500/40 bg-sage-500/10 text-sage-600" : "border-fg-50/15 text-fg-400"
+                    ok ? "border-aqua-500/40 bg-aqua-500/10 text-aqua-600" : "border-fg-50/15 text-fg-400"
                   }`}
                 >
                   <Check className={`h-3 w-3 transition-opacity ${ok ? "opacity-100" : "opacity-30"}`} aria-hidden="true" />
@@ -187,7 +187,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
               checked={agree}
               onChange={(e) => { setAgree(e.target.checked); clear("agree"); }}
               aria-invalid={!!errors.agree}
-              className="mt-1 h-4 w-4 shrink-0 accent-brass-500"
+              className="mt-1 h-4 w-4 shrink-0 accent-brand-500"
             />
             <span>
               I agree to the{" "}
@@ -209,7 +209,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
       <button
         type="submit"
         disabled={submitting}
-        className="btn-gold flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold tracking-wide"
+        className="btn-primary flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold tracking-wide"
       >
         {submitting ? (
           <>

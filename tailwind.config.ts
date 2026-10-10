@@ -10,46 +10,48 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Canvas / surface scale — base-950 is the page canvas
+        // Canvas / surface scale — base-950 is the page canvas (white → mint)
         base: {
-          950: "#FBF8F1",
-          900: "#F5F0E4",
-          800: "#ECE5D4",
-          700: "#DFD6C1",
-          600: "#CFC4AB",
-          500: "#B9AD92",
-          400: "#A39780",
-          300: "#8E836E"
+          950: "#FFFFFF",
+          900: "#F5FBF8",
+          800: "#E8F5EE",
+          700: "#D5EBDF",
+          600: "#B9DCCA",
+          500: "#9AC8B2",
+          400: "#7CB39A",
+          300: "#5F987F"
         },
-        // Foreground scale — fg-50 is the strongest (headings); never pure black
+        // Foreground scale — deep forest, never pure black; fg-50 is strongest
         fg: {
-          50: "#2B2620",
-          100: "#342E27",
-          200: "#3F382F",
-          300: "#4A4338",
-          400: "#6B6459",
-          500: "#7A7266"
+          50: "#0F2A1F",
+          100: "#143326",
+          200: "#1F3D30",
+          300: "#2F4D40",
+          400: "#567265",
+          500: "#6A8478"
         },
-        // Gold used for text and icons on the light canvas
-        accent: "#8A6800",
-        // Text placed on gold or other filled chips
-        "on-gold": "#2A2205",
-        brass: {
-          100: "#FFF8DC",
-          200: "#FFF3BE",
-          300: "#F6E7A6",
-          400: "#EFBF04",
-          500: "#C99E00",
-          600: "#9F7D00",
-          700: "#725A00"
+        // Brand green
+        brand: {
+          100: "#E4F8ED",
+          200: "#C6F0DA",
+          300: "#8FE0B8",
+          400: "#3CCB8E",
+          500: "#12A46B",
+          600: "#0B8455",
+          700: "#076642"
         },
-        sage: {
-          100: "#E6F4EE",
-          300: "#CDE8DC",
-          400: "#7FBE9F",
-          500: "#16845F",
-          600: "#0F684B",
-          700: "#0B4F39"
+        // Green used for text and icons on the white canvas
+        accent: "#0A7A4E",
+        // Text placed on solid brand fills
+        "on-brand": "#FFFFFF",
+        // Secondary: teal, for the second audit format and supporting states
+        aqua: {
+          100: "#E0F5F4",
+          300: "#B5E6E3",
+          400: "#5CC4BF",
+          500: "#14958F",
+          600: "#0E7772",
+          700: "#0A5C58"
         },
         critical: "#C73B3B"
       },

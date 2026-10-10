@@ -224,7 +224,7 @@ export default function IndustryPage({ params }: PageProps) {
               <ul className="space-y-3">
                 {industry.whatWeInspect.map((item) => (
                   <li key={item} className="flex items-start gap-3 border-b border-fg-50/10 pb-3">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-sage-600" strokeWidth={2} />
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-aqua-600" strokeWidth={2} />
                     <span className="text-[14px] leading-relaxed text-fg-300/85">{item}</span>
                   </li>
                 ))}
@@ -234,7 +234,7 @@ export default function IndustryPage({ params }: PageProps) {
 
           {/* ── Evidence approach ───────────────────────────── */}
           <section id="evidence" className="scroll-mt-32 pt-20 md:pt-28">
-            <div className="rounded-2xl border border-brass-400/20 bg-gradient-to-br from-brass-500/[0.07] to-transparent p-8 md:p-10">
+            <div className="rounded-2xl border border-brand-400/20 bg-gradient-to-br from-brand-500/[0.07] to-transparent p-8 md:p-10">
               <p className="eyebrow text-accent">
                 <span className="eyebrow-rule" aria-hidden="true" />
                 EVIDENCE APPROACH
@@ -310,9 +310,9 @@ export default function IndustryPage({ params }: PageProps) {
                         <div
                           className={`h-full rounded-full ${
                             row.score >= 85
-                              ? "bg-sage-400"
+                              ? "bg-brand-500"
                               : row.score >= 70
-                              ? "bg-brass-400"
+                              ? "bg-amber-500"
                               : "bg-critical/80"
                           }`}
                           style={{ width: `${row.score}%` }}
@@ -345,7 +345,7 @@ export default function IndustryPage({ params }: PageProps) {
               </div>
               <Link
                 href={`/audit-plans?category=${industry.slug}`}
-                className="group inline-flex items-center gap-2.5 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-300 hover:text-accent"
+                className="group inline-flex items-center gap-2.5 border-b border-brand-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-300 hover:text-accent"
               >
                 View all {industry.shortTitle} plans
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} />
@@ -357,14 +357,13 @@ export default function IndustryPage({ params }: PageProps) {
                 <Link
                   key={plan.slug}
                   href={`/audit-plans/${plan.slug}`}
-                  data-cursor-label="OPEN"
-                  className="group flex flex-col rounded-2xl border border-fg-50/10 glass p-7 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-brass-400/30"
+                  className="group flex flex-col rounded-2xl border border-fg-50/10 glass p-7 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-brand-400/30"
                 >
                   <span
                     className={`inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
                       plan.format === "mystery"
-                        ? "bg-brass-500/15 text-accent"
-                        : "bg-sage-500/15 text-sage-600"
+                        ? "bg-brand-500/15 text-accent"
+                        : "bg-aqua-500/15 text-aqua-600"
                     }`}
                   >
                     {plan.format === "mystery" ? "Mystery" : "SOP / Revealed"}
@@ -416,14 +415,14 @@ export default function IndustryPage({ params }: PageProps) {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href={`/book-an-audit?industry=${industry.slug}`}
-                className="group inline-flex items-center gap-3 rounded-full btn-gold px-7 py-3.5 text-sm font-semibold text-on-gold transition-colors duration-300"
+                className="group inline-flex items-center gap-3 rounded-full btn-primary px-7 py-3.5 text-sm font-semibold text-on-brand transition-colors duration-300"
               >
                 Book an audit
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
               </Link>
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-3 rounded-full border border-fg-50/20 px-7 py-3.5 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-400/50 hover:text-accent"
+                className="group inline-flex items-center gap-3 rounded-full border border-fg-50/20 px-7 py-3.5 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-400/50 hover:text-accent"
               >
                 Ask a question
               </Link>

@@ -32,7 +32,6 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
   // Lock page scroll, trap focus, Escape to close, restore focus on exit
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
-    window.__lenis?.stop();
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
@@ -61,7 +60,6 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
-      window.__lenis?.start();
       previous?.focus?.();
     };
   }, [onClose]);
@@ -97,7 +95,6 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
         role="dialog"
         aria-modal="true"
         aria-labelledby="plan-modal-title"
-        data-lenis-prevent
         className="glass-strong relative flex max-h-[92svh] w-full max-w-4xl flex-col overflow-hidden rounded-t-3xl border border-fg-50/10 sm:rounded-3xl"
         style={{ animation: "dialog-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both" }}
       >
@@ -105,13 +102,13 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
         <div className="flex items-start justify-between gap-4 border-b border-fg-50/10 px-6 py-5 sm:px-8">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-brass-500/40 bg-brass-400/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-500/40 bg-brand-400/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
                 <Check className="h-3 w-3" aria-hidden="true" />
                 Plan selected
               </span>
               <span
                 className={`rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
-                  isMystery ? "bg-brass-400/15 text-accent" : "bg-sage-500/15 text-sage-600"
+                  isMystery ? "bg-brand-400/15 text-accent" : "bg-aqua-500/15 text-aqua-600"
                 }`}
               >
                 {isMystery ? "Mystery" : "SOP / Revealed"}
@@ -130,7 +127,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fg-50/15 bg-white/70 text-fg-200 transition-colors hover:border-brass-500/60 hover:text-accent"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fg-50/15 bg-white/70 text-fg-200 transition-colors hover:border-brand-500/60 hover:text-accent"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -144,7 +141,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
             <ul className="mt-4 space-y-2.5">
               {plan.scope.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-fg-200">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-sage-600" strokeWidth={2} aria-hidden="true" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" strokeWidth={2} aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -154,7 +151,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
             <ul className="mt-4 space-y-2.5">
               {plan.deliverables.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-fg-200">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brass-500" aria-hidden="true" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -181,7 +178,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
                   onClick={() => setLocations((l) => Math.max(1, l - 1))}
                   disabled={locations <= 1}
                   aria-label="Remove a location"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-fg-50/15 bg-white text-fg-200 transition-colors hover:border-brass-500/60 disabled:opacity-40"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-fg-50/15 bg-white text-fg-200 transition-colors hover:border-brand-500/60 disabled:opacity-40"
                 >
                   <Minus className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -193,7 +190,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
                   onClick={() => setLocations((l) => Math.min(MAX_LOCATIONS, l + 1))}
                   disabled={locations >= MAX_LOCATIONS}
                   aria-label="Add a location"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-fg-50/15 bg-white text-fg-200 transition-colors hover:border-brass-500/60 disabled:opacity-40"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-fg-50/15 bg-white text-fg-200 transition-colors hover:border-brand-500/60 disabled:opacity-40"
                 >
                   <Plus className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -212,7 +209,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
                       unavailable
                         ? "cursor-not-allowed border-fg-50/10 opacity-50"
                         : on
-                          ? "cursor-pointer border-brass-500/60 bg-brass-400/15"
+                          ? "cursor-pointer border-brand-500/60 bg-brand-400/15"
                           : "cursor-pointer border-fg-50/10 bg-white/50 hover:border-fg-50/25"
                     }`}
                   >
@@ -222,7 +219,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
                         checked={on && !unavailable}
                         disabled={unavailable}
                         onChange={() => toggle(a.id)}
-                        className="mt-0.5 h-4 w-4 shrink-0 accent-brass-500"
+                        className="mt-0.5 h-4 w-4 shrink-0 accent-brand-500"
                       />
                       <span>
                         <span className="block text-sm font-medium text-fg-50">{a.label}</span>
@@ -268,7 +265,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
         {/* Footer actions */}
         <div className="flex flex-col gap-3 border-t border-fg-50/10 bg-white/50 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="flex items-start gap-2 text-xs leading-relaxed text-fg-400 sm:max-w-xs">
-            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-sage-600" aria-hidden="true" />
+            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" aria-hidden="true" />
             Final price is confirmed on our server at checkout. Coupons apply there.
           </p>
           <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
@@ -283,7 +280,7 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
             <Link
               href={checkoutHref}
               onClick={onClose}
-              className="btn-gold inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
             >
               Continue to checkout
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

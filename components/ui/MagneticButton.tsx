@@ -28,11 +28,10 @@ interface Props {
   type?: "button" | "submit";
   disabled?: boolean;
   ariaLabel?: string;
-  "data-cursor-label"?: string;
 }
 
 const styles = {
-  primary: "btn-gold",
+  primary: "btn-primary",
   outline: "btn-ghost",
   ghost: "text-fg-200 hover:text-accent underline-offset-4 hover:underline"
 } as const;
@@ -57,8 +56,7 @@ const MagneticButton = forwardRef<HTMLDivElement, Props>(function MagneticButton
     onClick,
     type = "button",
     disabled,
-    ariaLabel,
-    "data-cursor-label": cursorLabel
+    ariaLabel
   },
   ref
 ) {
@@ -89,7 +87,6 @@ const MagneticButton = forwardRef<HTMLDivElement, Props>(function MagneticButton
           onClick={onClick}
           className={cls}
           data-interactive
-          data-cursor-label={cursorLabel}
           aria-label={ariaLabel}
         >
           {content}
@@ -102,7 +99,6 @@ const MagneticButton = forwardRef<HTMLDivElement, Props>(function MagneticButton
           disabled={disabled}
           aria-label={ariaLabel}
           data-interactive
-          data-cursor-label={cursorLabel}
         >
           {content}
         </button>

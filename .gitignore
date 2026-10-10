@@ -17,3 +17,6 @@ dist
 next-env.d.ts
 .vercel
 coverage
+
+# local design previews
+.preview

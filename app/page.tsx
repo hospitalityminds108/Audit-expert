@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
+import IndustryMarquee from "@/components/home/IndustryMarquee";
+import Testimonials from "@/components/home/Testimonials";
 import TwoWays from "@/components/home/TwoWays";
-import IndustriesScroller from "@/components/home/IndustriesScroller";
+import IndustriesBento from "@/components/home/IndustriesBento";
 import AuditPlanExplorer from "@/components/home/AuditPlanExplorer";
 import MultiLocationProgram from "@/components/home/MultiLocationProgram";
 import MethodologyTimeline from "@/components/home/MethodologyTimeline";
@@ -9,7 +11,6 @@ import WhatTheBrandGets from "@/components/home/WhatTheBrandGets";
 import FuturePlatform from "@/components/home/FuturePlatform";
 import JoinAsAuditor from "@/components/home/JoinAsAuditor";
 import HomeFAQ from "@/components/home/HomeFAQ";
-import HomeCTA from "@/components/home/HomeCTA";
 import { siteConfig } from "@/data/site";
 import { generalFaqs } from "@/data/faqs";
 
@@ -79,16 +80,17 @@ export default function HomePage() {
         }}
       />
       <Hero />
+      <IndustryMarquee />
       <TwoWays />
-      <IndustriesScroller />
+      <IndustriesBento />
       <AuditPlanExplorer />
       <MultiLocationProgram />
       <MethodologyTimeline />
       <WhatTheBrandGets />
+      <Testimonials />
       <FuturePlatform />
       <JoinAsAuditor />
       <HomeFAQ />
-      <HomeCTA />
     </>
   );
 }

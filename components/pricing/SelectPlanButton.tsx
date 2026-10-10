@@ -7,7 +7,7 @@ import { usePlanSelect } from "./PlanSelectProvider";
 interface Props {
   slug: string;
   children: ReactNode;
-  variant?: "gold" | "ghost";
+  variant?: "primary" | "ghost";
   size?: "md" | "lg";
   className?: string;
 }
@@ -18,7 +18,7 @@ const sizes = {
 } as const;
 
 /** Opens the plan popup for `slug`. */
-export default function SelectPlanButton({ slug, children, variant = "gold", size = "md", className = "" }: Props) {
+export default function SelectPlanButton({ slug, children, variant = "primary", size = "md", className = "" }: Props) {
   const { openPlan } = usePlanSelect();
   return (
     <button
@@ -26,7 +26,7 @@ export default function SelectPlanButton({ slug, children, variant = "gold", siz
       onClick={() => openPlan(slug)}
       aria-haspopup="dialog"
       className={`group inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide ${
-        variant === "gold" ? "btn-gold" : "btn-ghost"
+        variant === "primary" ? "btn-primary" : "btn-ghost"
       } ${sizes[size]} ${className}`}
     >
       {children}

@@ -31,7 +31,7 @@ export default function PaymentFailedPage() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/checkout"
-            className="inline-flex items-center justify-center gap-2 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors"
           >
             Retry payment
           </Link>

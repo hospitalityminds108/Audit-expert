@@ -53,7 +53,7 @@ export default async function AccountPage() {
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href="/audit-plans"
-            className="btn-gold inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
+            className="btn-primary inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
           >
             Book an audit
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -87,7 +87,7 @@ export default async function AccountPage() {
               <li key={b.id}>
                 <Link
                   href={`/booking/confirmation/${b.id}`}
-                  className="glass group block rounded-2xl border border-fg-50/10 p-6 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-brass-500/50"
+                  className="glass group block rounded-2xl border border-fg-50/10 p-6 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-brand-500/50"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>

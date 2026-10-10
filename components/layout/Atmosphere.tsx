@@ -6,8 +6,8 @@
 export default function Atmosphere() {
   return (
     <div className="atmosphere" aria-hidden="true">
-      <div className="atmosphere-orb atmosphere-orb--gold" />
-      <div className="atmosphere-orb atmosphere-orb--sage" />
+      <div className="atmosphere-orb atmosphere-orb--brand" />
+      <div className="atmosphere-orb atmosphere-orb--aqua" />
       <div className="atmosphere-grain" />
     </div>
   );

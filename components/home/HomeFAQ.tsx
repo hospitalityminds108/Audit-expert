@@ -42,8 +42,7 @@ export default function HomeFAQ() {
             <div className="mt-8" data-reveal data-reveal-delay="0.24">
               <Link
                 href="/contact"
-                data-cursor-label="ASK"
-                className="group inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-400 hover:text-accent"
+                className="group inline-flex items-center gap-3 border-b border-brand-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-400 hover:text-accent"
               >
                 Ask us something else
                 <ArrowUpRight

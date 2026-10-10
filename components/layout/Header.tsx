@@ -94,7 +94,7 @@ export default function Header() {
 
   const linkCls = (active: boolean) =>
     `rounded-full px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 ${
-      active ? "bg-brass-400/15 text-accent" : "text-fg-200 hover:text-accent"
+      active ? "bg-brand-400/15 text-accent" : "text-fg-200 hover:text-accent"
     }`;
 
   return (
@@ -102,8 +102,8 @@ export default function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-[80] border-b transition-all duration-500 ease-premium ${
           scrolled || menu.open
-            ? "border-fg-50/10 bg-white/75 shadow-[0_12px_40px_-24px_rgba(84,66,20,0.45)] backdrop-blur-xl"
-            : "border-transparent bg-white/40 backdrop-blur-md"
+            ? "border-fg-50/10 bg-white/90 shadow-[0_12px_40px_-24px_rgba(16,64,44,0.45)] backdrop-blur-xl"
+            : "border-transparent bg-white/85 backdrop-blur-xl"
         }`}
         onMouseLeave={() => setMenu(CLOSED)}
       >
@@ -159,9 +159,9 @@ export default function Header() {
               {user ? (
                 <Link
                   href="/account"
-                  className="inline-flex items-center gap-2 rounded-full border border-fg-50/15 bg-white/70 py-1.5 pl-1.5 pr-4 text-[13px] font-medium text-fg-100 transition-colors duration-300 hover:border-brass-500/60 hover:text-accent"
+                  className="inline-flex items-center gap-2 rounded-full border border-fg-50/15 bg-white/70 py-1.5 pl-1.5 pr-4 text-[13px] font-medium text-fg-100 transition-colors duration-300 hover:border-brand-500/60 hover:text-accent"
                 >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brass-300 to-brass-500 font-mono text-[11px] font-semibold uppercase text-on-gold">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 font-mono text-[11px] font-semibold uppercase text-on-brand">
                     {user.name.trim().charAt(0) || <UserRound size={13} />}
                   </span>
                   {user.name.split(" ")[0]}
@@ -178,7 +178,7 @@ export default function Header() {
 
             <Link
               href={navigation.cta.href}
-              className="btn-gold group hidden items-center gap-2 rounded-full px-6 py-2.5 text-[13px] font-semibold tracking-wide sm:inline-flex"
+              className="btn-primary group hidden items-center gap-2 rounded-full px-6 py-2.5 text-[13px] font-semibold tracking-wide sm:inline-flex"
             >
               {navigation.cta.label}
               <ArrowUpRight
@@ -192,7 +192,7 @@ export default function Header() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               aria-expanded={mobileOpen}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-fg-50/20 bg-white/60 text-fg-50 transition-colors hover:border-brass-500 lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-fg-50/20 bg-white/60 text-fg-50 transition-colors hover:border-brand-500 lg:hidden"
             >
               <span className="flex flex-col gap-[5px]" aria-hidden="true">
                 <span className="block h-[1.5px] w-5 bg-current" />
@@ -219,7 +219,7 @@ export default function Header() {
                       <li key={ind.slug} data-mega-item>
                         <Link
                           href={`/industries/${ind.slug}`}
-                          className="group flex items-start gap-4 rounded-xl px-4 py-3.5 transition-colors duration-300 hover:bg-brass-400/10"
+                          className="group flex items-start gap-4 rounded-xl px-4 py-3.5 transition-colors duration-300 hover:bg-brand-400/10"
                         >
                           <span className="font-mono text-[11px] font-medium text-accent">{ind.number}</span>
                           <span>
@@ -275,7 +275,7 @@ export default function Header() {
                           <Link
                             href={`/audit-plans?category=${cat.id}`}
                             onClick={() => setMenu(CLOSED)}
-                            className="group flex items-center justify-between rounded-xl px-4 py-3.5 transition-colors duration-300 hover:bg-brass-400/10"
+                            className="group flex items-center justify-between rounded-xl px-4 py-3.5 transition-colors duration-300 hover:bg-brand-400/10"
                           >
                             <span className="font-display text-lg font-medium text-fg-50 transition-colors group-hover:text-accent">
                               {cat.label}

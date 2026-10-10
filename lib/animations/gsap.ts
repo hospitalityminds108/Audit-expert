@@ -270,45 +270,6 @@ export function useSplitReveal<T extends HTMLElement = HTMLElement>(opts?: {
 }
 
 /* ─────────────────────────────────────────────
-   Horizontal scroll section (GSAP-pinned)
-   ───────────────────────────────────────────── */
-export function useHorizontalScroll<T extends HTMLElement = HTMLElement>() {
-  const containerRef = useRef<T>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const reduced = usePrefersReducedMotion();
-  const isMobile = useIsMobile();
-
-  useGSAP(
-    () => {
-      const track = trackRef.current;
-      const viewport = track?.parentElement;
-      if (!track || !viewport || reduced || isMobile) return;
-
-      const getDistance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-
-      // Pin only the card strip (not the section header) and hold it centred in
-      // the viewport, so the cards are fully visible on short laptop screens too.
-      gsap.to(track, {
-        x: () => -getDistance(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: viewport,
-          start: () => `top ${Math.max(88, Math.round((window.innerHeight - viewport.offsetHeight) / 2))}px`,
-          end: () => `+=${getDistance()}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          anticipatePin: 1
-        }
-      });
-    },
-    { scope: containerRef, dependencies: [reduced, isMobile] }
-  );
-
-  return { containerRef, trackRef };
-}
-
-/* ─────────────────────────────────────────────
    Refresh ScrollTrigger after route change
    ───────────────────────────────────────────── */
 export function useScrollTriggerRefresh() {

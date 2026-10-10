@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SelectPlanButton from "@/components/pricing/SelectPlanButton";
+import PageBanner from "@/components/ui/PageBanner";
+import { getIndustryBySlug } from "@/data/industries";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
@@ -44,6 +46,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 export default function AuditPlanPage({ params }: PageProps) {
   const plan = getPlanBySlug(params.slug);
   if (!plan) notFound();
+  const planIndustry = getIndustryBySlug(plan.category);
 
   const relatedPlans = getPlansByCategory(plan.category)
     .filter((p) => p.slug !== plan.slug)
@@ -104,7 +107,7 @@ export default function AuditPlanPage({ params }: PageProps) {
           <div
             aria-hidden="true"
             className={`pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full blur-3xl ${
-              isMystery ? "bg-brass-500/10" : "bg-sage-500/10"
+              isMystery ? "bg-brand-500/10" : "bg-aqua-500/10"
             }`}
           />
           <div className="container-site relative">
@@ -126,8 +129,8 @@ export default function AuditPlanPage({ params }: PageProps) {
               <span
                 className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] ${
                   isMystery
-                    ? "border-brass-400/40 bg-brass-400/10 text-accent"
-                    : "border-sage-400/40 bg-sage-400/10 text-sage-600"
+                    ? "border-brand-400/40 bg-brand-400/10 text-accent"
+                    : "border-aqua-400/40 bg-aqua-400/10 text-aqua-600"
                 }`}
               >
                 {isMystery ? "Mystery Format" : "SOP Format"}
@@ -171,8 +174,22 @@ export default function AuditPlanPage({ params }: PageProps) {
           </div>
         </header>
 
+        {planIndustry && (
+          <div className="container-site pb-12">
+            <PageBanner
+              priority
+              images={[
+                { src: planIndustry.image, alt: planIndustry.imageAlt, caption: plan.categoryLabel },
+                plan.format === "mystery"
+                  ? { src: "/images/sections/mystery.jpg", alt: "A mystery auditor arriving as a guest", caption: "Mystery audit" }
+                  : { src: "/images/sections/sop.jpg", alt: "A revealed SOP audit with the operations team", caption: "SOP audit" },
+              ]}
+            />
+          </div>
+        )}
+
         {/* ── Facts strip ──────────────────────────────────────── */}
-        <section aria-label="Plan facts" className="border-b border-fg-50/10 bg-fg-50/5">
+        <section aria-label="Plan facts" className="border-y border-fg-50/10 bg-brand-100/40">
           <div className="container-site grid grid-cols-2 gap-x-8 gap-y-6 py-10 md:grid-cols-4">
             {[
               { label: "Format", value: isMystery ? "Mystery" : "SOP / Revealed" },
@@ -208,7 +225,7 @@ export default function AuditPlanPage({ params }: PageProps) {
             </div>
             <aside className="rounded-2xl border border-fg-50/10 glass p-8">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brass-500/10 text-accent">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-500/10 text-accent">
                   <Users className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="font-display text-xl text-fg-50">Who it&rsquo;s for</h3>
@@ -246,7 +263,7 @@ export default function AuditPlanPage({ params }: PageProps) {
               {plan.scope.map((item, i) => (
                 <li
                   key={item}
-                  className="flex items-start gap-4 rounded-xl border border-fg-50/10 glass p-5 transition-colors hover:border-brass-400/40"
+                  className="flex items-start gap-4 rounded-xl border border-fg-50/10 glass p-5 transition-colors hover:border-brand-400/40"
                 >
                   <span className="font-mono text-[11px] text-accent">
                     {String(i + 1).padStart(2, "0")}
@@ -289,9 +306,9 @@ export default function AuditPlanPage({ params }: PageProps) {
                 <li key={step.phase} className="relative pb-10 pl-10 last:pb-0">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border-brass-400/50 btn-gold"
+                    className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border-brand-400/50 btn-primary"
                   >
-                    <span className="h-[6px] w-[6px] rounded-full bg-brass-600" />
+                    <span className="h-[6px] w-[6px] rounded-full bg-brand-600" />
                   </span>
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                     Phase {String(i + 1).padStart(2, "0")}
@@ -330,7 +347,7 @@ export default function AuditPlanPage({ params }: PageProps) {
             </div>
             <div className="rounded-2xl bg-base-950 p-8 text-fg-50 md:p-10">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brass-400/15 text-accent">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-400/15 text-accent">
                   <FileCheck2 className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="font-display text-2xl">What you receive</h3>
@@ -358,7 +375,7 @@ export default function AuditPlanPage({ params }: PageProps) {
             <div className="relative overflow-hidden rounded-3xl px-8 py-14 md:px-16 md:py-20">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brass-500/15 blur-3xl"
+                className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-500/15 blur-3xl"
               />
               <div className="relative max-w-2xl">
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
@@ -414,14 +431,14 @@ export default function AuditPlanPage({ params }: PageProps) {
                   <Link
                     key={p.slug}
                     href={`/audit-plans/${p.slug}`}
-                    className="group flex flex-col rounded-2xl border border-fg-50/10 glass p-7 transition-all hover:border-brass-400/50"
+                    className="group flex flex-col rounded-2xl border border-fg-50/10 glass p-7 transition-all hover:border-brand-400/50"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span
                         className={`rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${
                           p.format === "mystery"
-                            ? "border-brass-400/30 bg-brass-500/10 text-accent"
-                            : "border-sage-600/30 bg-sage-500/10 text-sage-600"
+                            ? "border-brand-400/30 bg-brand-500/10 text-accent"
+                            : "border-aqua-600/30 bg-aqua-500/10 text-aqua-600"
                         }`}
                       >
                         {p.format === "mystery" ? "Mystery" : "SOP"}

@@ -38,7 +38,7 @@ export default function IndustriesIndexPage() {
         {/* Page header */}
         <header className="relative overflow-hidden pb-16 pt-40 md:pb-24 md:pt-52">
           <div
-            className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-brass-500/[0.07] blur-[140px]"
+            className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-brand-500/[0.07] blur-[140px]"
             aria-hidden="true"
           />
           <div className="container-site relative">
@@ -81,8 +81,7 @@ export default function IndustriesIndexPage() {
                 <Link
                   key={industry.slug}
                   href={`/industries/${industry.slug}`}
-                  data-cursor-label="VIEW"
-                  className="group relative flex min-h-[320px] flex-col justify-end overflow-hidden rounded-2xl border border-fg-50/10 bg-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2 focus-visible:ring-offset-base-950"
+                  className="group relative flex min-h-[320px] flex-col justify-end overflow-hidden rounded-2xl border border-fg-50/10 bg-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-base-950"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -151,7 +150,7 @@ export default function IndustriesIndexPage() {
               </div>
               <Link
                 href="/contact"
-                className="group inline-flex shrink-0 items-center gap-3 rounded-full btn-gold px-7 py-3.5 text-sm font-semibold text-on-gold transition-colors duration-300"
+                className="group inline-flex shrink-0 items-center gap-3 rounded-full btn-primary px-7 py-3.5 text-sm font-semibold text-on-brand transition-colors duration-300"
               >
                 Talk to us
                 <ArrowUpRight

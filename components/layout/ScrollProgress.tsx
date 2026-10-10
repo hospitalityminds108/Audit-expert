@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/** ScrollProgress — hairline gold bar tracking how far down the page you are. */
+/** ScrollProgress — hairline green bar tracking how far down the page you are. */
 export default function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +32,7 @@ export default function ScrollProgress() {
     <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[85] h-[2px]">
       <div
         ref={barRef}
-        className="h-full origin-left bg-gradient-to-r from-brass-600 via-brass-400 to-brass-200"
+        className="h-full origin-left bg-gradient-to-r from-brand-600 via-brand-400 to-brand-200"
         style={{ transform: "scaleX(0)" }}
       />
     </div>

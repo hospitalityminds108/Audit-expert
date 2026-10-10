@@ -60,7 +60,7 @@ export default async function BookingConfirmationPage({
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/checkout"
-              className="inline-flex items-center justify-center gap-2 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors"
             >
               Back to checkout
             </Link>
@@ -86,7 +86,7 @@ export default async function BookingConfirmationPage({
           <div className="flex justify-center">
             <ConfirmationCheck size={104} />
           </div>
-          <p className="eyebrow mt-8 text-sage-600">
+          <p className="eyebrow mt-8 text-aqua-600">
             <span className="eyebrow-rule" aria-hidden="true" />
             BOOKING CONFIRMED
           </p>
@@ -99,7 +99,7 @@ export default async function BookingConfirmationPage({
             <span className="text-fg-100">{customer.email}</span>. Keep your
             booking reference handy for all communication.
           </p>
-          <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-2xl border border-brass-400/30 bg-brass-400/10 px-8 py-5">
+          <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-2xl border border-brand-400/30 bg-brand-400/10 px-8 py-5">
             <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent/80">
               Booking reference
             </span>
@@ -175,7 +175,7 @@ export default async function BookingConfirmationPage({
                   <dt className="text-fg-300/80">
                     Discount{booking.couponCode ? ` (${booking.couponCode})` : ""}
                   </dt>
-                  <dd className="font-mono text-xs text-sage-600">
+                  <dd className="font-mono text-xs text-aqua-600">
                     −{formatInr(pricing.discount)}
                   </dd>
                 </div>
@@ -204,7 +204,7 @@ export default async function BookingConfirmationPage({
                 <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-fg-300/60">
                   Status
                 </dt>
-                <dd className="mt-1 inline-flex items-center gap-2 text-sm text-sage-600">
+                <dd className="mt-1 inline-flex items-center gap-2 text-sm text-aqua-600">
                   <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                   Verified · {booking.payment.provider}
                 </dd>

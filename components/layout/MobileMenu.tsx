@@ -38,7 +38,6 @@ export default function MobileMenu({ open, onClose }: Props) {
     }
 
     if (open) {
-      window.__lenis?.stop();
       document.body.style.overflow = "hidden";
       const items = panel.querySelectorAll("[data-mobile-item]");
       const tl = gsap.timeline();
@@ -57,7 +56,6 @@ export default function MobileMenu({ open, onClose }: Props) {
         .to(scrim, { opacity: 0, duration: 0.35, ease: "power2.in" }, 0.1)
         .set([panel, scrim], { pointerEvents: "none" })
         .add(() => {
-          window.__lenis?.start();
           document.body.style.overflow = "";
         });
     }
@@ -89,7 +87,6 @@ export default function MobileMenu({ open, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
-        data-lenis-prevent
         className="glass-strong absolute inset-y-0 right-0 flex w-full max-w-md translate-x-full flex-col overflow-y-auto border-l border-fg-50/10"
         style={{ pointerEvents: "none" }}
       >
@@ -99,7 +96,7 @@ export default function MobileMenu({ open, onClose }: Props) {
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-fg-50/15 bg-white/70 text-fg-100 transition-colors hover:border-brass-500/60"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-fg-50/15 bg-white/70 text-fg-100 transition-colors hover:border-brand-500/60"
           >
             <X size={20} aria-hidden="true" />
           </button>
@@ -164,7 +161,7 @@ export default function MobileMenu({ open, onClose }: Props) {
           <div data-mobile-item className="mt-auto space-y-3 pb-10 pt-10">
             <Link
               href="/book-an-audit"
-              className="btn-gold flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold tracking-wide"
+              className="btn-primary flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold tracking-wide"
             >
               {navigation.cta.label} <ArrowUpRight size={16} aria-hidden="true" />
             </Link>

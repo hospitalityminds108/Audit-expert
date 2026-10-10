@@ -109,8 +109,8 @@ export default function AuditorApplicationForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-sage-600/30 bg-sage-500/[0.08] p-10 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-600/15 text-sage-600">
+      <div className="rounded-2xl border border-aqua-600/30 bg-aqua-500/[0.08] p-10 text-center">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-aqua-600/15 text-aqua-600">
           <Check className="h-7 w-7" aria-hidden="true" />
         </span>
         <h3 className="mt-6 font-display text-2xl text-fg-50">Application received</h3>
@@ -127,7 +127,7 @@ export default function AuditorApplicationForm() {
   }
 
   const inputCls = (k: string) =>
-    `w-full rounded-xl border bg-white/70 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 focus:ring-2 focus:ring-brass-600/15 ${
+    `w-full rounded-xl border bg-white/70 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 focus:ring-2 focus:ring-brand-600/15 ${
       errors[k] ? "border-red-500/70" : "border-fg-50/15"
     }`;
 
@@ -286,7 +286,7 @@ export default function AuditorApplicationForm() {
               key={opt.value}
               className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition-colors ${
                 form.availability === opt.value
-                  ? "border-brass-400 bg-brass-500/10 text-fg-50"
+                  ? "border-brand-400 bg-brand-500/10 text-fg-50"
                   : "border-fg-50/15 bg-white/70 text-fg-300 hover:border-fg-50/30"
               }`}
             >
@@ -296,7 +296,7 @@ export default function AuditorApplicationForm() {
                 value={opt.value}
                 checked={form.availability === opt.value}
                 onChange={set("availability")}
-                className="accent-brass-600"
+                className="accent-brand-600"
               />
               {opt.label}
             </label>
@@ -329,7 +329,7 @@ export default function AuditorApplicationForm() {
             type="checkbox"
             checked={form.agree}
             onChange={set("agree")}
-            className="mt-0.5 h-4 w-4 accent-brass-600"
+            className="mt-0.5 h-4 w-4 accent-brand-600"
             aria-invalid={Boolean(errors.agree)}
           />
           <span>
@@ -344,7 +344,7 @@ export default function AuditorApplicationForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group inline-flex w-full items-center justify-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
+        className="group inline-flex w-full items-center justify-center gap-3 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
       >
         {status === "submitting" ? (
           <>

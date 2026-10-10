@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageBanner from "@/components/ui/PageBanner";
 import {
   ArrowUpRight,
   CalendarCheck,
@@ -107,7 +108,7 @@ export default function HowItWorksPage() {
         <header className="relative overflow-hidden pb-16 pt-40 md:pb-24 md:pt-52">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-40 -top-40 h-[480px] w-[480px] rounded-full bg-brass-500/10 blur-3xl"
+            className="pointer-events-none absolute -left-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand-500/10 blur-3xl"
           />
           <div className="container-site relative">
             <nav aria-label="Breadcrumb" className="mb-8">
@@ -147,6 +148,10 @@ export default function HowItWorksPage() {
         </header>
 
         {/* ── Six-step methodology ─────────────────────────────── */}
+        <div className="container-site">
+          <PageBanner images={[{ src: "/images/sections/mystery.jpg", alt: "A mystery auditor arriving as a guest", caption: "Mystery audit" }, { src: "/images/sections/sop.jpg", alt: "A revealed SOP audit with the operations team", caption: "SOP audit" }, { src: "/images/industries/hotels-resorts.jpg", alt: "Hotel lobby at dusk", caption: "Hotels & resorts" }]} />
+        </div>
+
         <section aria-labelledby="methodology" className="py-16 md:py-24">
           <div className="container-site">
             <p className="eyebrow text-accent">
@@ -192,12 +197,12 @@ export default function HowItWorksPage() {
                 <div
                   key={way.label}
                   className={`flex flex-col rounded-2xl border glass p-8 md:p-10 ${
-                    tone === "brass" ? "border-brass-400/25" : "border-sage-600/25"
+                    tone === "brass" ? "border-brand-400/25" : "border-aqua-600/25"
                   }`}
                 >
                   <p
                     className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
-                      tone === "brass" ? "text-accent" : "text-sage-600"
+                      tone === "brass" ? "text-accent" : "text-aqua-600"
                     }`}
                   >
                     {way.label}
@@ -209,7 +214,7 @@ export default function HowItWorksPage() {
                       <li key={pt.title} className="flex items-start gap-3 text-sm text-fg-50">
                         <Radar
                           className={`mt-0.5 h-4 w-4 shrink-0 ${
-                            tone === "brass" ? "text-accent" : "text-sage-600"
+                            tone === "brass" ? "text-accent" : "text-aqua-600"
                           }`}
                           aria-hidden="true"
                         />
@@ -247,9 +252,9 @@ export default function HowItWorksPage() {
               {auditInvariants.map((inv) => (
                 <div
                   key={inv.title}
-                  className="rounded-2xl border border-fg-50/10 glass p-7 transition-colors hover:border-brass-400/40"
+                  className="rounded-2xl border border-fg-50/10 glass p-7 transition-colors hover:border-brand-400/40"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brass-500/10 text-accent">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500/10 text-accent">
                     <inv.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <h3 className="mt-5 font-display text-lg text-fg-50">{inv.title}</h3>
@@ -291,9 +296,9 @@ export default function HowItWorksPage() {
                 <li key={t.phase} className="relative pb-10 pl-10 last:pb-0">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border-brass-400/50 btn-gold"
+                    className="absolute -left-[9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border-brand-400/50 btn-primary"
                   >
-                    <span className="h-[6px] w-[6px] rounded-full bg-brass-600" />
+                    <span className="h-[6px] w-[6px] rounded-full bg-brand-600" />
                   </span>
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                     {String(i + 1).padStart(2, "0")}
@@ -414,7 +419,7 @@ export default function HowItWorksPage() {
                 internal quality review before release.
               </p>
             </div>
-            <div className="flex items-start gap-5 rounded-2xl border border-brass-400/25 bg-brass-500/[0.06] p-8">
+            <div className="flex items-start gap-5 rounded-2xl border border-brand-400/25 bg-brand-500/[0.06] p-8">
               <ShieldCheck className="h-8 w-8 shrink-0 text-accent" aria-hidden="true" />
               <div>
                 <h3 className="font-display text-xl text-fg-50">Fair reporting, always</h3>
@@ -473,7 +478,7 @@ export default function HowItWorksPage() {
             <div className="relative overflow-hidden rounded-3xl px-8 py-14 md:px-16 md:py-20">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brass-500/15 blur-3xl"
+                className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-500/15 blur-3xl"
               />
               <div className="relative max-w-2xl">
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">

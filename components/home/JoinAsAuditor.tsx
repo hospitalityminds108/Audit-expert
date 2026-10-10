@@ -4,7 +4,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, BadgeCheck, ClipboardList, LineChart, ShieldCheck } from "lucide-react";
-import { auditorTypes, testimonials } from "@/data/navigation";
+import { auditorTypes } from "@/data/navigation";
+
+const JOIN_STEPS = [
+  { title: "Apply", detail: "Tell us your city, sector experience and availability." },
+  { title: "Profile review", detail: "We check fit, background and any conflicts of interest." },
+  { title: "Orientation & training", detail: "Checklists, evidence standards and scoring discipline." },
+  { title: "Sample assessment", detail: "A supervised audit, reviewed against our quality bar." },
+  { title: "Matched assignments", detail: "Paid assignments matched to your city and sector." },
+] as const;
 import { siteConfig } from "@/data/site";
 import { useScrollReveal } from "@/lib/animations/gsap";
 
@@ -26,7 +34,7 @@ export default function JoinAsAuditor() {
     >
       {/* Ambient */}
       <div
-        className="pointer-events-none absolute right-0 top-1/3 h-[520px] w-[520px] rounded-full bg-sage-500/[0.06] blur-[130px]"
+        className="pointer-events-none absolute right-0 top-1/3 h-[520px] w-[520px] rounded-full bg-aqua-500/[0.06] blur-[130px]"
         aria-hidden="true"
       />
 
@@ -82,7 +90,7 @@ export default function JoinAsAuditor() {
                   data-reveal
                   data-reveal-delay={String(0.2 + i * 0.06)}
                 >
-                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brass-400/25 bg-brass-500/10 text-accent">
+                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-400/25 bg-brand-500/10 text-accent">
                     {perk.icon}
                   </span>
                   <div>
@@ -99,8 +107,7 @@ export default function JoinAsAuditor() {
             <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal data-reveal-delay="0.45">
               <Link
                 href="/join-as-auditor"
-                data-cursor-label="APPLY"
-                className="group inline-flex items-center gap-3 rounded-full btn-gold px-7 py-3.5 text-sm font-semibold text-on-gold transition-all duration-300"
+                className="group inline-flex items-center gap-3 rounded-full btn-primary px-7 py-3.5 text-sm font-semibold text-on-brand transition-all duration-300"
               >
                 Apply to the network
                 <ArrowUpRight
@@ -133,44 +140,31 @@ export default function JoinAsAuditor() {
 
           {/* Right: testimonials + network card */}
           <div className="flex flex-col gap-6">
-            {testimonials.map((t, i) => (
-              <figure
-                key={t.author + i}
-                data-reveal
-                data-reveal-delay={String(0.15 + i * 0.1)}
-                className="relative rounded-2xl border border-fg-50/10 glass p-7"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="font-display text-5xl leading-none text-accent/80" aria-hidden="true">
-                    &ldquo;
-                  </span>
-                  <div className="text-right">
-                    <p className="font-mono text-xl text-accent tabular-nums">{t.metric}</p>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-fg-300/60">
-                      {t.metricLabel}
-                    </p>
-                  </div>
-                </div>
-                <blockquote className="mt-2 text-[15px] leading-relaxed text-fg-300/90">
-                  {t.quote}
-                </blockquote>
-                <figcaption className="mt-5 flex items-center gap-3 border-t border-fg-50/10 pt-4">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-fg-50/15 bg-base-950 font-mono text-[10px] text-fg-300/80">
-                    {t.author.split(" ").map((w) => w[0]).join("")}
+            <ol className="glass rounded-2xl border border-fg-50/10 p-7 md:p-8" data-reveal data-reveal-delay="0.15">
+              <li className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-400">
+                How you join
+              </li>
+              {JOIN_STEPS.map((step, i) => (
+                <li key={step.title} className="relative flex gap-5 pb-7 last:pb-0">
+                  {i < JOIN_STEPS.length - 1 && (
+                    <span className="absolute left-[17px] top-9 h-[calc(100%-2.25rem)] w-px bg-gradient-to-b from-brand-500/50 to-transparent" aria-hidden="true" />
+                  )}
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-600 font-mono text-[11px] font-semibold text-on-brand">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <p className="text-sm font-medium text-fg-50">{t.author}</p>
-                    <p className="text-[11px] text-fg-300/65">{t.context}</p>
+                    <p className="text-[15px] font-semibold text-fg-50">{step.title}</p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-fg-300">{step.detail}</p>
                   </div>
-                </figcaption>
-              </figure>
-            ))}
+                </li>
+              ))}
+            </ol>
 
             {/* Small integrity note card */}
             <div
               data-reveal
               data-reveal-delay="0.45"
-              className="rounded-2xl border border-brass-400/20 bg-gradient-to-br from-brass-500/10 to-transparent p-6"
+              className="rounded-2xl border border-brand-400/20 bg-gradient-to-br from-brand-500/10 to-transparent p-6"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
                 Integrity first

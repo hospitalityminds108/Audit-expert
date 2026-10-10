@@ -63,14 +63,13 @@ export default function ProgressTracker({
       <div className="container-site">
         <div className="flex items-center gap-6 border-b border-fg-50/10 pb-3">
           <div className="h-px flex-1 overflow-hidden bg-base-800">
-            <div ref={barRef} className="h-px w-full origin-left bg-brass-400" />
+            <div ref={barRef} className="h-px w-full origin-left bg-brand-600" />
           </div>
           <nav aria-label="Page sections" className="flex items-center gap-5">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                data-cursor-label="JUMP"
                 className={`font-mono text-[10px] uppercase tracking-[0.18em] transition-colors duration-300 ${
                   activeId === s.id
                     ? "text-accent"

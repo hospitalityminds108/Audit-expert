@@ -102,7 +102,7 @@ export default function MethodologyTimeline() {
           >
             <div
               data-progress-line
-              className="absolute inset-0 w-px origin-top bg-brass-500"
+              className="absolute inset-0 w-px origin-top bg-brand-600"
               style={{ transform: "scaleY(0)" }}
             />
           </div>
@@ -151,8 +151,7 @@ export default function MethodologyTimeline() {
         <div className="mt-16 md:mt-20" data-reveal>
           <Link
             href="/how-it-works"
-            data-cursor-label="OPEN"
-            className="group inline-flex items-center gap-3 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-400 hover:text-accent"
+            className="group inline-flex items-center gap-3 border-b border-brand-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-400 hover:text-accent"
           >
             Read the full methodology
             <ArrowUpRight

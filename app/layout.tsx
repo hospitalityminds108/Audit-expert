@@ -4,8 +4,6 @@ import "./globals.css";
 import Providers from "@/components/layout/Providers";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import CustomCursor from "@/components/layout/CustomCursor";
-import PageTransition from "@/components/layout/PageTransition";
 import Atmosphere from "@/components/layout/Atmosphere";
 import PointerGlow from "@/components/layout/PointerGlow";
 import ScrollProgress from "@/components/layout/ScrollProgress";
@@ -66,7 +64,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0F0D",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1
 };
@@ -80,21 +78,20 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} antialiased`}
         suppressHydrationWarning
       >
+        {/* Marks that scripts run, so CSS can pre-hide intro animations safely */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <Atmosphere />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brass-400 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-on-gold"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-600 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-on-brand"
         >
           Skip to content
         </a>
         <Providers>
-          <CustomCursor />
           <PointerGlow />
           <ScrollProgress />
           <Header />
-          <PageTransition>
-            <main id="main">{children}</main>
-          </PageTransition>
+          <main id="main">{children}</main>
           <Footer />
         </Providers>
       </body>

@@ -110,9 +110,9 @@ export default function ContactForm() {
 
   if (success) {
     return (
-      <div className="rounded-2xl border border-sage-400/30 bg-sage-400/5 p-8 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-400/15">
-          <Check className="h-7 w-7 text-sage-600" aria-hidden="true" />
+      <div className="rounded-2xl border border-aqua-400/30 bg-aqua-400/5 p-8 text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-aqua-400/15">
+          <Check className="h-7 w-7 text-aqua-600" aria-hidden="true" />
         </div>
         <h3 className="mt-5 font-display text-2xl text-fg-50">Message received</h3>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-fg-300/80">
@@ -139,7 +139,7 @@ export default function ContactForm() {
             onChange={set("name")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "ct-name-err" : undefined}
-            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
               errors.name ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
@@ -157,7 +157,7 @@ export default function ContactForm() {
             onChange={set("email")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "ct-email-err" : undefined}
-            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
               errors.email ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
@@ -175,7 +175,7 @@ export default function ContactForm() {
             onChange={set("phone")}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? "ct-phone-err" : undefined}
-            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+            className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
               errors.phone ? "border-red-500/70" : "border-fg-50/15"
             }`}
           />
@@ -191,7 +191,7 @@ export default function ContactForm() {
             autoComplete="organization"
             value={form.company}
             onChange={set("company")}
-            className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400"
+            className="w-full rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400"
           />
         </div>
       </div>
@@ -204,7 +204,7 @@ export default function ContactForm() {
           id="ct-subject"
           value={form.subject}
           onChange={set("subject")}
-          className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400"
+          className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brand-400"
         >
           {SUBJECTS.map((s) => (
             <option key={s.value} value={s.value}>{s.label}</option>
@@ -224,7 +224,7 @@ export default function ContactForm() {
           placeholder="Your property type, cities, what you want to find out…"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "ct-message-err" : undefined}
-          className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+          className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
             errors.message ? "border-red-500/70" : "border-fg-50/15"
           }`}
         />
@@ -239,7 +239,7 @@ export default function ContactForm() {
             onChange={toggleConsent}
             aria-invalid={!!errors.consent}
             aria-describedby={errors.consent ? "ct-consent-err" : undefined}
-            className="mt-0.5 h-4 w-4 accent-brass-400"
+            className="mt-0.5 h-4 w-4 accent-brand-400"
           />
           <span>
             I agree to be contacted about my inquiry and accept the{" "}
@@ -263,7 +263,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-3 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? (
             <>

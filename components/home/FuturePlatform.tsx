@@ -47,7 +47,7 @@ export default function FuturePlatform() {
               key={feature.title}
               data-reveal
               data-reveal-delay={String((i % 4) * 0.07)}
-              className="group relative overflow-hidden rounded-2xl border border-fg-50/10 glass p-6 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-fg-50/20 hover:shadow-[0_24px_60px_-28px_rgba(84,66,20,0.25)]"
+              className="group relative overflow-hidden rounded-2xl border border-fg-50/10 glass p-6 transition-all duration-500 ease-premium hover:-translate-y-1 hover:border-fg-50/20 hover:shadow-[0_24px_60px_-28px_rgba(16,64,44,0.25)]"
             >
               {/* Index */}
               <div className="flex items-start justify-between">
@@ -89,8 +89,7 @@ export default function FuturePlatform() {
               </p>
               <Link
                 href="/how-it-works"
-                data-cursor-label="OPEN"
-                className="group mt-6 inline-flex items-center gap-2.5 border-b border-brass-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brass-300 hover:text-accent"
+                className="group mt-6 inline-flex items-center gap-2.5 border-b border-brand-400/40 pb-1 text-sm font-medium text-fg-50 transition-colors duration-300 hover:border-brand-300 hover:text-accent"
               >
                 Explore the roadmap
                 <ArrowUpRight
@@ -114,7 +113,7 @@ export default function FuturePlatform() {
                     className="rounded-xl border border-fg-50/10 glass p-4"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-brass-400/25 bg-brass-500/10 text-accent">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-brand-400/25 bg-brand-500/10 text-accent">
                         {tile.icon}
                       </span>
                       <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-300/60">

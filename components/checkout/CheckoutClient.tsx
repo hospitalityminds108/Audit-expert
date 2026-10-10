@@ -190,8 +190,7 @@ export default function CheckoutClient() {
     requestAnimationFrame(() => {
       const el = topRef.current;
       if (!el) return;
-      if (window.__lenis) window.__lenis.scrollTo(el, { offset: -96 });
-      else el.scrollIntoView({ behavior: "smooth", block: "start" });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }, []);
 
@@ -364,7 +363,7 @@ export default function CheckoutClient() {
       order_id: data.order.orderId,
       prefill: { name: details.name, email: details.email, contact: details.phone },
       notes: { booking_reference: data.reference },
-      theme: { color: "#C99E00" },
+      theme: { color: "#0B8455" },
       handler: async (response: {
         razorpay_order_id: string;
         razorpay_payment_id: string;
@@ -459,20 +458,20 @@ export default function CheckoutClient() {
               key={s.id}
               aria-current={active ? "step" : undefined}
               onClick={done ? () => goToStep(s.id) : undefined}
-              className={`flex min-w-0 items-center gap-2 rounded-xl border px-2.5 py-3 transition-colors duration-300 sm:gap-3 sm:px-4 ${done ? "cursor-pointer hover:border-sage-500/60 " : ""}${
+              className={`flex min-w-0 items-center gap-2 rounded-xl border px-2.5 py-3 transition-colors duration-300 sm:gap-3 sm:px-4 ${done ? "cursor-pointer hover:border-aqua-500/60 " : ""}${
                 active
-                  ? "border-brass-400/50 bg-brass-400/10"
+                  ? "border-brand-400/50 bg-brand-400/10"
                   : done
-                  ? "border-sage-400/30 bg-sage-400/5"
+                  ? "border-aqua-400/30 bg-aqua-400/5"
                   : "border-fg-50/10 bg-white/60"
               }`}
             >
               <span
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-[11px] ${
                   active
-                    ? "bg-brass-400 text-on-gold"
+                    ? "bg-brand-600 text-on-brand"
                     : done
-                    ? "bg-sage-500/80 text-fg-50"
+                    ? "bg-aqua-500/80 text-fg-50"
                     : "bg-fg-50/10 text-fg-300/70"
                 }`}
               >
@@ -507,7 +506,7 @@ export default function CheckoutClient() {
                     onClick={() => setIndustry("")}
                     className={`rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
                       industry === ""
-                        ? "border-brass-400/60 bg-brass-400/10 text-fg-50"
+                        ? "border-brand-400/60 bg-brand-400/10 text-fg-50"
                         : "border-fg-50/10 bg-white/60 text-fg-300/80 hover:border-fg-50/25"
                     }`}
                   >
@@ -522,7 +521,7 @@ export default function CheckoutClient() {
                       onClick={() => setIndustry(ind.slug)}
                       className={`rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
                         industry === ind.slug
-                          ? "border-brass-400/60 bg-brass-400/10 text-fg-50"
+                          ? "border-brand-400/60 bg-brand-400/10 text-fg-50"
                           : "border-fg-50/10 bg-white/60 text-fg-300/80 hover:border-fg-50/25"
                       }`}
                     >
@@ -554,7 +553,7 @@ export default function CheckoutClient() {
                         }}
                         className={`flex items-start justify-between gap-4 rounded-xl border p-5 text-left transition-colors ${
                           selected
-                            ? "border-brass-400/60 bg-brass-400/10"
+                            ? "border-brand-400/60 bg-brand-400/10"
                             : "border-fg-50/10 bg-white/60 hover:border-fg-50/25"
                         }`}
                         aria-pressed={selected}
@@ -565,8 +564,8 @@ export default function CheckoutClient() {
                             <span
                               className={`rounded-full border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] ${
                                 plan.format === "mystery"
-                                  ? "border-brass-400/40 bg-brass-400/10 text-accent"
-                                  : "border-sage-400/40 bg-sage-400/10 text-sage-600"
+                                  ? "border-brand-400/40 bg-brand-400/10 text-accent"
+                                  : "border-aqua-400/40 bg-aqua-400/10 text-aqua-600"
                               }`}
                             >
                               {plan.format}
@@ -600,7 +599,7 @@ export default function CheckoutClient() {
                       <button
                         type="button"
                         onClick={() => setLocations((l) => Math.max(1, l - 1))}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-fg-50/15 text-fg-200 hover:border-brass-400/50"
+                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-fg-50/15 text-fg-200 hover:border-brand-400/50"
                         aria-label="Remove a location"
                       >
                         <Minus className="h-4 w-4" aria-hidden="true" />
@@ -611,7 +610,7 @@ export default function CheckoutClient() {
                       <button
                         type="button"
                         onClick={() => setLocations((l) => Math.min(20, l + 1))}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-fg-50/15 text-fg-200 hover:border-brass-400/50"
+                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-fg-50/15 text-fg-200 hover:border-brand-400/50"
                         aria-label="Add a location"
                       >
                         <Plus className="h-4 w-4" aria-hidden="true" />
@@ -626,7 +625,7 @@ export default function CheckoutClient() {
                         <label
                           key={a.id}
                           className={`flex cursor-pointer items-start justify-between gap-4 rounded-lg border p-4 transition-colors ${
-                            on ? "border-brass-400/50 bg-brass-400/10" : "border-fg-50/10 hover:border-fg-50/25"
+                            on ? "border-brand-400/50 bg-brand-400/10" : "border-fg-50/10 hover:border-fg-50/25"
                           }`}
                         >
                           <span className="flex items-start gap-3">
@@ -634,7 +633,7 @@ export default function CheckoutClient() {
                               type="checkbox"
                               checked={on}
                               onChange={() => toggleAddOn(a.id)}
-                              className="mt-0.5 h-4 w-4 accent-brass-400"
+                              className="mt-0.5 h-4 w-4 accent-brand-400"
                             />
                             <span>
                               <span className="block text-sm text-fg-100">{a.label}</span>
@@ -658,8 +657,8 @@ export default function CheckoutClient() {
                 </h2>
                 <div className="flex flex-wrap items-center gap-3 rounded-xl border border-fg-50/10 glass p-4">
                   {couponApplied ? (
-                    <div className="flex w-full items-center justify-between rounded-lg bg-sage-400/10 px-4 py-3">
-                      <span className="flex items-center gap-2.5 text-sm text-sage-600">
+                    <div className="flex w-full items-center justify-between rounded-lg bg-aqua-400/10 px-4 py-3">
+                      <span className="flex items-center gap-2.5 text-sm text-aqua-600">
                         <Tag className="h-4 w-4" aria-hidden="true" />
                         {couponApplied} applied
                       </span>
@@ -679,13 +678,13 @@ export default function CheckoutClient() {
                         onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
                         placeholder="FIRSTAUDIT10"
                         aria-label="Coupon code"
-                        className="min-w-0 flex-1 rounded-lg border border-fg-50/15 bg-base-950 px-4 py-2.5 font-mono text-sm uppercase tracking-[0.1em] text-fg-50 placeholder:text-fg-300/60 outline-none focus:border-brass-400"
+                        className="min-w-0 flex-1 rounded-lg border border-fg-50/15 bg-base-950 px-4 py-2.5 font-mono text-sm uppercase tracking-[0.1em] text-fg-50 placeholder:text-fg-300/60 outline-none focus:border-brand-400"
                       />
                       <button
                         type="button"
                         onClick={applyCoupon}
                         disabled={couponChecking || !planSlug}
-                        className="rounded-lg border border-brass-400/60 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent transition-colors hover:bg-brass-400/10 disabled:opacity-40"
+                        className="rounded-lg border border-brand-400/60 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent transition-colors hover:bg-brand-400/10 disabled:opacity-40"
                       >
                         {couponChecking ? "Checking…" : "Apply"}
                       </button>
@@ -703,7 +702,7 @@ export default function CheckoutClient() {
                   type="button"
                   onClick={() => goToStep("details")}
                   disabled={!canProceedConfigure}
-                  className="inline-flex items-center gap-2 rounded-full btn-gold px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
+                  className="inline-flex items-center gap-2 rounded-full btn-primary px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-brand transition-colors disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Continue
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -758,7 +757,7 @@ export default function CheckoutClient() {
                           if (detailsErrors[f.key])
                             setDetailsErrors((er) => ({ ...er, [f.key]: "" }));
                         }}
-                        className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brass-400 ${
+                        className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none transition-colors focus:border-brand-400 ${
                           detailsErrors[f.key] ? "border-red-500/70" : "border-fg-50/15"
                         }`}
                       />
@@ -792,7 +791,7 @@ export default function CheckoutClient() {
                         if (detailsErrors.preferredDate)
                           setDetailsErrors((er) => ({ ...er, preferredDate: "" }));
                       }}
-                      className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brass-400 ${
+                      className={`w-full rounded-xl border bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none transition-colors focus:border-brand-400 ${
                         detailsErrors.preferredDate ? "border-red-500/70" : "border-fg-50/15"
                       }`}
                     />
@@ -812,7 +811,7 @@ export default function CheckoutClient() {
                         id="d-slot"
                         value={details.preferredSlot}
                         onChange={(e) => setDetails((d) => ({ ...d, preferredSlot: e.target.value }))}
-                        className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none focus:border-brass-400"
+                        className="w-full appearance-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 outline-none focus:border-brand-400"
                       >
                         <option value="morning">Morning</option>
                         <option value="afternoon">Afternoon</option>
@@ -839,7 +838,7 @@ export default function CheckoutClient() {
                     value={details.notes}
                     onChange={(e) => setDetails((d) => ({ ...d, notes: e.target.value }))}
                     placeholder="Property name, special requirements, context…"
-                    className="w-full resize-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none focus:border-brass-400"
+                    className="w-full resize-none rounded-xl border border-fg-50/15 bg-white/60 px-4 py-3 text-sm text-fg-50 placeholder:text-fg-300/60 outline-none focus:border-brand-400"
                   />
                 </div>
               </div>
@@ -858,7 +857,7 @@ export default function CheckoutClient() {
                   onClick={() => {
                     if (validateDetails()) goToStep("pay");
                   }}
-                  className="inline-flex items-center gap-2 rounded-full btn-gold px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-gold transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full btn-primary px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-brand transition-colors"
                 >
                   Review &amp; pay
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -866,7 +865,7 @@ export default function CheckoutClient() {
               </div>
               <div className="rounded-xl border border-fg-50/10 glass p-5">
                 <p className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/70">
-                  <ShieldCheck className="h-4 w-4 text-sage-600" aria-hidden="true" />
+                  <ShieldCheck className="h-4 w-4 text-aqua-600" aria-hidden="true" />
                   Your details are encrypted in transit
                 </p>
               </div>
@@ -930,7 +929,7 @@ export default function CheckoutClient() {
                   type="button"
                   onClick={startPayment}
                   disabled={submitting || !pricing}
-                  className="inline-flex items-center gap-3 rounded-full btn-gold px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center gap-3 rounded-full btn-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.18em] text-on-brand transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {submitting ? (
                     <>
@@ -948,7 +947,7 @@ export default function CheckoutClient() {
 
               <div className="rounded-xl border border-fg-50/10 glass p-5">
                 <p className="flex items-start gap-2.5 text-xs leading-relaxed text-fg-300/80">
-                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-sage-600" aria-hidden="true" />
+                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" aria-hidden="true" />
                   Payment is verified on our server before your booking is
                   confirmed. If payment fails, nothing is charged and you can
                   retry safely.
@@ -996,12 +995,12 @@ export default function CheckoutClient() {
                   ))}
                 </ul>
                 {pricing.discount > 0 && (
-                  <div className="flex items-center justify-between rounded-lg bg-sage-400/10 px-4 py-3 text-sm">
-                    <span className="flex items-center gap-2 text-sage-600">
+                  <div className="flex items-center justify-between rounded-lg bg-aqua-400/10 px-4 py-3 text-sm">
+                    <span className="flex items-center gap-2 text-aqua-600">
                       <Sparkles className="h-4 w-4" aria-hidden="true" />
                       {pricing.couponCode}
                     </span>
-                    <span className="font-mono text-xs text-sage-600">
+                    <span className="font-mono text-xs text-aqua-600">
                       −{formatInr(pricing.discount)}
                     </span>
                   </div>
@@ -1014,7 +1013,7 @@ export default function CheckoutClient() {
                   {pricing.discount > 0 && (
                     <div className="flex justify-between text-sm">
                       <dt className="text-fg-300/80">Discount</dt>
-                      <dd className="font-mono text-xs text-sage-600">−{formatInr(pricing.discount)}</dd>
+                      <dd className="font-mono text-xs text-aqua-600">−{formatInr(pricing.discount)}</dd>
                     </div>
                   )}
                   <div className="flex justify-between text-sm">

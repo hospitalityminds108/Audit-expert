@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageBanner from "@/components/ui/PageBanner";
 import { ArrowRight, CalendarDays, CreditCard, MapPin, ShieldCheck, Zap } from "lucide-react";
 import BookAuditForm from "@/components/forms/BookAuditForm";
 
@@ -46,6 +47,8 @@ export default function BookAnAuditPage() {
           with a confirmed date, an assigned auditor and a scored report.
         </p>
 
+        <PageBanner priority className="mt-12" images={[{ src: "/images/industries/hotels-resorts.jpg", alt: "Hotel lobby at dusk", caption: "Hotels & resorts" }, { src: "/images/industries/restaurants-cafes.jpg", alt: "Restaurant service in progress", caption: "Restaurants & cafés" }, { src: "/images/industries/malls-retail.jpg", alt: "Shopping mall atrium", caption: "Malls & retail" }]} />
+
         {/* ── Two paths ── */}
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {PATHS.map((p) => {
@@ -55,7 +58,7 @@ export default function BookAnAuditPage() {
                 key={p.title}
                 className={`rounded-2xl border p-7 ${
                   p.primary
-                    ? "border-brass-400/40 bg-brass-400/[0.07]"
+                    ? "border-brand-400/40 bg-brand-400/[0.07]"
                     : "border-fg-50/10 bg-white/60"
                 }`}
               >
@@ -91,7 +94,7 @@ export default function BookAnAuditPage() {
             const Icon = f.icon;
             return (
               <p key={f.label} className="flex items-start gap-2.5 text-xs leading-relaxed text-fg-300/70">
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-sage-600" aria-hidden="true" />
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" aria-hidden="true" />
                 {f.label}
               </p>
             );

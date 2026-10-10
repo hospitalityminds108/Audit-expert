@@ -3,77 +3,154 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUpRight, BadgeCheck, ShieldCheck } from "lucide-react";
 import { gsap, useGSAP, usePrefersReducedMotion } from "@/lib/animations/gsap";
 import { heroConfig } from "@/data/site";
 
+const SCORES = [
+  { label: "Guest Experience", value: 94 },
+  { label: "SOP Compliance", value: 89 },
+  { label: "Brand Standards", value: 93 },
+] as const;
+
 /**
- * Hero — cinematic audit-in-real-time opening.
- * Background scales subtly; headline reveals with stagger;
- * floating score UI parallaxes on scroll.
+ * Hero — split composition on the white canvas.
+ * Left: masked word-by-word headline, CTAs, counting stats.
+ * Right: a framed photograph that wipes open, with glass score cards that
+ * drift with the pointer and parallax away on scroll.
  */
 export default function Hero() {
   const rootRef = useRef<HTMLElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const scoreRef = useRef<HTMLDivElement>(null);
-  const scoreRef2 = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
 
   useGSAP(
     () => {
       const root = rootRef.current;
-      if (!root) return;
+      const stage = stageRef.current;
+      if (!root || !stage) return;
+      const q = gsap.utils.selector(root);
+      const counters = q("[data-count]") as HTMLElement[];
+      const bars = q("[data-bar]") as HTMLElement[];
+
+      const setFinal = () => {
+        counters.forEach((el) => {
+          el.textContent = el.dataset.count ?? "";
+        });
+        gsap.set(bars, { scaleX: 1 });
+      };
 
       if (reduced) {
-        gsap.set(root.querySelectorAll("[data-hero-word]"), { opacity: 1, y: 0 });
+        gsap.set(q("[data-hero-word], [data-hero-fade], [data-hero-float], [data-hero-frame]"), {
+          clearProps: "all",
+        });
+        setFinal();
         return;
       }
 
-      // Intro timeline
+      // ── Intro ──
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
       tl.fromTo(
-        root.querySelectorAll("[data-hero-word]"),
-        { opacity: 0, y: "0.65em", filter: "blur(10px)", rotate: 3 },
-        { opacity: 1, y: 0, filter: "blur(0px)", rotate: 0, duration: 1.25, stagger: 0.05 },
-        0.15
+        q("[data-hero-word]"),
+        // y: 0 cancels the pixel offset GSAP would otherwise keep from the pre-hydration CSS transform
+        { y: 0, yPercent: 115, rotate: 4 },
+        { y: 0, yPercent: 0, rotate: 0, duration: 1.15, stagger: 0.045 },
+        0.1
       )
         .fromTo(
-          root.querySelectorAll("[data-hero-fade]"),
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.9, stagger: 0.1 },
-          0.7
+          q("[data-hero-fade]"),
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.9, stagger: 0.09 },
+          0.55
         )
         .fromTo(
-          root.querySelector("[data-hero-score]"),
-          { opacity: 0, y: 40, rotateX: 12 },
-          { opacity: 1, y: 0, rotateX: 0, duration: 1.1, ease: "power3.out" },
+          q("[data-hero-frame]"),
+          { clipPath: "inset(100% 0% 0% 0% round 32px)", scale: 1.06 },
+          { clipPath: "inset(0% 0% 0% 0% round 32px)", scale: 1, duration: 1.5, ease: "power3.inOut" },
+          0.2
+        )
+        .fromTo(
+          q("[data-hero-photo]"),
+          { scale: 1.35 },
+          { scale: 1.08, duration: 2.1, ease: "power3.out" },
+          0.2
+        )
+        .fromTo(
+          q("[data-hero-float]"),
+          { opacity: 0, y: 46, scale: 0.94 },
+          { opacity: 1, y: 0, scale: 1, duration: 1.1, stagger: 0.14, ease: "power3.out" },
           1.0
-        );
+        )
+        .fromTo(bars, { scaleX: 0 }, { scaleX: 1, duration: 1.3, stagger: 0.12, ease: "power3.out" }, 1.25);
 
-      // Scroll-driven exit
-      gsap.to(bgRef.current, {
-        scale: 1.12,
-        yPercent: 8,
-        ease: "none",
-        scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true }
+      // Stats count up
+      counters.forEach((el) => {
+        const target = Number(el.dataset.count ?? 0);
+        const state = { v: 0 };
+        tl.to(
+          state,
+          {
+            v: target,
+            duration: 1.6,
+            ease: "power2.out",
+            onUpdate: () => {
+              el.textContent = String(Math.round(state.v));
+            },
+          },
+          0.9
+        );
       });
-      gsap.to(headlineRef.current, {
-        yPercent: -22,
-        opacity: 0.1,
+
+      // ── Pointer drift: each floating layer moves by its own depth ──
+      const layers = (q("[data-depth]") as HTMLElement[]).map((el) => ({
+        depth: Number(el.dataset.depth ?? 0),
+        x: gsap.quickTo(el, "x", { duration: 0.9, ease: "power3.out" }),
+        y: gsap.quickTo(el, "y", { duration: 0.9, ease: "power3.out" }),
+      }));
+      const tiltX = gsap.quickTo(stage, "rotationY", { duration: 1, ease: "power3.out" });
+      const tiltY = gsap.quickTo(stage, "rotationX", { duration: 1, ease: "power3.out" });
+      const fine = window.matchMedia("(pointer: fine)").matches;
+      const onMove = (e: PointerEvent) => {
+        const r = root.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width - 0.5;
+        const ny = (e.clientY - r.top) / r.height - 0.5;
+        layers.forEach((l) => {
+          l.x(nx * l.depth);
+          l.y(ny * l.depth);
+        });
+        tiltX(nx * 5);
+        tiltY(-ny * 4);
+      };
+      const onLeave = () => {
+        layers.forEach((l) => {
+          l.x(0);
+          l.y(0);
+        });
+        tiltX(0);
+        tiltY(0);
+      };
+      if (fine) {
+        root.addEventListener("pointermove", onMove);
+        root.addEventListener("pointerleave", onLeave);
+      }
+
+      // ── Scroll: the stage lifts away, the photo keeps travelling ──
+      gsap.to(q("[data-hero-photo]"), {
+        yPercent: 12,
         ease: "none",
-        scrollTrigger: { trigger: root, start: "top top", end: "55% top", scrub: true }
+        scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true },
       });
-      gsap.to(scoreRef.current, {
-        y: -120,
+      gsap.to(q("[data-hero-copy]"), {
+        yPercent: -10,
+        opacity: 0.25,
         ease: "none",
-        scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true }
+        scrollTrigger: { trigger: root, start: "top top", end: "bottom 20%", scrub: true },
       });
-      gsap.to(scoreRef2.current, {
-        y: -60,
-        ease: "none",
-        scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true }
-      });
+
+      return () => {
+        root.removeEventListener("pointermove", onMove);
+        root.removeEventListener("pointerleave", onLeave);
+      };
     },
     { scope: rootRef, dependencies: [reduced] }
   );
@@ -81,162 +158,201 @@ export default function Hero() {
   return (
     <section
       ref={rootRef}
-      className="relative flex min-h-[100svh] items-end overflow-hidden"
+      className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40"
       aria-label="AuditExpert introduction"
     >
-      {/* Background */}
-      <div ref={bgRef} className="absolute inset-0 will-change-transform">
-        <Image
-          src="/images/hero.jpg"
-          alt="Luxury hotel lobby at dusk — a guest journey in progress"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(213,168,75,0.2),transparent_40%)]"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-base-950/80 via-base-950/45 to-base-950" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-r from-base-950/70 via-transparent to-base-950/30" aria-hidden="true" />
-      </div>
+      {/* Backdrop: soft grid + a slow green bloom */}
+      <div className="pointer-events-none absolute inset-0 bg-grid-subtle" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -right-40 top-10 h-[620px] w-[620px] rounded-full bg-brand-300/40 blur-[130px]"
+        aria-hidden="true"
+      />
 
-      {/* Content */}
-      <div className="container-site relative z-10 pb-20 pt-32 md:pb-24 md:pt-36">
-        <div className="grid items-end gap-12 lg:grid-cols-[1.5fr_1fr]">
-          {/* Headline column */}
-          <div ref={headlineRef}>
-            <div className="mb-7 flex items-center gap-4" data-hero-fade>
-              <span className="h-px w-10 bg-brass-400" aria-hidden="true" />
-              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.34em] text-accent">
-                {heroConfig.eyebrow}
-                <span className="mx-2 text-fg-500">/</span>
-                <span className="text-fg-300">{heroConfig.subEyebrow}</span>
-              </p>
-            </div>
+      <div className="container-site relative">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.2fr_0.9fr] lg:gap-16">
+          {/* ── Copy ── */}
+          <div data-hero-copy>
+            <p
+              className="inline-flex items-center gap-2.5 rounded-full border border-brand-500/30 bg-white/80 py-1.5 pl-2 pr-4 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-accent shadow-[0_8px_24px_-16px_rgba(16,64,44,0.5)]"
+              data-hero-fade
+            >
+              <span className="relative flex h-5 w-5 items-center justify-center rounded-full bg-brand-100">
+                <span className="absolute h-full w-full animate-ping rounded-full bg-brand-400/50" />
+                <span className="relative h-1.5 w-1.5 rounded-full bg-brand-600" />
+              </span>
+              {heroConfig.subEyebrow}
+            </p>
 
-            <h1 className="text-[clamp(2.1rem,4.6vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-fg-100">
+            <h1 className="mt-7 text-[clamp(1.9rem,3.35vw,4.1rem)] font-semibold leading-[1.04] tracking-[-0.025em] text-fg-50">
               {heroConfig.headline.map((line, i) => (
-                <span key={i} className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
+                <span key={i} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                   {line.split(" ").map((w, j) => (
                     <span
                       key={j}
                       data-hero-word
-                      className={`inline-block will-change-transform ${
-                        i >= 2 ? "text-accent" : ""
-                      }`}
+                      className={`inline-block will-change-transform ${i >= 2 ? "text-gradient-brand" : ""}`}
                     >
                       {w}
-                      {"\u00A0"}
+                      {" "}
                     </span>
                   ))}
                 </span>
               ))}
             </h1>
 
-            <p className="mt-6 max-w-xl text-lead text-fg-300" data-hero-fade>
+            <p className="mt-7 max-w-xl text-lead-lg text-fg-300" data-hero-fade>
               {heroConfig.supporting}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4" data-hero-fade>
+            <div className="mt-9 flex flex-wrap items-center gap-4" data-hero-fade>
               <Link
                 href={heroConfig.ctaPrimary.href}
-                className="group inline-flex items-center gap-2.5 rounded-full btn-gold px-8 py-4 text-sm font-semibold tracking-wide text-on-gold transition-all duration-500"
+                className="btn-primary group inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold tracking-wide"
               >
                 {heroConfig.ctaPrimary.label}
                 <ArrowUpRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
                 />
               </Link>
               <Link
                 href={heroConfig.ctaSecondary.href}
-                className="inline-flex items-center gap-2.5 rounded-full border border-fg-100/25 px-8 py-4 text-sm font-semibold tracking-wide text-fg-100 backdrop-blur-sm transition-all duration-500 hover:border-brass-300/60 hover:text-accent"
+                className="btn-ghost inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold tracking-wide"
               >
                 {heroConfig.ctaSecondary.label}
               </Link>
             </div>
 
-            {/* Stats strip */}
-            <dl className="mt-10 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t border-fg-100/12 pt-8 sm:grid-cols-4" data-hero-fade>
+            {/* Stats */}
+            <dl
+              className="mt-12 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t border-fg-50/10 pt-8 sm:grid-cols-4"
+              data-hero-fade
+            >
               {heroConfig.stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-500">{s.label}</dt>
-                  <dd className="mt-1.5 font-display text-3xl font-semibold text-fg-100">
-                    {s.value}
+                  <dd className="font-display text-4xl font-semibold tabular-nums text-fg-50">
+                    <span data-count={s.value}>{s.value}</span>
                     <span className="text-accent">{s.suffix}</span>
                   </dd>
+                  <dt className="mt-1.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-fg-400">
+                    {s.label}
+                  </dt>
                 </div>
               ))}
             </dl>
           </div>
 
-          {/* Floating audit score interface */}
-          <div className="relative hidden lg:block" aria-hidden="true">
-            <div
-              ref={scoreRef}
-              data-hero-score
-              className="ml-auto w-[340px] rounded-2xl border border-fg-100/12 bg-base-950/60 p-6 backdrop-blur-xl"
-            >
-              <div className="flex items-center justify-between">
-                <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-fg-500">
-                  Service Score
+          {/* ── Stage ── */}
+          <div className="relative mx-auto w-full max-w-[560px] [perspective:1400px] lg:max-w-none">
+            <div ref={stageRef} className="relative [transform-style:preserve-3d]">
+              {/* Photo frame */}
+              <div
+                data-hero-frame
+                className="relative aspect-[4/5] overflow-hidden rounded-[32px] shadow-[0_50px_100px_-50px_rgba(16,64,44,0.65)] sm:aspect-[5/5.4]"
+              >
+                <div data-hero-photo className="absolute inset-0 will-change-transform">
+                  <Image
+                    src="/images/hero.jpg"
+                    alt="Hotel lobby at dusk — a guest journey in progress"
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 46vw, 92vw"
+                    className="object-cover"
+                  />
+                </div>
+                {/* Green wash keeps the photograph inside the palette */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-tr from-brand-700/45 via-brand-500/10 to-transparent mix-blend-soft-light"
+                  aria-hidden="true"
+                />
+                <div
+                  className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-700/55 to-transparent"
+                  aria-hidden="true"
+                />
+                <p className="absolute bottom-6 left-6 right-6 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-white/90">
+                  <BadgeCheck size={14} aria-hidden="true" />
+                  Independent · Evidence-backed
                 </p>
-                <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-sage-600">
-                  <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-sage-400" />
-                  Live
+              </div>
+
+              {/* Score card */}
+              <div
+                data-hero-float
+                data-depth="-34"
+                aria-hidden="true"
+                className="glass absolute -left-4 top-10 w-[250px] rounded-2xl border border-fg-50/10 p-5 sm:-left-10 sm:w-[270px] lg:-left-12"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-400">Service Score</p>
+                  <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-accent">
+                    <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-brand-500" />
+                    Live
+                  </span>
+                </div>
+                <p className="mt-3 font-display text-5xl font-semibold text-fg-50">
+                  92<span className="text-2xl text-accent">%</span>
+                </p>
+                <div className="mt-5 space-y-3.5">
+                  {SCORES.map((m) => (
+                    <div key={m.label}>
+                      <div className="mb-1.5 flex justify-between font-mono text-[10px] uppercase tracking-[0.14em]">
+                        <span className="text-fg-400">{m.label}</span>
+                        <span className="text-fg-100">{m.value}</span>
+                      </div>
+                      <div className="h-1 overflow-hidden rounded-full bg-base-800">
+                        <div
+                          data-bar
+                          className="h-full origin-left rounded-full bg-gradient-to-r from-brand-600 to-brand-400"
+                          style={{ width: `${m.value}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Checkpoint chip */}
+              <div
+                data-hero-float
+                data-depth="46"
+                aria-hidden="true"
+                className="glass absolute -right-3 bottom-24 w-56 rounded-2xl border border-fg-50/10 p-4 sm:-right-8 lg:-right-6"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-accent">
+                    <ShieldCheck size={15} />
+                  </span>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-fg-400">Checkpoint 34/40</p>
+                </div>
+                <p className="mt-2.5 text-[13px] leading-snug text-fg-200">
+                  Arrival greeting under 30s — <span className="font-semibold text-accent">pass</span>
+                </p>
+              </div>
+
+              {/* Rotating seal */}
+              <div
+                data-hero-float
+                data-depth="70"
+                aria-hidden="true"
+                className="absolute -bottom-8 left-6 hidden h-28 w-28 sm:block"
+              >
+                <svg viewBox="0 0 120 120" className="h-full w-full animate-[spin_22s_linear_infinite]">
+                  <defs>
+                    <path id="hero-seal" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
+                  </defs>
+                  <circle cx="60" cy="60" r="59" className="fill-white" />
+                  <circle cx="60" cy="60" r="58.5" className="fill-none stroke-brand-500/40" strokeWidth="1" />
+                  <text className="fill-fg-200 font-mono text-[9.5px] uppercase tracking-[0.3em]">
+                    <textPath href="#hero-seal">See · Measure · Understand · Improve ·</textPath>
+                  </text>
+                </svg>
+                <span className="absolute inset-0 flex items-center justify-center text-accent">
+                  <ArrowDown size={20} />
                 </span>
               </div>
-              <p className="mt-4 font-display text-6xl font-semibold text-fg-100">
-                92<span className="text-2xl text-accent">%</span>
-              </p>
-              <div className="mt-6 space-y-4">
-                {[
-                  { label: "Guest Experience", value: 94, w: "94%" },
-                  { label: "SOP Compliance", value: 89, w: "89%" },
-                  { label: "Brand Standards", value: 93, w: "93%" }
-                ].map((m) => (
-                  <div key={m.label}>
-                    <div className="mb-1.5 flex justify-between font-mono text-[10px] uppercase tracking-[0.18em]">
-                      <span className="text-fg-400">{m.label}</span>
-                      <span className="text-fg-200">{m.value}</span>
-                    </div>
-                    <div className="h-1 overflow-hidden rounded-full bg-fg-100/10">
-                      <div className="h-full rounded-full bg-gradient-to-r from-brass-500 to-brass-300" style={{ width: m.w }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 border-t border-fg-100/10 pt-4 font-mono text-[9px] uppercase tracking-[0.2em] text-fg-500">
-                Evidence attached · 3 critical actions
-              </p>
-            </div>
-
-            {/* Secondary floating chip */}
-            <div
-              ref={scoreRef2}
-              className="absolute -left-2 top-[58%] w-56 rounded-xl border border-fg-100/12 bg-base-950/55 p-4 backdrop-blur-xl"
-            >
-              <div className="flex items-center gap-2.5">
-                <ShieldCheck size={15} className="text-sage-600" />
-                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-fg-400">
-                  Checkpoint 34/40
-                </p>
-              </div>
-              <p className="mt-2.5 text-[13px] leading-snug text-fg-300">
-                Arrival greeting under 30s — <span className="text-sage-600">pass</span>
-              </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:block" data-hero-fade>
-        <div className="flex flex-col items-center gap-2 text-fg-500">
-          <span className="font-mono text-[9px] uppercase tracking-[0.3em]">Scroll</span>
-          <ArrowDown size={14} className="animate-bounce" />
         </div>
       </div>
     </section>
