@@ -88,16 +88,16 @@ export default function ContactPage() {
             </div>
             <div className="rounded-2xl border border-brand-400/30 bg-brand-400/[0.07] p-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent/80">
-                Prefer instant booking?
+                Already know the plan?
               </p>
               <p className="mt-2 text-sm leading-relaxed text-fg-300/80">
-                Configure your audit and pay securely online in minutes.
+                Pick a plan, build your estimate and send the request in a minute.
               </p>
               <Link
-                href="/checkout"
+                href="/audit-plans"
                 className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent hover:text-accent"
               >
-                Start checkout
+                Browse plans &amp; pricing
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </div>

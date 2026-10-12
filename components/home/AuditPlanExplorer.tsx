@@ -16,7 +16,7 @@ type TabId = (typeof planCategoryTabs)[number]["id"];
 /**
  * Section 03 — AUDIT PLANS EXPLORER
  * Category tabs → grid of plan cards with pricing. Client-side exploration;
- * authoritative pricing always recalculated server-side at checkout.
+ * the final quote is confirmed with the client on a call.
  */
 export default function AuditPlanExplorer() {
   const sectionRef = useScrollReveal<HTMLElement>({ start: "top 75%" });

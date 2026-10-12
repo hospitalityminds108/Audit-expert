@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Check, Minus, Phone, Plus, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, Check, Minus, Plus, ShieldCheck, X } from "lucide-react";
 import { addOns, formatPrice, type AuditPlan } from "@/data/audit-plans";
 import { calculatePrice, formatInr } from "@/lib/pricing/engine";
 
@@ -13,8 +13,8 @@ const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabi
 /**
  * PlanSelectModal — the "selected plan" popup.
  * Shows what the plan covers, lets the buyer set locations and add-ons with a
- * live estimate, then hands the configuration to checkout. The estimate uses
- * the same pricing engine as the server; checkout recalculates authoritatively.
+ * live estimate, then hands the configuration to the callback request form.
+ * The figure is an estimate; the final quote is confirmed on the call.
  */
 export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; onClose: () => void }) {
   const [locations, setLocations] = useState(1);
@@ -72,10 +72,10 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
   const toggle = (id: string) =>
     setSelected((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
 
-  const checkoutHref = useMemo(() => {
+  const requestHref = useMemo(() => {
     const params = new URLSearchParams({ plan: plan.slug, locations: String(locations) });
     if (selected.length) params.set("addons", selected.join(","));
-    return `/checkout?${params.toString()}`;
+    return `/book-an-audit?${params.toString()}#callback`;
   }, [plan.slug, locations, selected]);
 
   const isMystery = plan.format === "mystery";
@@ -266,26 +266,16 @@ export default function PlanSelectModal({ plan, onClose }: { plan: AuditPlan; on
         <div className="flex flex-col gap-3 border-t border-fg-50/10 bg-white/50 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="flex items-start gap-2 text-xs leading-relaxed text-fg-400 sm:max-w-xs">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" aria-hidden="true" />
-            Final price is confirmed on our server at checkout. Coupons apply there.
+            This is an estimate. We confirm scope and the final quote on a call — nothing is charged online.
           </p>
-          <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
-            <Link
-              href={`/book-an-audit?plan=${plan.slug}#callback`}
-              onClick={onClose}
-              className="btn-ghost inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold tracking-wide"
-            >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              Request a callback
-            </Link>
-            <Link
-              href={checkoutHref}
-              onClick={onClose}
-              className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
-            >
-              Continue to checkout
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <Link
+            href={requestHref}
+            onClick={onClose}
+            className="btn-primary inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
+          >
+            Request this plan
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </div>

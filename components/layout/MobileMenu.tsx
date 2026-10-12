@@ -8,7 +8,6 @@ import { navigation } from "@/data/navigation";
 import { getIndustriesNav } from "@/data/industries";
 import { planCategoryTabs } from "@/data/audit-plans";
 import { getAuditTypesNav } from "@/data/audit-types";
-import { useAuth } from "@/components/auth/AuthProvider";
 
 interface Props {
   open: boolean;
@@ -21,7 +20,6 @@ const auditTypes = getAuditTypesNav();
 export default function MobileMenu({ open, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const scrimRef = useRef<HTMLDivElement>(null);
-  const { user } = useAuth();
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -180,36 +178,13 @@ export default function MobileMenu({ open, onClose }: Props) {
             ))}
           </ul>
 
-          <div data-mobile-item className="mt-auto space-y-3 pb-10 pt-10">
+          <div data-mobile-item className="mt-auto pb-10 pt-10">
             <Link
               href="/book-an-audit"
               className="btn-primary flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold tracking-wide"
             >
               {navigation.cta.label} <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
-            {user ? (
-              <Link
-                href="/account"
-                className="btn-ghost flex w-full items-center justify-center rounded-full py-4 text-sm font-semibold tracking-wide"
-              >
-                My account
-              </Link>
-            ) : (
-              <div className="grid grid-cols-2 gap-3">
-                <Link
-                  href="/login"
-                  className="btn-ghost flex items-center justify-center rounded-full py-3.5 text-sm font-semibold tracking-wide"
-                >
-                  Sign in
-                </Link>
-                <Link
-                  href="/signup"
-                  className="btn-ghost flex items-center justify-center rounded-full py-3.5 text-sm font-semibold tracking-wide"
-                >
-                  Create account
-                </Link>
-              </div>
-            )}
           </div>
         </nav>
       </div>

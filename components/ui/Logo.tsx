@@ -1,52 +1,36 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
   compact?: boolean;
+  /** "wordmark" for the header; "full" adds the tagline line (footer) */
+  variant?: "wordmark" | "full";
   className?: string;
 }
 
+const FILES = {
+  wordmark: { src: "/images/logo-wordmark.png", width: 984, height: 169 },
+  full: { src: "/images/logo.png", width: 984, height: 213 },
+} as const;
+
 /**
- * AuditExpert logotype — bracket-mark + wordmark.
+ * AuditExpert.com logo, linking home.
  */
-export default function Logo({ compact = false, className = "" }: Props) {
-  const ink = "text-fg-50";
-  const accent = "text-accent";
+export default function Logo({ compact = false, variant = "wordmark", className = "" }: Props) {
+  const file = FILES[variant];
+  const height = variant === "full" ? "h-14" : compact ? "h-7" : "h-8 sm:h-9";
+
   return (
-    <Link
-      href="/"
-      aria-label="AuditExpert — home"
-      className={`group flex items-center gap-2.5 ${className}`}
-    >
-      <svg
-        width={compact ? 30 : 34}
-        height={compact ? 30 : 34}
-        viewBox="0 0 40 40"
-        fill="none"
-        aria-hidden="true"
-        className="shrink-0 transition-transform duration-500 ease-premium group-hover:rotate-90"
-      >
-        <rect x="1.5" y="1.5" width="37" height="37" rx="4" stroke="currentColor" strokeWidth="1.6" className="text-accent" />
-        <path d="M8 28L16 10L24 28" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={ink} />
-        <path d="M11.5 22.5H20.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" className={ink} />
-        <circle cx="28.5" cy="14" r="3.2" stroke="currentColor" strokeWidth="2" className={accent} />
-        <path d="M30.8 16.3L34 19.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={accent} />
-      </svg>
-      <span className="flex flex-col leading-none">
-        <span
-          className={`font-display font-semibold tracking-tight ${ink} transition-all duration-500 ${
-            compact ? "text-lg" : "text-xl"
-          }`}
-        >
-          Audit<span className={accent}>Expert</span>
-        </span>
-        <span
-          className={`font-mono uppercase text-fg-400 transition-all duration-500 ${
-            compact ? "text-[8px] tracking-[0.28em]" : "text-[9px] tracking-[0.32em]"
-          }`}
-        >
-          Service Intelligence
-        </span>
-      </span>
+    <Link href="/" aria-label="AuditExpert — home" className={`inline-flex shrink-0 items-center ${className}`}>
+      <Image
+        src={file.src}
+        alt="AuditExpert.com"
+        width={file.width}
+        height={file.height}
+        priority={variant === "wordmark"}
+        sizes="(min-width: 640px) 220px, 180px"
+        className={`w-auto transition-all duration-500 ease-premium ${height}`}
+      />
     </Link>
   );
 }

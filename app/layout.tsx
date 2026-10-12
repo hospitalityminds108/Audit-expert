@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import Atmosphere from "@/components/layout/Atmosphere";
 import PointerGlow from "@/components/layout/PointerGlow";
 import ScrollProgress from "@/components/layout/ScrollProgress";
+import Preloader from "@/components/layout/Preloader";
 import { siteConfig } from "@/data/site";
 
 const inter = Inter({
@@ -79,7 +80,13 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {/* Marks that scripts run, so CSS can pre-hide intro animations safely */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(d){d.classList.add('js');try{if(sessionStorage.getItem('ae-preloaded'))d.classList.add('preloaded')}catch(e){}})(document.documentElement)",
+          }}
+        />
+        <Preloader />
         <Atmosphere />
         <a
           href="#main"

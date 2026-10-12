@@ -22,7 +22,7 @@ export function usePlanSelect() {
 /**
  * PlanSelectProvider — one plan popup for the whole app. Any "Select plan"
  * button calls `openPlan(slug)`; the popup handles configuration and hand-off
- * to checkout.
+ * to the callback request form.
  */
 export default function PlanSelectProvider({ children }: { children: ReactNode }) {
   const [slug, setSlug] = useState<string | null>(null);

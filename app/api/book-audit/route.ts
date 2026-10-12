@@ -6,8 +6,7 @@ import { rateLimit, getClientIp } from "@/lib/utils/rate-limit";
 /**
  * POST /api/book-audit
  * "Request a callback" leads from the booking page — for clients who
- * prefer to talk before paying online. Full online booking goes
- * through /api/payments/create-order instead.
+ * scope the audit on a call before anything is booked.
  */
 
 const callbackSchema = z.object({

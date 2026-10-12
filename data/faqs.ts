@@ -38,25 +38,6 @@ export const generalFaqs: FAQ[] = [
   }
 ];
 
-export const checkoutFaqs: FAQ[] = [
-  {
-    q: "When is my audit booking confirmed?",
-    a: "Your booking is confirmed only after payment is verified on our server — not merely when the payment window closes. You'll see a confirmation screen and receive an email with your booking reference."
-  },
-  {
-    q: "Is my payment secure?",
-    a: "Payments are processed by Razorpay, a PCI-DSS compliant payment provider. AuditExpert never sees or stores your card number, CVV, UPI PIN or banking credentials."
-  },
-  {
-    q: "Can I change my audit date after booking?",
-    a: "Yes — audit dates can be rescheduled with reasonable notice. Contact support with your booking reference and we'll coordinate with the audit team."
-  },
-  {
-    q: "What if my payment fails?",
-    a: "If payment fails, your booking remains pending and no charge completes. You can retry payment safely from the booking page without creating a duplicate booking."
-  }
-];
-
 export const auditorFaqs: FAQ[] = [
   {
     q: "Do I need audit experience to apply?",

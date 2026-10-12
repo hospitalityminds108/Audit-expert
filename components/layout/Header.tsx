@@ -3,13 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, ChevronDown, UserRound } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { gsap } from "@/lib/animations/gsap";
 import { navigation } from "@/data/navigation";
 import { getIndustriesNav } from "@/data/industries";
 import { auditPlans, planCategoryTabs } from "@/data/audit-plans";
 import { getAuditTypesNav } from "@/data/audit-types";
-import { useAuth } from "@/components/auth/AuthProvider";
 import MobileMenu from "./MobileMenu";
 import Logo from "@/components/ui/Logo";
 
@@ -31,7 +30,6 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const megaRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const { user, ready } = useAuth();
 
   // Scroll state
   useEffect(() => {
@@ -156,28 +154,6 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2.5">
-            {/* Account — hidden until the session check returns to avoid a flicker */}
-            <div className={`hidden transition-opacity duration-300 md:block ${ready ? "opacity-100" : "opacity-0"}`}>
-              {user ? (
-                <Link
-                  href="/account"
-                  className="inline-flex items-center gap-2 rounded-full border border-fg-50/15 bg-white/70 py-1.5 pl-1.5 pr-4 text-[13px] font-medium text-fg-100 transition-colors duration-300 hover:border-brand-500/60 hover:text-accent"
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 font-mono text-[11px] font-semibold uppercase text-on-brand">
-                    {user.name.trim().charAt(0) || <UserRound size={13} />}
-                  </span>
-                  {user.name.split(" ")[0]}
-                </Link>
-              ) : (
-                <Link
-                  href="/login"
-                  className="rounded-full px-4 py-2 text-[13px] font-medium tracking-wide text-fg-200 transition-colors duration-300 hover:text-accent"
-                >
-                  Sign in
-                </Link>
-              )}
-            </div>
-
             <Link
               href={navigation.cta.href}
               className="btn-primary group hidden items-center gap-2 rounded-full px-6 py-2.5 text-[13px] font-semibold tracking-wide sm:inline-flex"

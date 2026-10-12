@@ -392,7 +392,7 @@ export default function AuditPlanPage({ params }: PageProps) {
                 <p className="mt-5 max-w-xl text-lead text-fg-300/80">
                   Configure locations, add-ons and scheduling in the booking
                   flow. Total calculated transparently — {formatPrice(plan.priceMin, plan.priceMax)}{" "}
-                  published range, 18% GST shown at checkout.
+                  published range, 18% GST shown in your estimate.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <SelectPlanButton slug={plan.slug} size="lg">

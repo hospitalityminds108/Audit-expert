@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight, BadgeCheck, ShieldCheck } from "lucide-react";
 import { gsap, useGSAP, usePrefersReducedMotion } from "@/lib/animations/gsap";
 import { heroConfig } from "@/data/site";
+import { PRELOADER_MS } from "@/components/layout/Preloader";
 
 const SCORES = [
   { label: "Guest Experience", value: 94 },
@@ -49,7 +50,12 @@ export default function Hero() {
       }
 
       // ── Intro ──
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+      // On a first visit the intro waits for the preloader's curtain to lift
+      const preloading = !document.documentElement.classList.contains("preloaded");
+      const tl = gsap.timeline({
+        defaults: { ease: "power4.out" },
+        delay: preloading ? (PRELOADER_MS - 700) / 1000 : 0,
+      });
       tl.fromTo(
         q("[data-hero-word]"),
         // y: 0 cancels the pixel offset GSAP would otherwise keep from the pre-hydration CSS transform

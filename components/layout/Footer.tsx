@@ -49,7 +49,7 @@ export default function Footer() {
       <div className="border-t border-fg-100/8">
         <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo />
+            <Logo variant="full" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg-400">
               Mystery audits, SOP audits and multi-location programs — an independent service
               intelligence platform by {siteConfig.company}.

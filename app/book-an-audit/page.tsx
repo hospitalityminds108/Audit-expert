@@ -7,16 +7,16 @@ import BookAuditForm from "@/components/forms/BookAuditForm";
 export const metadata: Metadata = {
   title: "Book an Audit",
   description:
-    "Book a mystery audit or SOP audit for hotels, restaurants, hospitals, malls, cinemas and salons. Request a callback or configure and pay online instantly.",
+    "Book a mystery audit or SOP audit for hotels, restaurants, hospitals, malls, cinemas and salons. Pick a plan and request a callback — we scope the audit with you and confirm the date.",
 };
 
 const PATHS = [
   {
     icon: CreditCard,
-    title: "Configure & pay online",
-    body: "Pick your plan, locations, add-ons and a preferred date. Transparent GST-inclusive pricing, instant confirmation.",
-    cta: "Start secure checkout",
-    href: "/checkout",
+    title: "Start from a plan",
+    body: "Pick your plan, set locations and add-ons, and see a transparent GST-inclusive estimate before you send the request.",
+    cta: "Browse plans & pricing",
+    href: "/audit-plans",
     primary: true,
   },
   {
@@ -42,9 +42,9 @@ export default function BookAnAuditPage() {
           Two ways to get on the calendar.
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-fg-300/80">
-          Go straight to secure checkout with full transparency — or request a
-          callback and we scope the audit together on a call. Both paths end
-          with a confirmed date, an assigned auditor and a scored report.
+          Start from a published plan and build your estimate — or tell us
+          what you need and we scope the audit together on a call. Both paths
+          end with a confirmed date, an assigned auditor and a scored report.
         </p>
 
         <PageBanner priority className="mt-12" images={[{ src: "/images/industries/hotels-resorts.jpg", alt: "Hotel lobby at dusk", caption: "Hotels & resorts" }, { src: "/images/industries/restaurants-cafes.jpg", alt: "Restaurant service in progress", caption: "Restaurants & cafés" }, { src: "/images/industries/malls-retail.jpg", alt: "Shopping mall atrium", caption: "Malls & retail" }]} />
@@ -87,8 +87,8 @@ export default function BookAnAuditPage() {
 
         <div className="mt-6 grid gap-4 rounded-2xl border border-fg-50/10 glass p-6 sm:grid-cols-3">
           {[
-            { icon: ShieldCheck, label: "Payment verified server-side before confirmation" },
-            { icon: Zap, label: "Instant booking reference AE-YYYY-XXXXXX" },
+            { icon: ShieldCheck, label: "No payment taken online — the quote is confirmed with you first" },
+            { icon: Zap, label: "A reply within one working day" },
             { icon: MapPin, label: "Pan-India auditor network, 6 industries" },
           ].map((f) => {
             const Icon = f.icon;

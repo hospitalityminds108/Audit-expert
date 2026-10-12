@@ -21,7 +21,7 @@ export interface AuditPlan {
   evidenceCaptured: string[];
   bestFor: string;
   cta: string;
-  /** Base price used by the price engine for checkout (₹) */
+  /** Base price used by the price engine for estimates (₹) */
   basePrice: number;
   seo: {
     title: string;

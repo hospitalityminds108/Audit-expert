@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
-import { auditPlans, getPlanBySlug, formatPrice } from "@/data/audit-plans";
+import { addOns, auditPlans, getPlanBySlug, formatPrice } from "@/data/audit-plans";
 import { industries } from "@/data/industries";
 
 interface FormState {
@@ -48,6 +48,19 @@ export default function BookAuditForm() {
     const ind = params.get("industry");
     if (ind && industries.some((i) => i.slug === ind)) {
       setForm((f) => (f.industry ? f : { ...f, industry: ind }));
+    }
+    // Arriving from the plan popup: note the locations and add-ons that were chosen
+    const locations = parseInt(params.get("locations") ?? "", 10);
+    const chosen = (params.get("addons") ?? "")
+      .split(",")
+      .map((id) => addOns.find((a) => a.id === id)?.label)
+      .filter(Boolean);
+    if (plan && getPlanBySlug(plan) && (locations > 1 || chosen.length)) {
+      const parts = [
+        Number.isFinite(locations) && locations > 0 ? `Locations: ${locations}` : null,
+        chosen.length ? `Add-ons: ${chosen.join(", ")}` : null,
+      ].filter(Boolean);
+      setForm((f) => (f.message ? f : { ...f, message: parts.join(" · ") }));
     }
     // Arriving from a multi-location program CTA
     if (params.get("program") === "brand-standards") {
@@ -119,14 +132,11 @@ export default function BookAuditForm() {
           Thank you, {form.name.split(" ")[0]}. Our team will call {form.phone} within
           one working day to scope your audit, answer questions and lock the schedule.
         </p>
-        <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/60">
-          Prefer to configure and pay online right now?
-        </p>
         <Link
-          href={form.planSlug ? `/checkout?plan=${form.planSlug}` : "/checkout"}
-          className="mt-4 inline-flex items-center gap-2 rounded-full btn-primary px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-on-brand transition-colors"
+          href="/audit-plans"
+          className="btn-ghost mt-6 inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide"
         >
-          Configure &amp; pay online
+          Browse plans &amp; pricing
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
