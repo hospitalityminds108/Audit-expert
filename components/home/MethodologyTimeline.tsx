@@ -83,7 +83,7 @@ export default function MethodologyTimeline() {
             <span className="eyebrow-rule" aria-hidden="true" />
             SECTION 05 — METHODOLOGY
           </p>
-          <h2 className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02] tracking-[-0.02em]" data-reveal data-reveal-delay="0.08">
+          <h2 className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02]" data-reveal data-reveal-delay="0.08">
             Define. Design. Assign. Audit. Verify. Improve.
           </h2>
           <p className="mt-6 max-w-2xl text-lead text-fg-300/80" data-reveal data-reveal-delay="0.16">

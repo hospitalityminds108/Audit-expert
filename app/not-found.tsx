@@ -9,7 +9,7 @@ export default function NotFound() {
           <span className="eyebrow-rule" aria-hidden="true" />
           404 — NOT FOUND
         </p>
-        <h1 className="mt-4 font-display text-5xl leading-[1.02] tracking-[-0.015em] text-fg-50 md:text-7xl">
+        <h1 className="mt-4 font-display text-5xl leading-[1.02] text-fg-50 md:text-7xl">
           This page didn&apos;t pass the audit.
         </h1>
         <p className="mt-5 max-w-md text-sm leading-relaxed text-fg-300/80">

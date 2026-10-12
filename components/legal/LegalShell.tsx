@@ -25,7 +25,7 @@ export default function LegalShell({
           <span className="eyebrow-rule" aria-hidden="true" />
           LEGAL
         </p>
-        <h1 className="mt-4 font-display text-4xl leading-[1.05] tracking-[-0.015em] text-fg-50 md:text-5xl">
+        <h1 className="mt-4 font-display text-4xl leading-[1.05] text-fg-50 md:text-5xl">
           {title}
         </h1>
         <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/60">

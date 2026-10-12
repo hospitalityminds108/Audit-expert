@@ -53,6 +53,12 @@
 
   h1, h2, h3, h4 {
     @apply font-display;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  h1 {
+    font-weight: 700;
   }
 
   /* Focus visibility */
@@ -84,8 +90,31 @@
     padding-inline: var(--gutter);
   }
 
+  /* Display face (Barlow Condensed). A condensed face reads smaller than its
+     point size, so small labels and buttons are evened up by x-height; where
+     font-size-adjust is unsupported they simply render a touch smaller. */
+  .font-display {
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .font-mono {
+    font-weight: 600;
+    font-size-adjust: 0.56;
+  }
+
+  /* Buttons follow the parent site: condensed, uppercase, widely tracked */
+  .btn-primary,
+  .btn-ghost {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size-adjust: 0.63;
+  }
+
   .eyebrow {
-    @apply flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-accent;
+    @apply flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.26em] text-accent;
   }
 
   /* Short rule that leads an eyebrow label */
@@ -493,8 +522,9 @@
 }
 .pl-caption {
   margin-top: 0.5rem;
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: 13px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: #0b1f3a;

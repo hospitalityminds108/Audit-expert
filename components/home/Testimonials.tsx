@@ -71,7 +71,7 @@ export default function Testimonials() {
             </p>
             <h2
               id="results-heading"
-              className="mt-6 font-display text-display-lg leading-[1.02] tracking-[-0.02em] text-fg-50"
+              className="mt-6 font-display text-display-lg leading-[1.02] text-fg-50"
               data-reveal
               data-reveal-delay="0.08"
             >
@@ -138,7 +138,7 @@ export default function Testimonials() {
             <figure className="flex flex-col justify-between gap-10 p-8 md:p-12">
               <blockquote
                 data-quote-part
-                className="font-display text-2xl leading-[1.35] tracking-[-0.01em] text-fg-50 md:text-[2rem]"
+                className="font-display text-[1.7rem] font-medium leading-[1.3] text-fg-50 md:text-[2.25rem]"
               >
                 “{t.quote}”
               </blockquote>

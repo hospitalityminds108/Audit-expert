@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/layout/Providers";
 import Header from "@/components/layout/Header";
@@ -11,24 +11,21 @@ import Preloader from "@/components/layout/Preloader";
 import FloatingActions from "@/components/floating/FloatingActions";
 import { siteConfig } from "@/data/site";
 
-const inter = Inter({
+// Type system — the same pairing as hospitalityminds.com, the parent brand:
+//   display: Barlow Condensed (headings, buttons, labels, figures)
+//   body:    DM Sans (reading text, UI)
+const body = DM_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap"
 });
 
-const playfair = Playfair_Display({
+const display = Barlow_Condensed({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["400", "500", "600", "700"]
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "500", "700"]
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"]
 });
 
 export const metadata: Metadata = {
@@ -77,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} antialiased`}
+        className={`${body.variable} ${display.variable} antialiased`}
         suppressHydrationWarning
       >
         {/* Marks that scripts run, so CSS can pre-hide intro animations safely */}

@@ -124,7 +124,7 @@ export default function HowItWorksPage() {
               <span className="eyebrow-rule" aria-hidden="true" />
               THE METHODOLOGY
             </p>
-            <h1 className="mt-6 max-w-4xl font-display text-display-xl leading-[1.02] tracking-[-0.02em] text-fg-50 md:text-display-lg">
+            <h1 className="mt-6 max-w-4xl font-display text-display-xl leading-[1.02] text-fg-50 md:text-display-lg">
               Six steps from first briefing to a brand that measurably improves.
             </h1>
             <p className="mt-6 max-w-2xl text-lead text-fg-300/80">

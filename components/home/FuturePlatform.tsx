@@ -27,7 +27,7 @@ export default function FuturePlatform() {
             SECTION 07 — THE FUTURE PLATFORM
           </p>
           <h2
-            className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02] tracking-[-0.02em]"
+            className="mt-6 font-display text-display-lg text-fg-50 leading-[1.02]"
             data-reveal
             data-reveal-delay="0.08"
           >

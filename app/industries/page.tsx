@@ -59,7 +59,7 @@ export default function IndustriesIndexPage() {
               <span className="eyebrow-rule" aria-hidden="true" />
               INDUSTRIES
             </p>
-            <h1 className="mt-6 max-w-4xl font-display text-display-lg leading-[1.02] tracking-[-0.02em] text-fg-50">
+            <h1 className="mt-6 max-w-4xl font-display text-display-lg leading-[1.02] text-fg-50">
               Six industries. Six ways the experience breaks.
             </h1>
             <p className="mt-6 max-w-2xl text-lead text-fg-300/80">

@@ -38,7 +38,7 @@ export default function BookAnAuditPage() {
           <span className="eyebrow-rule" aria-hidden="true" />
           BOOK AN AUDIT
         </p>
-        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] tracking-[-0.015em] text-fg-50 md:text-6xl">
+        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] text-fg-50 md:text-6xl">
           Two ways to get on the calendar.
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-fg-300/80">

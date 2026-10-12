@@ -41,7 +41,7 @@ export default function IndustriesBento() {
             </p>
             <h2
               id="industries-heading"
-              className="mt-6 font-display text-display-lg leading-[1.02] tracking-[-0.02em] text-fg-50"
+              className="mt-6 font-display text-display-lg leading-[1.02] text-fg-50"
               data-reveal
             >
               Every industry has its own truth.

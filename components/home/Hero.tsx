@@ -189,7 +189,7 @@ export default function Hero() {
               {heroConfig.subEyebrow}
             </p>
 
-            <h1 className="mt-7 text-[clamp(1.9rem,3.35vw,4.1rem)] font-semibold leading-[1.04] tracking-[-0.025em] text-fg-50">
+            <h1 className="mt-7 text-[clamp(2.5rem,4.9vw,5.9rem)] font-bold leading-[0.98] tracking-[-0.005em] text-fg-50">
               {heroConfig.headline.map((line, i) => (
                 <span key={i} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                   {line.split(" ").map((w, j) => (

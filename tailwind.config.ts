@@ -56,17 +56,17 @@ const config: Config = {
         critical: "#C73B3B"
       },
       fontFamily: {
-        display: ["var(--font-display)", "serif"],
-        body: ["var(--font-body)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"]
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        mono: ["var(--font-display)", "system-ui", "sans-serif"]
       },
       fontSize: {
         // Fluid type scale using clamp()
-        "display-2xl": ["clamp(3.5rem, 9vw, 9rem)", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
-        "display-xl": ["clamp(3rem, 7.5vw, 7.5rem)", { lineHeight: "0.98", letterSpacing: "-0.02em" }],
-        "display-lg": ["clamp(2.5rem, 5.8vw, 5.5rem)", { lineHeight: "1.0", letterSpacing: "-0.02em" }],
-        "display-md": ["clamp(2rem, 4.2vw, 3.75rem)", { lineHeight: "1.05", letterSpacing: "-0.015em" }],
-        "display-sm": ["clamp(1.6rem, 3vw, 2.5rem)", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
+        "display-2xl": ["clamp(3.5rem, 9vw, 9rem)", { lineHeight: "0.95", letterSpacing: "0" }],
+        "display-xl": ["clamp(3rem, 7.5vw, 7.5rem)", { lineHeight: "0.98", letterSpacing: "0" }],
+        "display-lg": ["clamp(2.5rem, 5.8vw, 5.5rem)", { lineHeight: "1.0", letterSpacing: "0" }],
+        "display-md": ["clamp(2rem, 4.2vw, 3.75rem)", { lineHeight: "1.05", letterSpacing: "0" }],
+        "display-sm": ["clamp(1.6rem, 3vw, 2.5rem)", { lineHeight: "1.1", letterSpacing: "0" }],
         "lead-lg": ["clamp(1.05rem, 1.35vw, 1.25rem)", { lineHeight: "1.65" }],
         "lead": ["clamp(1rem, 1.15vw, 1.125rem)", { lineHeight: "1.7" }]
       },
