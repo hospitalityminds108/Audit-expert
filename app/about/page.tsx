@@ -79,7 +79,7 @@ export default function AboutPage() {
               <span className="eyebrow-rule" aria-hidden="true" />
               WHY WE EXIST
             </p>
-            <h2 className="mt-4 font-display text-3xl tracking-[-0.01em] text-fg-50">
+            <h2 className="mt-4 font-display text-4xl tracking-[-0.01em] text-fg-50">
               Between the SOP binder and the guest review sits the truth.
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-fg-300/80">
@@ -132,7 +132,7 @@ export default function AboutPage() {
           <span className="eyebrow-rule" aria-hidden="true" />
           INTEGRITY STANDARDS
         </p>
-        <h2 className="mt-4 max-w-2xl font-display text-3xl tracking-[-0.01em] text-fg-50">
+        <h2 className="mt-4 max-w-2xl font-display text-4xl tracking-[-0.01em] text-fg-50">
           Audit findings are only worth what the process behind them is worth.
         </h2>
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -151,7 +151,7 @@ export default function AboutPage() {
       {/* ── CTA ── */}
       <div className="container-site pb-24">
         <div className="rounded-3xl border border-brand-400/30 bg-brand-400/[0.06] p-10 text-center md:p-14">
-          <h2 className="mx-auto max-w-2xl font-display text-3xl tracking-[-0.01em] text-fg-50 md:text-4xl">
+          <h2 className="mx-auto max-w-2xl font-display text-4xl tracking-[-0.01em] text-fg-50 md:text-4xl">
             See your brand the way your guest does.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-fg-300/80">

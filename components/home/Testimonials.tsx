@@ -59,7 +59,7 @@ export default function Testimonials() {
       ref={sectionRef}
       id="results"
       data-section="results"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden py-20 md:py-24 lg:py-28"
       aria-labelledby="results-heading"
     >
       <div className="container-site">

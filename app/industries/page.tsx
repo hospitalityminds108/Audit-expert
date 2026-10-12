@@ -109,7 +109,7 @@ export default function IndustriesIndexPage() {
                         </span>
                       ))}
                     </div>
-                    <h2 className="mt-4 font-display text-3xl leading-[1.08] text-fg-50">
+                    <h2 className="mt-4 font-display text-4xl leading-[1.08] text-fg-50">
                       {industry.title}
                     </h2>
                     <p className="mt-3 max-w-lg text-sm leading-relaxed text-fg-300/80">
@@ -140,7 +140,7 @@ export default function IndustriesIndexPage() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
                   Not on the list?
                 </p>
-                <h2 className="mt-3 font-display text-2xl text-fg-50">
+                <h2 className="mt-3 font-display text-3xl text-fg-50">
                   We build custom audit frameworks.
                 </h2>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-fg-300/80">

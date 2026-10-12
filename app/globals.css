@@ -365,10 +365,17 @@
     mask-image: radial-gradient(ellipse at center, #000 20%, transparent 72%);
   }
 
+  /* Selected filter chip: brand fill, same lettering as its neighbours */
+  .chip-on {
+    color: #ffffff;
+    background: linear-gradient(135deg, #17b877 0%, #0b8455 60%, #076642 100%);
+    box-shadow: 0 10px 22px -12px rgba(11, 132, 85, 0.7);
+  }
+
   /* ── Floating action buttons (WhatsApp, call, assistant) ── */
+  /* display is left to utilities (flex / hidden) so buttons can be toggled */
   .fab {
     position: relative;
-    display: flex;
     height: 3.25rem;
     width: 3.25rem;
     align-items: center;

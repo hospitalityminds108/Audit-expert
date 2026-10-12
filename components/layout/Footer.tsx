@@ -36,10 +36,10 @@ export default function Footer() {
             </Link>
             <Link
               href="/join-as-auditor"
-              className="inline-flex items-center gap-2 rounded-full border border-fg-100/20 px-8 py-4 text-sm font-semibold tracking-wide text-fg-100 transition-all duration-500 hover:border-brand-300/60 hover:text-accent"
+              className="btn-ghost inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold tracking-wide"
             >
               Join the Auditor Network
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-fg-100/8">
-          <div className="container-site flex flex-col items-start justify-between gap-3 py-6 text-xs text-fg-500 sm:flex-row sm:items-center">
+          <div className="container-site flex flex-col items-start justify-between gap-3 py-6 pr-20 text-xs text-fg-500 sm:flex-row sm:items-center sm:pr-24">
             <p>
               © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
             </p>

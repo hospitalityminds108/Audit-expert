@@ -17,7 +17,7 @@ export default function FuturePlatform() {
       ref={sectionRef}
       id="platform"
       data-section="platform"
-      className="relative overflow-hidden py-24 md:py-32 lg:py-40"
+      className="relative overflow-hidden py-20 md:py-24 lg:py-28"
     >
       <div className="container-site">
         {/* Header */}

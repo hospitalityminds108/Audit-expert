@@ -110,7 +110,7 @@ export default function BookAnAuditPage() {
               <span className="eyebrow-rule" aria-hidden="true" />
               CALLBACK
             </p>
-            <h2 className="mt-4 font-display text-3xl tracking-[-0.01em] text-fg-50">
+            <h2 className="mt-4 font-display text-4xl tracking-[-0.01em] text-fg-50">
               Request a callback
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-fg-300/80">

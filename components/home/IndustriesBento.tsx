@@ -29,7 +29,7 @@ export default function IndustriesBento() {
       ref={sectionRef}
       id="industries"
       data-section="industries"
-      className="relative py-24 md:py-32"
+      className="relative py-20 md:py-24 lg:py-28"
       aria-labelledby="industries-heading"
     >
       <div className="container-site">

@@ -132,7 +132,7 @@ export default function JoinAsAuditorPage() {
             </p>
             <h2
               id="perks"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               Four reasons auditors stay in the network
             </h2>
@@ -163,7 +163,7 @@ export default function JoinAsAuditorPage() {
               </p>
               <h2
                 id="selection"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 How selection works
               </h2>
@@ -248,7 +248,7 @@ export default function JoinAsAuditorPage() {
             </p>
             <h2
               id="auditor-voices"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               What brands say about our reports
             </h2>
@@ -289,7 +289,7 @@ export default function JoinAsAuditorPage() {
               </p>
               <h2
                 id="integrity"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 The integrity framework you operate under
               </h2>
@@ -325,7 +325,7 @@ export default function JoinAsAuditorPage() {
               </p>
               <h2
                 id="apply-heading"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 Apply to the network
               </h2>
@@ -355,7 +355,7 @@ export default function JoinAsAuditorPage() {
                 <span className="eyebrow-rule" aria-hidden="true" />
                 QUESTIONS
               </p>
-              <h2 id="faq" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
+              <h2 id="faq" className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                 Auditor questions
               </h2>
             </div>

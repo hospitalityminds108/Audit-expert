@@ -21,7 +21,7 @@ export default function TwoWays() {
       ref={sectionRef}
       id="two-ways"
       data-section="two-ways"
-      className="relative py-24 md:py-32 lg:py-40"
+      className="relative py-20 md:py-24 lg:py-28"
     >
       <div className="container-site">
         {/* Header */}

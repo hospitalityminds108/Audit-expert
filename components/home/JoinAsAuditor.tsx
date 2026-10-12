@@ -30,7 +30,7 @@ export default function JoinAsAuditor() {
       ref={sectionRef}
       id="join"
       data-section="join"
-      className="relative overflow-hidden py-24 md:py-32 lg:py-40"
+      className="relative overflow-hidden py-20 md:py-24 lg:py-28"
     >
       {/* Ambient */}
       <div

@@ -74,7 +74,7 @@ export default function MethodologyTimeline() {
       ref={sectionRef}
       id="methodology"
       data-section="methodology"
-      className="relative py-24 md:py-32 lg:py-40"
+      className="relative py-20 md:py-24 lg:py-28"
     >
       <div className="container-site">
         {/* Header */}

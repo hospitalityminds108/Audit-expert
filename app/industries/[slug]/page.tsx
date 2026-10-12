@@ -162,7 +162,7 @@ export default function IndustryPage({ params }: PageProps) {
                   <span className="eyebrow-rule" aria-hidden="true" />
                   THE PROBLEM
                 </p>
-                <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+                <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
                   {industry.problem.heading}
                 </h2>
               </div>
@@ -182,7 +182,7 @@ export default function IndustryPage({ params }: PageProps) {
               <span className="eyebrow-rule" aria-hidden="true" />
               THE JOURNEY WE AUDIT
             </p>
-            <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+            <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
               Touchpoint by touchpoint.
             </h2>
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -213,7 +213,7 @@ export default function IndustryPage({ params }: PageProps) {
                   <span className="eyebrow-rule" aria-hidden="true" />
                   WHAT WE INSPECT
                 </p>
-                <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+                <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
                   The checklist behind the report.
                 </h2>
                 <p className="mt-5 max-w-md text-[15px] leading-[1.8] text-fg-300/75">
@@ -239,7 +239,7 @@ export default function IndustryPage({ params }: PageProps) {
                 <span className="eyebrow-rule" aria-hidden="true" />
                 EVIDENCE APPROACH
               </p>
-              <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+              <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
                 Findings are observations, not opinions.
               </h2>
               <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -261,7 +261,7 @@ export default function IndustryPage({ params }: PageProps) {
               <span className="eyebrow-rule" aria-hidden="true" />
               HOW THE AUDIT RUNS
             </p>
-            <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+            <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
               From brief to report.
             </h2>
             <ol className="mt-10 space-y-0">
@@ -290,7 +290,7 @@ export default function IndustryPage({ params }: PageProps) {
                   <span className="eyebrow-rule" aria-hidden="true" />
                   SCORECARD EXAMPLE
                 </p>
-                <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+                <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
                   What a scored report looks like.
                 </h2>
                 <p className="mt-5 max-w-md text-[15px] leading-[1.8] text-fg-300/75">
@@ -339,7 +339,7 @@ export default function IndustryPage({ params }: PageProps) {
                   <span className="eyebrow-rule" aria-hidden="true" />
                   RECOMMENDED PLANS
                 </p>
-                <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+                <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
                   Start here.
                 </h2>
               </div>
@@ -395,7 +395,7 @@ export default function IndustryPage({ params }: PageProps) {
                   <span className="eyebrow-rule" aria-hidden="true" />
                   QUESTIONS
                 </p>
-                <h2 className="mt-5 font-display text-3xl md:text-4xl leading-[1.1] text-fg-50">
+                <h2 className="mt-5 font-display text-4xl md:text-5xl leading-[1.1] text-fg-50">
                   {industry.shortTitle} audit FAQs.
                 </h2>
               </div>

@@ -48,7 +48,7 @@ export default function AuditPlanExplorer() {
       ref={sectionRef}
       id="audit-plans"
       data-section="audit-plans"
-      className="relative py-24 md:py-32 lg:py-40"
+      className="relative py-20 md:py-24 lg:py-28"
     >
       <div className="container-site">
         {/* Header */}
@@ -93,7 +93,7 @@ export default function AuditPlanExplorer() {
                 onKeyDown={onTabKeyDown}
                 className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-base-950 ${
                   isActive
-                    ? "btn-primary text-on-brand"
+                    ? "chip-on"
                     : "border border-fg-50/15 text-fg-300 hover:border-fg-50/40 hover:text-fg-50"
                 }`}
               >

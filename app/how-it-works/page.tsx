@@ -160,7 +160,7 @@ export default function HowItWorksPage() {
             </p>
             <h2
               id="methodology"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               The methodology behind every audit
             </h2>
@@ -244,7 +244,7 @@ export default function HowItWorksPage() {
             </p>
             <h2
               id="invariants"
-              className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+              className="mt-5 max-w-3xl font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
             >
               Whatever the plan, every audit includes
             </h2>
@@ -275,7 +275,7 @@ export default function HowItWorksPage() {
               </p>
               <h2
                 id="timeline"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 What happens, in order
               </h2>
@@ -322,7 +322,7 @@ export default function HowItWorksPage() {
                 </p>
                 <h2
                   id="report"
-                  className="mt-5 max-w-3xl font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                  className="mt-5 max-w-3xl font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                 >
                   Anatomy of the report
                 </h2>
@@ -360,7 +360,7 @@ export default function HowItWorksPage() {
                   </p>
                   <h2
                     id="program"
-                    className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                    className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                   >
                     From one audit to a brand-wide program
                   </h2>
@@ -409,7 +409,7 @@ export default function HowItWorksPage() {
               </p>
               <h2
                 id="integrity"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 Why you can act on the findings
               </h2>
@@ -450,7 +450,7 @@ export default function HowItWorksPage() {
                 <span className="eyebrow-rule" aria-hidden="true" />
                 QUESTIONS
               </p>
-              <h2 id="faq" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
+              <h2 id="faq" className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                 Booking questions
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg-300/80">
@@ -486,7 +486,7 @@ export default function HowItWorksPage() {
                 </p>
                 <h2
                   id="cta"
-                  className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                  className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                 >
                   Now you know how it works. See how your brand actually runs.
                 </h2>

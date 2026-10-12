@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { MessageCircle, Phone, X } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import AssistantPanel, { AssistantAvatar, INITIAL_MESSAGES, type Message } from "./AssistantPanel";
 
@@ -13,80 +14,126 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
   );
 }
 
-/** Label that slides out beside a button on hover / focus (desktop) */
-function Label({ children }: { children: string }) {
+/** Label beside a button: slides out on hover (desktop); always shown in the open phone dock */
+function Label({ children, always = false }: { children: string; always?: boolean }) {
   return (
-    <span className="pointer-events-none absolute right-full mr-3 hidden origin-right translate-x-2 scale-95 whitespace-nowrap rounded-full bg-white px-3.5 py-2 text-xs font-semibold text-fg-50 opacity-0 shadow-[0_10px_30px_-14px_rgba(16,64,44,0.6)] ring-1 ring-fg-50/10 transition-all duration-300 ease-premium group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:scale-100 group-focus-visible:opacity-100 sm:block">
+    <span
+      className={`pointer-events-none absolute right-full mr-3 origin-right whitespace-nowrap rounded-full bg-white px-3.5 py-2 text-xs font-semibold text-fg-50 shadow-[0_10px_30px_-14px_rgba(16,64,44,0.6)] ring-1 ring-fg-50/10 transition-all duration-300 ease-premium ${
+        always
+          ? "xl:translate-x-2 xl:scale-95 xl:opacity-0 xl:group-hover:translate-x-0 xl:group-hover:scale-100 xl:group-hover:opacity-100 xl:group-focus-visible:translate-x-0 xl:group-focus-visible:scale-100 xl:group-focus-visible:opacity-100"
+          : "hidden"
+      }`}
+    >
       {children}
     </span>
   );
 }
 
 /**
- * FloatingActions — WhatsApp, call and the site assistant, docked bottom-right
- * on every page. The buttons rise in one after another; the assistant button
- * carries a soft pulse until it has been opened once.
+ * FloatingActions — WhatsApp, call and the site assistant, docked bottom-right.
+ *
+ * Wide screens (xl+): the three buttons are always visible, sized to fit the
+ * page gutter so they never sit over content.
+ * Phones, tablets and small laptops: one compact launcher instead of a column;
+ * tapping it fans the three actions out with their labels.
  */
 export default function FloatingActions() {
-  const [open, setOpen] = useState(false);
-  const [opened, setOpened] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatOpened, setChatOpened] = useState(false);
+  const [dockOpen, setDockOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
-  const close = useCallback(() => setOpen(false), []);
+  const pathname = usePathname();
+  const closeChat = useCallback(() => setChatOpen(false), []);
 
   useEffect(() => {
-    if (open) setOpened(true);
-  }, [open]);
+    if (chatOpen) setChatOpened(true);
+  }, [chatOpen]);
+
+  // the phone dock folds away on navigation
+  useEffect(() => {
+    setDockOpen(false);
+  }, [pathname]);
+
+  const openChat = () => {
+    setDockOpen(false);
+    setChatOpen(true);
+  };
+
+  // phone: actions are hidden until the launcher is opened; desktop: always shown
+  const actionCls = (delay: string) =>
+    `fab group ${dockOpen ? "flex" : "hidden"} xl:flex xl:!h-11 xl:!w-11 min-[1440px]:!h-[3.25rem] min-[1440px]:!w-[3.25rem] ${delay}`;
 
   return (
     <>
-      {open && <AssistantPanel messages={messages} setMessages={setMessages} onClose={close} />}
+      {chatOpen && <AssistantPanel messages={messages} setMessages={setMessages} onClose={closeChat} />}
+
+      {/* phone: dim the page behind the open dock so the labels read clearly */}
+      {dockOpen && (
+        <button
+          type="button"
+          aria-label="Close contact options"
+          onClick={() => setDockOpen(false)}
+          className="fixed inset-0 z-[74] bg-white/70 backdrop-blur-sm xl:hidden"
+          style={{ animation: "scrim-in 0.25s ease-out both" }}
+        />
+      )}
 
       <div
-        className={`fixed bottom-4 right-4 z-[75] flex flex-col items-end gap-3 transition-all duration-300 sm:bottom-6 sm:right-6 ${
-          open ? "pointer-events-none translate-y-3 opacity-0" : "opacity-100"
+        className={`fixed bottom-4 right-3 z-[75] flex flex-col items-end gap-3 transition-all duration-300 xl:bottom-6 xl:right-1.5 min-[1440px]:right-3 2xl:right-6 ${
+          chatOpen ? "pointer-events-none translate-y-3 opacity-0" : "opacity-100"
         }`}
-        aria-hidden={open}
+        aria-hidden={chatOpen}
       >
         <a
           href={siteConfig.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Chat on WhatsApp, ${siteConfig.whatsapp}`}
-          tabIndex={open ? -1 : undefined}
-          className="fab group bg-[#25D366] text-white [--fab-glow:rgba(37,211,102,0.55)]"
-          style={{ animationDelay: "0.9s" }}
+          tabIndex={chatOpen ? -1 : undefined}
+          className={`${actionCls("[animation-delay:60ms] xl:[animation-delay:900ms]")} bg-[#25D366] text-white [--fab-glow:rgba(37,211,102,0.55)]`}
         >
-          <Label>WhatsApp us</Label>
+          <Label always>WhatsApp us</Label>
           <WhatsAppIcon className="fab-wiggle h-6 w-6" />
         </a>
 
         <a
           href={siteConfig.phoneHref}
           aria-label={`Call us, ${siteConfig.phone}`}
-          tabIndex={open ? -1 : undefined}
-          className="fab group bg-[#0B1F3A] text-white [--fab-glow:rgba(11,31,58,0.5)]"
-          style={{ animationDelay: "1.02s" }}
+          tabIndex={chatOpen ? -1 : undefined}
+          className={`${actionCls("[animation-delay:30ms] xl:[animation-delay:1020ms]")} bg-[#0B1F3A] text-white [--fab-glow:rgba(11,31,58,0.5)]`}
         >
-          <Label>{`Call ${siteConfig.phone}`}</Label>
+          <Label always>{`Call ${siteConfig.phone}`}</Label>
           <Phone className="fab-ring h-5 w-5" aria-hidden="true" />
         </a>
 
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={openChat}
           aria-label="Open the AuditExpert assistant"
           aria-haspopup="dialog"
-          tabIndex={open ? -1 : undefined}
-          className="fab fab-lg group bg-gradient-to-br from-brand-500 to-brand-700 [--fab-glow:rgba(11,132,85,0.6)]"
-          style={{ animationDelay: "1.14s" }}
+          tabIndex={chatOpen ? -1 : undefined}
+          className={`${actionCls("xl:[animation-delay:1140ms]")} bg-gradient-to-br from-brand-500 to-brand-700 [--fab-glow:rgba(11,132,85,0.6)]`}
         >
-          <Label>Ask the assistant</Label>
-          {!opened && <span className="fab-pulse" aria-hidden="true" />}
-          <AssistantAvatar size={44} />
+          <Label always>Ask the assistant</Label>
+          {!chatOpened && <span className="fab-pulse" aria-hidden="true" />}
+          <AssistantAvatar size={34} />
           <span
             className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-brand-300"
             aria-hidden="true"
           />
+        </button>
+
+        {/* phone launcher */}
+        <button
+          type="button"
+          onClick={() => setDockOpen((o) => !o)}
+          aria-label={dockOpen ? "Close contact options" : "Contact options: WhatsApp, call, assistant"}
+          aria-expanded={dockOpen}
+          tabIndex={chatOpen ? -1 : undefined}
+          className="fab flex bg-gradient-to-br from-brand-500 to-brand-700 text-white [--fab-glow:rgba(11,132,85,0.6)] xl:hidden"
+        >
+          {!dockOpen && !chatOpened && <span className="fab-pulse" aria-hidden="true" />}
+          {dockOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <MessageCircle className="h-6 w-6" aria-hidden="true" />}
         </button>
       </div>
     </>

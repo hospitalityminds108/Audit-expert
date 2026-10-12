@@ -59,9 +59,12 @@ export default function ProgressTracker({
   }, [sections]);
 
   return (
-    <div ref={wrapperRef} className="sticky top-24 z-40 hidden md:block">
+    <div
+      ref={wrapperRef}
+      className="sticky top-16 z-40 hidden border-b border-fg-50/10 bg-white/90 backdrop-blur-xl md:block"
+    >
       <div className="container-site">
-        <div className="flex items-center gap-6 border-b border-fg-50/10 pb-3">
+        <div className="flex items-center gap-6 py-3.5">
           <div className="h-px flex-1 overflow-hidden bg-base-800">
             <div ref={barRef} className="h-px w-full origin-left bg-brand-600" />
           </div>

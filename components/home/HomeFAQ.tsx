@@ -18,7 +18,7 @@ export default function HomeFAQ() {
       ref={sectionRef}
       id="faq"
       data-section="faq"
-      className="relative py-24 md:py-32 lg:py-40"
+      className="relative py-20 md:py-24 lg:py-28"
     >
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">

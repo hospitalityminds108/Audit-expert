@@ -217,7 +217,7 @@ export default function AuditPlanPage({ params }: PageProps) {
               </p>
               <h2
                 id="plan-overview"
-                className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
               >
                 What this audit covers
               </h2>
@@ -251,7 +251,7 @@ export default function AuditPlanPage({ params }: PageProps) {
                   <span className="eyebrow-rule" aria-hidden="true" />
                   SCOPE
                 </p>
-                <h2 id="plan-scope" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
+                <h2 id="plan-scope" className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                   Every checkpoint, defined upfront
                 </h2>
               </div>
@@ -283,7 +283,7 @@ export default function AuditPlanPage({ params }: PageProps) {
                 <span className="eyebrow-rule" aria-hidden="true" />
                 PROCESS
               </p>
-              <h2 id="plan-journey" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
+              <h2 id="plan-journey" className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                 How the audit runs
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg-300/80">
@@ -331,7 +331,7 @@ export default function AuditPlanPage({ params }: PageProps) {
                 <span className="eyebrow-rule" aria-hidden="true" />
                 EVIDENCE
               </p>
-              <h2 id="plan-output" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
+              <h2 id="plan-output" className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                 Evidence captured on the ground
               </h2>
               <ul className="mt-8 space-y-4">
@@ -383,7 +383,7 @@ export default function AuditPlanPage({ params }: PageProps) {
                 </p>
                 <h2
                   id="plan-cta"
-                  className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
+                  className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl"
                 >
                   {isMystery
                     ? "See your brand the way a real guest does."
@@ -421,7 +421,7 @@ export default function AuditPlanPage({ params }: PageProps) {
                     <span className="eyebrow-rule" aria-hidden="true" />
                     ALSO IN {plan.categoryLabel.toUpperCase()}
                   </p>
-                  <h2 id="related-plans" className="mt-5 font-display text-3xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
+                  <h2 id="related-plans" className="mt-5 font-display text-4xl leading-tight tracking-[-0.01em] text-fg-50 md:text-4xl">
                     Related plans
                   </h2>
                 </div>

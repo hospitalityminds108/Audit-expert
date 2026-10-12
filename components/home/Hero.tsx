@@ -276,7 +276,7 @@ export default function Hero() {
                   className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-700/55 to-transparent"
                   aria-hidden="true"
                 />
-                <p className="absolute bottom-6 left-6 right-6 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-white/90">
+                <p className="absolute bottom-6 right-6 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-white/90">
                   <BadgeCheck size={14} aria-hidden="true" />
                   Independent · Evidence-backed
                 </p>

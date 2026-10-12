@@ -32,7 +32,7 @@ const NUMBER_WORDS = [
 const chip = (active: boolean) =>
   `rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-300 ${
     active
-      ? "btn-primary text-on-brand"
+      ? "chip-on"
       : "border border-fg-50/15 text-fg-300 hover:border-fg-50/40 hover:text-fg-50"
   }`;
 
@@ -156,7 +156,7 @@ export default function AuditPlansPage({
             return (
               <section key={tab.id} className="mb-16 last:mb-0" aria-labelledby={`plans-${tab.id}`}>
                 <div className="mb-6 flex items-baseline gap-4">
-                  <h2 id={`plans-${tab.id}`} className="font-display text-2xl text-fg-50">
+                  <h2 id={`plans-${tab.id}`} className="font-display text-3xl text-fg-50">
                     {tab.label}
                   </h2>
                   <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-300/60">
