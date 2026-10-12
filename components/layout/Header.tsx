@@ -226,7 +226,7 @@ export default function Header() {
                   </p>
                   <Link
                     href="/book-an-audit"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+                    className="tap inline-flex items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
                   >
                     Book an Audit <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
@@ -275,7 +275,7 @@ export default function Header() {
                     <Link
                       href="/audit-plans"
                       onClick={() => setMenu(CLOSED)}
-                      className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent underline-offset-4 hover:underline"
+                      className="tap inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent underline-offset-4 hover:underline"
                     >
                       All {auditPlans.length} plans <ArrowUpRight size={13} aria-hidden="true" />
                     </Link>
@@ -308,7 +308,7 @@ export default function Header() {
                   </p>
                   <Link
                     href="/book-an-audit?program=brand-standards"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+                    className="tap inline-flex items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
                   >
                     Design a Program <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>

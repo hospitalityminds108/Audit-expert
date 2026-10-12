@@ -44,7 +44,7 @@ export default function LegalShell({
                 <li key={s.heading}>
                   <a
                     href={`#s-${i + 1}`}
-                    className="flex gap-3 text-xs text-fg-300/80 transition-colors hover:text-accent"
+                    className="tap flex gap-3 text-xs text-fg-300/80 transition-colors hover:text-accent"
                   >
                     <span className="font-mono text-[10px] text-fg-300/60">
                       {String(i + 1).padStart(2, "0")}
@@ -81,19 +81,19 @@ export default function LegalShell({
                 Questions about this policy? Write to{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-accent underline underline-offset-2 hover:text-accent"
+                  className="tap text-accent underline underline-offset-2 hover:text-accent"
                 >
                   {siteConfig.email}
                 </a>{" "}
                 or see our{" "}
-                <Link href="/contact" className="text-accent underline underline-offset-2 hover:text-accent">
+                <Link href="/contact" className="tap text-accent underline underline-offset-2 hover:text-accent">
                   contact page
                 </Link>
                 .
               </p>
               <Link
                 href="/"
-                className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-200 hover:text-fg-50"
+                className="tap mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-200 hover:text-fg-50"
               >
                 Back to home
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

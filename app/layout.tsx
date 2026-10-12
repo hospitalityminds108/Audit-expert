@@ -8,6 +8,7 @@ import Atmosphere from "@/components/layout/Atmosphere";
 import PointerGlow from "@/components/layout/PointerGlow";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import Preloader from "@/components/layout/Preloader";
+import FloatingActions from "@/components/floating/FloatingActions";
 import { siteConfig } from "@/data/site";
 
 const inter = Inter({
@@ -100,6 +101,7 @@ export default function RootLayout({
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <FloatingActions />
         </Providers>
       </body>
     </html>

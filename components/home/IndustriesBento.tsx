@@ -124,7 +124,7 @@ export default function IndustriesBento() {
             </p>
             <Link
               href="/contact"
-              className="group mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+              className="tap group mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
             >
               Request a framework
               <ArrowUpRight

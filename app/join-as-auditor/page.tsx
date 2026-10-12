@@ -85,7 +85,7 @@ export default function JoinAsAuditorPage() {
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-accent">Home</Link>
+                  <Link href="/" className="tap transition-colors hover:text-accent">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li aria-current="page" className="text-accent">Join as Auditor</li>
@@ -339,7 +339,7 @@ export default function JoinAsAuditorPage() {
             </div>
             <div className="mt-6 mx-auto max-w-3xl text-sm leading-relaxed text-fg-300/80">
               Questions first?{" "}
-              <Link href="/contact" className="text-accent underline decoration-brand-600/40 underline-offset-4 transition-colors hover:text-accent">
+              <Link href="/contact" className="tap text-accent underline decoration-brand-600/40 underline-offset-4 transition-colors hover:text-accent">
                 Talk to the network team
               </Link>
               .

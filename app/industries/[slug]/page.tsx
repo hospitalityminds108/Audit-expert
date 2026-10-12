@@ -118,11 +118,11 @@ export default function IndustryPage({ params }: PageProps) {
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-accent">Home</Link>
+                  <Link href="/" className="tap transition-colors hover:text-accent">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li>
-                  <Link href="/industries" className="transition-colors hover:text-accent">Industries</Link>
+                  <Link href="/industries" className="tap transition-colors hover:text-accent">Industries</Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li aria-current="page" className="text-accent">{industry.shortTitle}</li>

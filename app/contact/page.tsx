@@ -50,7 +50,7 @@ export default function ContactPage() {
               <ArrowRight className="ml-auto h-4 w-4 text-fg-300/60 transition-colors group-hover:text-accent" aria-hidden="true" />
             </a>
             <a
-              href="tel:+919820000000"
+              href={siteConfig.phoneHref}
               className="group flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5 transition-colors hover:border-brand-400/40"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-fg-50/15 bg-base-950">
@@ -64,17 +64,23 @@ export default function ContactPage() {
               </span>
               <ArrowRight className="ml-auto h-4 w-4 text-fg-300/60 transition-colors group-hover:text-accent" aria-hidden="true" />
             </a>
-            <div className="flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5">
+            <a
+              href={siteConfig.address.mapsHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-4 rounded-2xl border border-fg-50/10 glass p-5 transition-colors hover:border-brand-400/40"
+            >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-fg-50/15 bg-base-950">
                 <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
               </span>
               <span>
                 <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-fg-300/60">
-                  Base
+                  Office
                 </span>
-                <span className="mt-0.5 block text-sm text-fg-50">{siteConfig.baseCity}</span>
+                <span className="mt-0.5 block text-sm leading-relaxed text-fg-50">{siteConfig.address.full}</span>
+                <span className="mt-1.5 block text-xs font-semibold text-accent">Open in Google Maps</span>
               </span>
-            </div>
+            </a>
             <div className="flex items-center gap-4 rounded-2xl border border-fg-50/10 glass p-5">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-fg-50/15 bg-base-950">
                 <Clock className="h-4 w-4 text-accent" aria-hidden="true" />
@@ -95,7 +101,7 @@ export default function ContactPage() {
               </p>
               <Link
                 href="/audit-plans"
-                className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent hover:text-accent"
+                className="tap mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent hover:text-accent"
               >
                 Browse plans &amp; pricing
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

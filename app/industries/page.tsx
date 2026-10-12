@@ -45,7 +45,7 @@ export default function IndustriesIndexPage() {
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-accent">
+                  <Link href="/" className="tap transition-colors hover:text-accent">
                     Home
                   </Link>
                 </li>

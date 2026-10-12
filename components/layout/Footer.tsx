@@ -82,7 +82,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-fg-400 transition-colors hover:text-accent"
+                    className="tap text-sm text-fg-400 transition-colors hover:text-accent"
                   >
                     {item.label}
                   </Link>
@@ -98,7 +98,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-fg-400 transition-colors hover:text-accent"
+                    className="tap text-sm text-fg-400 transition-colors hover:text-accent"
                   >
                     {item.label}
                   </Link>
@@ -112,13 +112,20 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-fg-400">
               <li className="flex items-start gap-3">
                 <Mail size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.email}`} className="transition-colors hover:text-accent">
+                <a href={`mailto:${siteConfig.email}`} className="tap transition-colors hover:text-accent">
                   {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                {siteConfig.baseCity}
+                <a
+                  href={siteConfig.address.mapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-relaxed transition-colors hover:text-accent"
+                >
+                  {siteConfig.address.full}
+                </a>
               </li>
             </ul>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-500">

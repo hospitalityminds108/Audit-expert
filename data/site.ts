@@ -8,8 +8,26 @@ export const siteConfig = {
   url: "https://digital-hm-71s3.vercel.app",
   urlProduction: "https://auditexpert.in",
   email: "audits@auditexpert.in",
-  phone: "+91 98200 00000",
+  phone: "+91 86555 56688",
+  phoneHref: "tel:+918655556688",
+  whatsapp: "+91 96531 28482",
+  whatsappHref:
+    "https://wa.me/919653128482?text=" +
+    encodeURIComponent("Hello AuditExpert, I'd like to know more about your audits."),
   baseCity: "Mumbai, India",
+  address: {
+    street: "Star Plaza, 206, Mahatma Gandhi Rd, opposite Sanjay Restaurant, above MM Mithaiwala, Chinchpada",
+    locality: "Borivali East",
+    city: "Mumbai",
+    region: "Maharashtra",
+    postalCode: "400066",
+    country: "IN",
+    /** One-line form for display */
+    full: "Star Plaza, 206, Mahatma Gandhi Rd, opposite Sanjay Restaurant, above MM Mithaiwala, Chinchpada, Borivali East, Mumbai, Maharashtra 400066",
+    mapsHref:
+      "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent("Star Plaza, 206, Mahatma Gandhi Rd, Chinchpada, Borivali East, Mumbai, Maharashtra 400066"),
+  },
   keywords: [
     "hotel mystery audit",
     "hotel service audit",

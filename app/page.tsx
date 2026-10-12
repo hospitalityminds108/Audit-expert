@@ -43,6 +43,15 @@ const organizationJsonLd = {
   logo: `${siteConfig.url}/images/logo.png`,
   description: siteConfig.description,
   email: siteConfig.email,
+  telephone: siteConfig.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: `${siteConfig.address.locality}, ${siteConfig.address.city}`,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: siteConfig.address.country,
+  },
   parentOrganization: {
     "@type": "Organization",
     name: "HospitalityMinds",

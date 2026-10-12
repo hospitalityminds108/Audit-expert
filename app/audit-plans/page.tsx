@@ -82,7 +82,7 @@ export default function AuditPlansPage({
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-accent">Home</Link>
+                  <Link href="/" className="tap transition-colors hover:text-accent">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li aria-current="page" className="text-accent">Audit Plans</li>
@@ -187,7 +187,7 @@ export default function AuditPlansPage({
                         </span>
                       </div>
                       <h3 className="mt-5 font-display text-2xl leading-[1.15] text-fg-50">
-                        <Link href={`/audit-plans/${plan.slug}`} className="transition-colors hover:text-accent">
+                        <Link href={`/audit-plans/${plan.slug}`} className="tap transition-colors hover:text-accent">
                           {plan.name}
                         </Link>
                       </h3>
@@ -212,7 +212,7 @@ export default function AuditPlansPage({
                         <SelectPlanButton slug={plan.slug}>Select plan</SelectPlanButton>
                         <Link
                           href={`/audit-plans/${plan.slug}`}
-                          className="group inline-flex items-center gap-1.5 text-sm font-medium text-fg-200 transition-colors duration-300 hover:text-accent"
+                          className="tap group inline-flex items-center gap-1.5 text-sm font-medium text-fg-200 transition-colors duration-300 hover:text-accent"
                         >
                           Full details
                           <ArrowUpRight

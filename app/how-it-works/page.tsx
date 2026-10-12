@@ -114,7 +114,7 @@ export default function HowItWorksPage() {
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-300/60">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-accent">Home</Link>
+                  <Link href="/" className="tap transition-colors hover:text-accent">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li aria-current="page" className="text-accent">How It Works</li>
@@ -224,7 +224,7 @@ export default function HowItWorksPage() {
                   </ul>
                   <Link
                     href={way.cta.href}
-                    className="mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50 transition-colors hover:text-accent"
+                    className="tap mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50 transition-colors hover:text-accent"
                   >
                     {way.cta.label}
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -432,7 +432,7 @@ export default function HowItWorksPage() {
                 </p>
                 <Link
                   href="/about"
-                  className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50 transition-colors hover:text-accent"
+                  className="tap mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-50 transition-colors hover:text-accent"
                 >
                   About AuditExpert
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

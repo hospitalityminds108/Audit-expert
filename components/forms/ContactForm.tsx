@@ -243,7 +243,7 @@ export default function ContactForm() {
           />
           <span>
             I agree to be contacted about my inquiry and accept the{" "}
-            <a href="/privacy" className="text-accent underline underline-offset-2 hover:text-accent">
+            <a href="/privacy" className="tap text-accent underline underline-offset-2 hover:text-accent">
               privacy policy
             </a>
             . My details are never sold or shared.

@@ -226,7 +226,7 @@ function PlanCard({
           <SelectPlanButton slug={plan.slug}>Select plan</SelectPlanButton>
           <Link
             href={`/audit-plans/${plan.slug}`}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-200 transition-colors duration-300 hover:text-accent"
+            className="tap inline-flex items-center gap-1.5 text-sm font-medium text-fg-200 transition-colors duration-300 hover:text-accent"
           >
             Full details
             <ArrowUpRight
